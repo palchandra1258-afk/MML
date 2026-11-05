@@ -1,0 +1,15 @@
+{
+  "majority": {
+    "probability_correct": 0.6536086910260697,
+    "class_threshold": 0.5,
+    "training_prevalence_source": "full unseen-learner training split"
+  },
+  "last_response": {
+    "probability": "previous_response_correctness; training prevalence for cold start",
+    "cold_start_probability_correct": 0.6536086910260697
+  },
+  "historical_accuracy": {
+    "probability": "prior_accuracy; training prevalence for cold start",
+    "cold_start_probability_correct": 0.6536086910260697
+  }
+}

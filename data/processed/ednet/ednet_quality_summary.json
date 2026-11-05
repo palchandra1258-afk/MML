@@ -1,0 +1,73 @@
+{
+  "kt1_archive": "data/raw/ednet/ednet-kt1.zip",
+  "question_content_archive": "data/raw/ednet/ednet-content.zip",
+  "learner_files": 784309,
+  "interaction_rows": 95293926,
+  "columns": [
+    "elapsed_time",
+    "question_id",
+    "solving_id",
+    "timestamp",
+    "user_answer"
+  ],
+  "missing_values_by_column": {
+    "user_answer": 27646
+  },
+  "duplicate_records": 4983,
+  "valid_timestamps": 95293926,
+  "invalid_timestamps": 0,
+  "non_monotonic_timestamp_transitions": 0,
+  "duplicate_timestamp_transitions": 1314673,
+  "question_id_rows": 95293926,
+  "invalid_question_id_rows": 0,
+  "unmatched_question_rows": 0,
+  "unmatched_unique_question_ids": 0,
+  "matched_question_rows": 95293926,
+  "answer_key_available_rows": 95293926,
+  "answer_key_missing_or_invalid_rows": 0,
+  "correctness_derivable_rows": 95266280,
+  "skill_tag_available_rows": 95274496,
+  "skill_tag_missing_rows": 19430,
+  "invalid_answer_rows": 0,
+  "per_learner_rows_min": 1,
+  "per_learner_rows_max": 40157,
+  "question_content": {
+    "member": "contents/questions.csv",
+    "columns": [
+      "question_id",
+      "bundle_id",
+      "explanation_id",
+      "correct_answer",
+      "part",
+      "tags",
+      "deployed_at"
+    ],
+    "rows": 13169,
+    "unique_question_ids": 13169,
+    "duplicate_question_id_rows": 0,
+    "invalid_question_id_rows": 0,
+    "missing_answer_key_rows": 0,
+    "missing_or_sentinel_tag_rows": 797
+  },
+  "question_content_coverage": 1.0,
+  "answer_key_coverage": 0.9997098870708716,
+  "skill_tag_coverage": 0.9997961045282151,
+  "prediction_task_supported": true,
+  "input_target_policy": {
+    "input_cutoff": "strictly before the current target response is submitted",
+    "target": "user_answer == joined question-content correct_answer",
+    "prohibited_current_response_inputs": [
+      "user_answer",
+      "derived correctness",
+      "elapsed_time"
+    ],
+    "future_interactions": "must not be used to construct prior-history features",
+    "question_metadata": "question_id, bundle_id, part and expert tags may be used only if available before response"
+  },
+  "acquisition": {
+    "kt1_size_bytes": 1201163816,
+    "kt1_sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+    "content_size_bytes": 173976,
+    "content_sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7"
+  }
+}

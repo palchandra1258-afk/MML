@@ -1,0 +1,59 @@
+model,feature_group,importance,normalized_importance
+Random Forest,current_skill_tags,0.20244941539516195,0.2024494153951619
+Random Forest,current_question_id,0.1113956858868567,0.11139568588685667
+Random Forest,prior_skill_tag_correct,0.11013182156307666,0.11013182156307663
+Random Forest,n_prior_correct,0.10964044047695357,0.10964044047695354
+Random Forest,n_prior_answered_attempts,0.10633340653295657,0.10633340653295655
+Random Forest,recent_5_accuracy,0.08214793372409478,0.08214793372409476
+Random Forest,prior_skill_tag_attempts,0.07914137452166961,0.0791413745216696
+Random Forest,prior_skill_tag_accuracy,0.05475295130159364,0.054752951301593626
+Random Forest,current_part,0.04635741414027582,0.04635741414027581
+Random Forest,n_prior_logged_events,0.02797642805913089,0.027976428059130882
+Random Forest,recent_10_accuracy,0.02476996486375817,0.024769964863758164
+Random Forest,recent_accuracy_trend_5__missing,0.011686260820891399,0.011686260820891397
+Random Forest,gap_since_previous_question_ms,0.0114023997777703,0.011402399777770298
+Random Forest,previous_response_correctness,0.009666109403364103,0.009666109403364102
+Random Forest,prior_accuracy,0.008523336206306378,0.008523336206306376
+Random Forest,previous_response_correctness__missing,0.0014145583481452119,0.0014145583481452117
+Random Forest,recent_accuracy_trend_5,0.0011335395363447284,0.0011335395363447282
+Random Forest,prior_accuracy__missing,0.0004607610642453401,0.00046076106424533997
+Random Forest,recent_5_accuracy__missing,0.00042797416899676127,0.00042797416899676116
+Random Forest,previous_elapsed_time_ms,0.00018822420840767243,0.00018822420840767238
+Random Forest,n_prior_logged_events__missing,0.0,0.0
+Random Forest,n_prior_answered_attempts__missing,0.0,0.0
+Random Forest,n_prior_correct__missing,0.0,0.0
+Random Forest,recent_10_accuracy__missing,0.0,0.0
+Random Forest,previous_elapsed_time_ms__missing,0.0,0.0
+Random Forest,gap_since_previous_question_ms__missing,0.0,0.0
+Random Forest,prior_skill_tag_attempts__missing,0.0,0.0
+Random Forest,prior_skill_tag_correct__missing,0.0,0.0
+Random Forest,prior_skill_tag_accuracy__missing,0.0,0.0
+XGBoost,current_question_id,62379.11123752594,0.7199158487245262
+XGBoost,current_skill_tags,18508.08242034912,0.21360134185261573
+XGBoost,current_part,1791.2441482543945,0.02067270638648729
+XGBoost,prior_skill_tag_accuracy,1098.2218017578125,0.01267455186223669
+XGBoost,recent_10_accuracy,717.6663818359375,0.008282570753744044
+XGBoost,recent_5_accuracy,547.22412109375,0.006315500650203956
+XGBoost,prior_accuracy,490.3628845214844,0.005659266462599454
+XGBoost,prior_skill_tag_correct,255.48687744140625,0.0029485680151941827
+XGBoost,n_prior_answered_attempts,159.39952087402344,0.0018396261036702896
+XGBoost,previous_response_correctness,157.49957275390625,0.0018176988473132946
+XGBoost,n_prior_logged_events,143.1145477294922,0.0016516816134360564
+XGBoost,n_prior_correct,141.4796600341797,0.0016328134131781448
+XGBoost,gap_since_previous_question_ms,104.45755767822266,0.00120554220474962
+XGBoost,recent_accuracy_trend_5,60.41298294067383,0.0006972248085117235
+XGBoost,previous_elapsed_time_ms,59.91376495361328,0.0006914633455199738
+XGBoost,prior_skill_tag_attempts,34.104129791259766,0.00039359495601335457
+XGBoost,n_prior_logged_events__missing,0.0,0.0
+XGBoost,n_prior_answered_attempts__missing,0.0,0.0
+XGBoost,n_prior_correct__missing,0.0,0.0
+XGBoost,prior_accuracy__missing,0.0,0.0
+XGBoost,recent_5_accuracy__missing,0.0,0.0
+XGBoost,recent_10_accuracy__missing,0.0,0.0
+XGBoost,recent_accuracy_trend_5__missing,0.0,0.0
+XGBoost,previous_response_correctness__missing,0.0,0.0
+XGBoost,previous_elapsed_time_ms__missing,0.0,0.0
+XGBoost,gap_since_previous_question_ms__missing,0.0,0.0
+XGBoost,prior_skill_tag_attempts__missing,0.0,0.0
+XGBoost,prior_skill_tag_correct__missing,0.0,0.0
+XGBoost,prior_skill_tag_accuracy__missing,0.0,0.0

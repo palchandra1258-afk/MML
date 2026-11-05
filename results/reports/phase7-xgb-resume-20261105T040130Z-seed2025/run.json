@@ -1,0 +1,9 @@
+{
+  "id": "phase7-xgb-resume-20261105T040130Z-seed2025",
+  "status": "running",
+  "target": "next submitted-answer correctness; behavioral outcome only",
+  "resumed_from_model": "/home/mml_07/Desktop/MML/models/trained/xgboost/phase7-20261104T100506Z-seed2025/model.json",
+  "test_partition_used": false,
+  "features": "identical Phase 6/7 feature whitelist and fitted encoder; no additional features",
+  "started_at_utc": "2026-11-05T04:01:30.857497+00:00"
+}

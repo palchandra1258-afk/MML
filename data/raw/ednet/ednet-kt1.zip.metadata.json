@@ -1,0 +1,17 @@
+{
+  "filename": "ednet-kt1.zip",
+  "source_url": "https://bit.ly/ednet_kt1",
+  "official_repository": "https://github.com/riiid/ednet",
+  "resolved_url": "https://drive.usercontent.google.com/download?id=1AmGcOs5U31wIIqvthn9ARqJMrMTFTcaw&export=download&confirm=t&uuid=7440f17b-494d-4cbb-a192-6b6ce72c63d9",
+  "retrieved_at_utc": "2026-11-04T04:23:00.248205+00:00",
+  "http_status": 200,
+  "content_type": "application/octet-stream",
+  "content_length_header": "1201163816",
+  "etag": null,
+  "last_modified": "Mon, 16 Dec 2019 09:57:46 GMT",
+  "size_bytes": 1201163816,
+  "sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535",
+  "integrity_check": "ZIP structure and every member CRC passed; SHA-256 recorded",
+  "license": "CC BY-NC 4.0; research/non-commercial use; attribution required",
+  "download_script_version": "1.0.0"
+}

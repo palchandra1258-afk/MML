@@ -1,0 +1,136 @@
+{
+  "created_at_utc": "2026-11-04T05:53:23.637817+00:00",
+  "source_dataset": "EdNet-KT1",
+  "source_archives": {
+    "kt1": {
+      "path": "data/raw/ednet/ednet-kt1.zip",
+      "size_bytes": 1201163816,
+      "sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535"
+    },
+    "question_content": {
+      "path": "data/raw/ednet/ednet-content.zip",
+      "size_bytes": 173976,
+      "sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+      "member": "contents/questions.csv"
+    }
+  },
+  "output": {
+    "path": "data/processed/ednet/ednet_kt1_features.csv.gz",
+    "size_bytes": 5888235415,
+    "format": "ordered concatenated gzip members containing one gzip-compressed CSV stream; first shard carries the single header"
+  },
+  "seed": 2025,
+  "learner_limit": null,
+  "learner_index_start": 0,
+  "learner_index_end_exclusive": 784309,
+  "learners_processed": 784309,
+  "interactions_written": 95293926,
+  "eligible_supervised_targets": 95266280,
+  "blank_answers_excluded_as_targets": 27646,
+  "invalid_answers_excluded_as_targets": 0,
+  "unlabelled_nonblank_answers": 0,
+  "exact_duplicate_rows_preserved": 4983,
+  "unmatched_question_ids": 0,
+  "invalid_question_ids": 0,
+  "invalid_timestamps": 0,
+  "unavailable_elapsed_time": 0,
+  "missing_skill_tag_rows": 19430,
+  "blank_raw_fields": {
+    "user_answer": 27646
+  },
+  "split_protocols": {
+    "unseen_learner": {
+      "train": {
+        "learners": 549251,
+        "targets": 66898246,
+        "correct_targets": 43725275,
+        "incorrect_targets": 23172971
+      },
+      "validation": {
+        "learners": 117784,
+        "targets": 14236525,
+        "correct_targets": 9288983,
+        "incorrect_targets": 4947542
+      },
+      "test": {
+        "learners": 117269,
+        "targets": 14131509,
+        "correct_targets": 9234424,
+        "incorrect_targets": 4897085
+      }
+    },
+    "future_known_learner": {
+      "train": {
+        "learners": 784304,
+        "targets": 66348221,
+        "correct_targets": 43180703,
+        "incorrect_targets": 23167518
+      },
+      "validation": {
+        "learners": 715712,
+        "targets": 14241038,
+        "correct_targets": 9479258,
+        "incorrect_targets": 4761780
+      },
+      "test": {
+        "learners": 756936,
+        "targets": 14677021,
+        "correct_targets": 9588721,
+        "incorrect_targets": 5088300
+      }
+    }
+  },
+  "model_feature_columns": [
+    "current_question_id",
+    "current_part",
+    "current_skill_tags",
+    "n_prior_logged_events",
+    "n_prior_answered_attempts",
+    "n_prior_correct",
+    "prior_accuracy",
+    "recent_5_accuracy",
+    "recent_10_accuracy",
+    "recent_accuracy_trend_5",
+    "previous_response_correctness",
+    "previous_response_skill_tags",
+    "previous_elapsed_time_ms",
+    "gap_since_previous_question_ms",
+    "prior_skill_tag_attempts",
+    "prior_skill_tag_correct",
+    "prior_skill_tag_accuracy"
+  ],
+  "output_columns": [
+    "learner_id",
+    "source_row_order",
+    "timestamp",
+    "question_id",
+    "submitted_answer",
+    "correct_answer",
+    "correctness",
+    "skill_tags",
+    "session_id",
+    "source_dataset",
+    "elapsed_time_ms",
+    "is_exact_duplicate",
+    "split_unseen_learner",
+    "split_future_known_learner",
+    "current_question_id",
+    "current_part",
+    "current_skill_tags",
+    "n_prior_logged_events",
+    "n_prior_answered_attempts",
+    "n_prior_correct",
+    "prior_accuracy",
+    "recent_5_accuracy",
+    "recent_10_accuracy",
+    "recent_accuracy_trend_5",
+    "previous_response_correctness",
+    "previous_response_skill_tags",
+    "previous_elapsed_time_ms",
+    "gap_since_previous_question_ms",
+    "prior_skill_tag_attempts",
+    "prior_skill_tag_correct",
+    "prior_skill_tag_accuracy"
+  ],
+  "target_leakage_guard": "Current submitted_answer, correct_answer, correctness and current elapsed_time_ms are not in model_feature_columns."
+}

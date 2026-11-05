@@ -1,0 +1,17 @@
+{
+  "filename": "ednet-content.zip",
+  "source_url": "https://bit.ly/ednet-content",
+  "official_repository": "https://github.com/riiid/ednet",
+  "resolved_url": "https://drive.usercontent.google.com/download?id=117aYJAWG3GU48suS66NPaB82HwFj6xWS&export=download",
+  "retrieved_at_utc": "2026-11-04T04:23:07.521423+00:00",
+  "http_status": 200,
+  "content_type": "application/octet-stream",
+  "content_length_header": "173976",
+  "etag": null,
+  "last_modified": "Mon, 09 Dec 2019 23:49:16 GMT",
+  "size_bytes": 173976,
+  "sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+  "integrity_check": "ZIP structure and every member CRC passed; SHA-256 recorded",
+  "license": "CC BY-NC 4.0; research/non-commercial use; attribution required",
+  "download_script_version": "1.0.0"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "phase7-20261104T100155Z-seed2025",
+  "status": "interrupted",
+  "target": "correctness of submitted answer, behavioral outcome",
+  "test_partition_used": false,
+  "features": "same serialized logistic encoder and whitelist; no added features",
+  "sample": "same 5% learner hash subset as Phase 6; training learners only",
+  "started_at_utc": "2026-11-04T10:01:55.128481+00:00",
+  "finished_at_utc": "2026-11-04T10:05:00Z",
+  "failure": "Stopped before dataset matrix construction; no model was trained and no validation/test results were generated."
+}

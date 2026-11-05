@@ -1,0 +1,147 @@
+[
+  {
+    "feature_group": "current_skill_tags",
+    "importance": 0.20244941539516195,
+    "normalized_importance": 0.2024494153951619
+  },
+  {
+    "feature_group": "current_question_id",
+    "importance": 0.1113956858868567,
+    "normalized_importance": 0.11139568588685667
+  },
+  {
+    "feature_group": "prior_skill_tag_correct",
+    "importance": 0.11013182156307666,
+    "normalized_importance": 0.11013182156307663
+  },
+  {
+    "feature_group": "n_prior_correct",
+    "importance": 0.10964044047695357,
+    "normalized_importance": 0.10964044047695354
+  },
+  {
+    "feature_group": "n_prior_answered_attempts",
+    "importance": 0.10633340653295657,
+    "normalized_importance": 0.10633340653295655
+  },
+  {
+    "feature_group": "recent_5_accuracy",
+    "importance": 0.08214793372409478,
+    "normalized_importance": 0.08214793372409476
+  },
+  {
+    "feature_group": "prior_skill_tag_attempts",
+    "importance": 0.07914137452166961,
+    "normalized_importance": 0.0791413745216696
+  },
+  {
+    "feature_group": "prior_skill_tag_accuracy",
+    "importance": 0.05475295130159364,
+    "normalized_importance": 0.054752951301593626
+  },
+  {
+    "feature_group": "current_part",
+    "importance": 0.04635741414027582,
+    "normalized_importance": 0.04635741414027581
+  },
+  {
+    "feature_group": "n_prior_logged_events",
+    "importance": 0.02797642805913089,
+    "normalized_importance": 0.027976428059130882
+  },
+  {
+    "feature_group": "recent_10_accuracy",
+    "importance": 0.02476996486375817,
+    "normalized_importance": 0.024769964863758164
+  },
+  {
+    "feature_group": "recent_accuracy_trend_5__missing",
+    "importance": 0.011686260820891399,
+    "normalized_importance": 0.011686260820891397
+  },
+  {
+    "feature_group": "gap_since_previous_question_ms",
+    "importance": 0.0114023997777703,
+    "normalized_importance": 0.011402399777770298
+  },
+  {
+    "feature_group": "previous_response_correctness",
+    "importance": 0.009666109403364103,
+    "normalized_importance": 0.009666109403364102
+  },
+  {
+    "feature_group": "prior_accuracy",
+    "importance": 0.008523336206306378,
+    "normalized_importance": 0.008523336206306376
+  },
+  {
+    "feature_group": "previous_response_correctness__missing",
+    "importance": 0.0014145583481452119,
+    "normalized_importance": 0.0014145583481452117
+  },
+  {
+    "feature_group": "recent_accuracy_trend_5",
+    "importance": 0.0011335395363447284,
+    "normalized_importance": 0.0011335395363447282
+  },
+  {
+    "feature_group": "prior_accuracy__missing",
+    "importance": 0.0004607610642453401,
+    "normalized_importance": 0.00046076106424533997
+  },
+  {
+    "feature_group": "recent_5_accuracy__missing",
+    "importance": 0.00042797416899676127,
+    "normalized_importance": 0.00042797416899676116
+  },
+  {
+    "feature_group": "previous_elapsed_time_ms",
+    "importance": 0.00018822420840767243,
+    "normalized_importance": 0.00018822420840767238
+  },
+  {
+    "feature_group": "n_prior_logged_events__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "n_prior_answered_attempts__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "n_prior_correct__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "recent_10_accuracy__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "previous_elapsed_time_ms__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "gap_since_previous_question_ms__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "prior_skill_tag_attempts__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "prior_skill_tag_correct__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  },
+  {
+    "feature_group": "prior_skill_tag_accuracy__missing",
+    "importance": 0.0,
+    "normalized_importance": 0.0
+  }
+]

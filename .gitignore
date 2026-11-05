@@ -1,0 +1,13 @@
+# Python bytecode and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local tools and environments
+.tools/
+.venv/
+venv/
+
+# Large downloaded and generated datasets (store separately)
+data/raw/ednet/ednet-kt1.zip
+data/processed/ednet/ednet_kt1_features.csv.gz
