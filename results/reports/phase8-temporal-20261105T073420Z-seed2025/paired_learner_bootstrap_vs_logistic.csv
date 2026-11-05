@@ -1,0 +1,7 @@
+model,metric,mean_per_learner_difference,ci_lower,ci_upper,interpretation
+dkt,log_loss,-0.016925951860784518,-0.01807800587252443,-0.015832138223491984,negative favors sequence model; positive favors logistic
+dkt,brier,-0.0044735223550892425,-0.004893125805533508,-0.004078169005935774,negative favors sequence model; positive favors logistic
+dkt,accuracy,-0.007988232158621914,-0.009326482648921778,-0.006595519868568706,negative favors sequence model; positive favors logistic
+sakt,log_loss,-0.021853123095242708,-0.022830037600190214,-0.020837516659995014,negative favors sequence model; positive favors logistic
+sakt,brier,-0.006982650909477101,-0.007402775235844826,-0.006595668074948109,negative favors sequence model; positive favors logistic
+sakt,accuracy,0.000564808234476659,-0.0006228219178077879,0.0018576352948031717,negative favors sequence model; positive favors logistic
