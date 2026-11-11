@@ -1,0 +1,26 @@
+{
+  "active_diversions": 0,
+  "cognitive_states_read": 100,
+  "decision_replay_count": 100,
+  "decision_replay_matches": 100,
+  "dependency_registry_source": null,
+  "diversion_versions_created": 0,
+  "empty_states_skipped": 0,
+  "files": [
+    "trajectories.jsonl",
+    "diversions.jsonl",
+    "context_snapshots.jsonl",
+    "history_events.jsonl",
+    "decisions.jsonl",
+    "dependency_registry.json"
+  ],
+  "input_cognitive_states": "results/reports/phase11-cognitive-state-20261106T104113Z/cognitive_states.jsonl",
+  "input_representation_plans": "results/reports/phase12-representation-20261106T112420Z/representation_plans.jsonl",
+  "interpretation": "A bounded orchestration and traceability run over existing Phase 11 validation snapshots. It does not measure cognitive accuracy, prerequisite mastery, or learning improvement.",
+  "learning_effectiveness_evaluated": false,
+  "locked_test_partition_evaluated": false,
+  "phase": 13,
+  "status": "complete",
+  "synthetic_dependency_edges_included": 0,
+  "trajectories_created": 100
+}

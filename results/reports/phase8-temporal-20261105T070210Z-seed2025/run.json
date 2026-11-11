@@ -5,7 +5,7 @@
   "validation_protocol": "unseen learner; role groups are early-stop 10%, calibration 10%, report-only 80% by learner hash",
   "test_partition_used": false,
   "data": {
-    "processed_file": "/home/mml_07/Desktop/MML/data/processed/ednet/ednet_kt1_features.csv.gz",
+    "processed_file": "data/processed/ednet/ednet_kt1_features.csv.gz",
     "bytes": 5888235415,
     "raw_snapshot": {
       "kt1": {

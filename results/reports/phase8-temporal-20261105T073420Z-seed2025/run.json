@@ -5,7 +5,7 @@
   "validation_protocol": "unseen learner; role groups are early-stop 10%, calibration 10%, report-only 80% by learner hash",
   "test_partition_used": false,
   "data": {
-    "processed_file": "/home/mml_07/Desktop/MML/data/processed/ednet/ednet_kt1_features.csv.gz",
+    "processed_file": "data/processed/ednet/ednet_kt1_features.csv.gz",
     "bytes": 5888235415,
     "raw_snapshot": {
       "kt1": {
@@ -123,7 +123,7 @@
       "fit_seconds": 76.18400191799446,
       "peak_gpu_allocated_bytes": 724005376,
       "peak_gpu_reserved_bytes": 757071872,
-      "artifact": "/home/mml_07/Desktop/MML/models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025/dkt/model.pt"
+      "artifact": "models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025/dkt/model.pt"
     },
     "sakt": {
       "best_epoch": 4,
@@ -178,7 +178,7 @@
       "fit_seconds": 45.44833332700364,
       "peak_gpu_allocated_bytes": 396696576,
       "peak_gpu_reserved_bytes": 438304768,
-      "artifact": "/home/mml_07/Desktop/MML/models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025/sakt/model.pt"
+      "artifact": "models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025/sakt/model.pt"
     }
   },
   "validation_sequence_windows": {
@@ -2679,7 +2679,7 @@
   },
   "claims_boundary": "EdNet supplies interaction history and derived correctness only; results do not validate cognitive-state or representation-selection claims.",
   "artifacts": {
-    "models": "/home/mml_07/Desktop/MML/models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025",
-    "report": "/home/mml_07/Desktop/MML/results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+    "models": "models/trained/sequence_models/phase8-temporal-20261105T073420Z-seed2025",
+    "report": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
   }
 }

@@ -1,5 +1,40 @@
 # MCP-RI End-to-End Data Flow
 
+## Implemented Phase 10–13 path
+
+The current workspace implements a bounded evidence-normalization path for EdNet interactions and synthetic adapters for unavailable learner modalities. It does not implement the full modality encoders or learned fusion shown in the research flow below. The implemented path is:
+
+```text
+Processed EdNet validation row ──► interaction adapter ──► schema validation ──► evidence registry
+                                                                     │                    │
+                                                                     │                    ├──► source-scoped groups / alignment candidates
+                                                                     │                    └──► unresolved conflicts (when explicitly supplied)
+                                                                     └──► Phase 9 interaction bridge ──► updated behavioral snapshot
+
+Caller text / audio reference / visual reference / Phase 9 snapshot ──► modality adapter ──► same evidence schema
+
+Complete Phase 9 prefix + matching Phase 10 evidence ──► Phase 11 trace/count/cutoff checks
+    ──► provisional concept estimates + hypotheses + uncertainty + diagnostic recommendations
+    ──► append-only cognitive-state version with evidence references
+
+Phase 11 cognitive state + Phase 9 observed summaries + Phase 10 evidence references
+    + EdNet skill/question metadata + capability registry ──► Phase 12 policy trace
+    ──► available representation recommendation OR no selection and evidence/defer action
+    ──► versioned RepresentationPlan + append-only plan history
+
+Phase 9 behavioral snapshot + Phase 10 evidence references + Phase 11 provisional state
+    + Phase 12 plan/capability references + explicitly sourced dependency registry
+    ──► Phase 13 primary trajectory and conservative diversion decision
+    ──► preserved parent context + bounded supporting-concept diversion when justified
+    ──► append-only event/version history + resume / continue / revise / replan decision
+```
+
+Only interaction evidence and derived temporal history are available as real learner data in EdNet. Text, audio, and visual adapter coverage is synthetic. Phase 11 requires the Phase 9 snapshot and Phase 10 interaction evidence to describe the same complete chronological prefix. It adds a separate cognitive-state record without changing Phase 9 math or schema. Its rule categories are provisional behavioral estimates, not validated cognition or diagnoses. See [`MULTIMODAL_EVIDENCE_ARCHITECTURE.md`](MULTIMODAL_EVIDENCE_ARCHITECTURE.md) and [`COGNITIVE_STATE_ARCHITECTURE.md`](COGNITIVE_STATE_ARCHITECTURE.md).
+
+Phase 12 adds a recommendation-only planner that checks every candidate against an explicit capability registry. In the current repository no teaching content provider is available, so real-data plans select no representation for delivery and instead request evidence or defer. The planner uses EdNet skill/question IDs as metadata references only. See [`REPRESENTATION_INTELLIGENCE_ARCHITECTURE.md`](REPRESENTATION_INTELLIGENCE_ARCHITECTURE.md) and [`REPRESENTATION_AVAILABILITY.md`](REPRESENTATION_AVAILABILITY.md).
+
+Phase 13 consumes stable references from Phases 9–12. It does not alter their schemas. The empty default dependency registry means the bounded sample cannot create a real prerequisite diversion; synthetic and manually configured relationships remain labeled. Context snapshots preserve the exact interrupted step and prior evidence/state/plan references. The history API is in-memory and exports JSONL for the bounded sample. See [`LEARNING_TRAJECTORY_ARCHITECTURE.md`](LEARNING_TRAJECTORY_ARCHITECTURE.md) and [`TRAJECTORY_STATE_MACHINE.md`](TRAJECTORY_STATE_MACHINE.md).
+
 ## Flow overview
 
 ```text

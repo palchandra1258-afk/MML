@@ -2,13 +2,13 @@
   "id": "phase7-xgb-resume-20261105T040130Z-seed2025",
   "status": "complete",
   "target": "next submitted-answer correctness; behavioral outcome only",
-  "resumed_from_model": "/home/mml_07/Desktop/MML/models/trained/xgboost/phase7-20261104T100506Z-seed2025/model.json",
+  "resumed_from_model": "models/trained/xgboost/phase7-20261104T100506Z-seed2025/model.json",
   "test_partition_used": false,
   "features": "identical Phase 6/7 feature whitelist and fitted encoder; no additional features",
   "started_at_utc": "2026-11-05T04:01:30.857497+00:00",
   "finished_at_utc": "2026-11-05T06:05:33.145591+00:00",
   "dataset": {
-    "processed_path": "/home/mml_07/Desktop/MML/data/processed/ednet/ednet_kt1_features.csv.gz",
+    "processed_path": "data/processed/ednet/ednet_kt1_features.csv.gz",
     "training_examples": 3255537,
     "training_learners": 27310,
     "early_stopping_examples": 264908,
@@ -46,7 +46,7 @@
     "max_bin": 128,
     "seed": 2025,
     "n_jobs": 8,
-    "encoder_path": "/home/mml_07/Desktop/MML/models/preprocessing/ednet_sgd_preprocessor.json"
+    "encoder_path": "models/preprocessing/ednet_sgd_preprocessor.json"
   },
   "timing_seconds": {
     "matrix_construction_single_pass": 1377.8955023080052,
@@ -1004,10 +1004,10 @@
   ],
   "interpretation": "Gain importance reports model split usage, not causal contribution; cardinality and correlated features affect rankings.",
   "artifacts": {
-    "model": "/home/mml_07/Desktop/MML/models/trained/xgboost/phase7-xgb-resume-20261105T040130Z-seed2025/model.json",
-    "importance": "/home/mml_07/Desktop/MML/models/trained/xgboost/phase7-xgb-resume-20261105T040130Z-seed2025/grouped_gain_importance.json",
-    "report": "/home/mml_07/Desktop/MML/results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/experiment.json",
-    "metrics_csv": "/home/mml_07/Desktop/MML/results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
-    "calibration_csv": "/home/mml_07/Desktop/MML/results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv"
+    "model": "models/trained/xgboost/phase7-xgb-resume-20261105T040130Z-seed2025/model.json",
+    "importance": "models/trained/xgboost/phase7-xgb-resume-20261105T040130Z-seed2025/grouped_gain_importance.json",
+    "report": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/experiment.json",
+    "metrics_csv": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+    "calibration_csv": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv"
   }
 }

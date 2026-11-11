@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/trajectory-context-snapshot-v1.schema.json",
+  "title": "MCP-RI Preserved Learning Context v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "context_snapshot_id", "learner_id", "parent_trajectory_id", "parent_trajectory_version", "captured_at", "original_target_concept_id", "primary_learning_goal", "current_learning_step", "completed_steps", "pending_steps", "previous_representation_plan_id", "previous_cognitive_state_id", "supporting_evidence_ids", "diagnostic_recommendation_ids", "existing_active_diversion_ids", "original_current_depth", "original_trajectory_status", "reason_for_diversion"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "context_snapshot_id": {"type": "string", "minLength": 1},
+    "learner_id": {"type": "string", "minLength": 1},
+    "parent_trajectory_id": {"type": "string", "minLength": 1},
+    "parent_trajectory_version": {"type": "integer", "minimum": 1},
+    "captured_at": {"type": "string", "minLength": 1},
+    "original_target_concept_id": {"type": "string", "minLength": 1},
+    "primary_learning_goal": {"type": "string", "minLength": 1},
+    "current_learning_step": {"type": "string", "minLength": 1},
+    "completed_steps": {"type": "array", "items": {"type": "string"}},
+    "pending_steps": {"type": "array", "items": {"type": "string"}},
+    "previous_representation_plan_id": {"type": ["string", "null"]},
+    "previous_cognitive_state_id": {"type": ["string", "null"]},
+    "supporting_evidence_ids": {"type": "array", "items": {"type": "string"}},
+    "diagnostic_recommendation_ids": {"type": "array", "items": {"type": "string"}},
+    "existing_active_diversion_ids": {"type": "array", "items": {"type": "string"}},
+    "original_current_depth": {"type": "integer", "minimum": 0},
+    "original_trajectory_status": {"enum": ["ACTIVE", "PAUSED"]},
+    "reason_for_diversion": {"type": "string", "minLength": 1}
+  }
+}

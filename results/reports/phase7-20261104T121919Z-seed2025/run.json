@@ -8,7 +8,7 @@
   "started_at_utc": "2026-11-04T12:19:19.214231+00:00",
   "finished_at_utc": "2026-11-04T13:05:03.151279+00:00",
   "dataset": {
-    "processed_path": "/home/mml_07/Desktop/MML/data/processed/ednet/ednet_kt1_features.csv.gz",
+    "processed_path": "data/processed/ednet/ednet_kt1_features.csv.gz",
     "training_examples": 3255537,
     "training_learners": 27310,
     "training_matrix_shape": [
@@ -860,9 +860,9 @@
   "interpretation": "Impurity/gain importance describes model split usage, not causal effects; high-cardinality categorical groups have more opportunities for splits.",
   "artifacts": {
     "models": {
-      "random_forest": "/home/mml_07/Desktop/MML/models/trained/random_forest/phase7-20261104T121919Z-seed2025",
-      "xgboost": "/home/mml_07/Desktop/MML/models/trained/xgboost/phase7-20261104T121919Z-seed2025"
+      "random_forest": "models/trained/random_forest/phase7-20261104T121919Z-seed2025",
+      "xgboost": "models/trained/xgboost/phase7-20261104T121919Z-seed2025"
     },
-    "report": "/home/mml_07/Desktop/MML/results/reports/phase7-20261104T121919Z-seed2025"
+    "report": "results/reports/phase7-20261104T121919Z-seed2025"
   }
 }

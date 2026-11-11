@@ -1,6 +1,6 @@
 # MCP-RI Implementation Roadmap
 
-This roadmap plans later implementation work. It does not authorize or perform code, data downloads or human-subject collection in this planning stage.
+This roadmap records both planned research work and implemented foundations. Phase 13 is now a bounded orchestration prototype; further data downloads and human-subject collection remain separately gated by terms, protocol, consent, and ethics review.
 
 ## Phase 0 — Research specification and decisions
 
@@ -89,6 +89,24 @@ This roadmap plans later implementation work. It does not authorize or perform c
 
 - Every plan is auditable and refers to available content/actions.
 - Interruption and return behavior preserves the original teaching context.
+
+## Phase 13 implementation checkpoint — Trajectory and diversion orchestration
+
+**Implemented foundation**
+
+- Added versioned primary trajectory, diversion, context snapshot, dependency registry, and event schemas.
+- Added explicit state transitions, conservative evidence-linked diversion rules, bounded diversion progress and revision, resumption/replanning, and reconstructable append-only history.
+- Integrated stable references to Phases 9–12 while leaving their schemas unchanged.
+- Added a bounded validation-snapshot runner, technical evaluator, history validator, synthetic tests, and Phase 13 documentation.
+
+**Research gates still open**
+
+- No dataset-sourced prerequisite graph or validated curriculum objective is available; the production default registry remains empty.
+- No representation delivery provider or post-intervention outcomes exist.
+- History is in-memory in the API and exported as JSONL by the runner; production durable/concurrent persistence remains future implementation work.
+- Technical validation does not establish cognitive accuracy, mastery, or learning improvement.
+
+See [`LEARNING_TRAJECTORY_ARCHITECTURE.md`](LEARNING_TRAJECTORY_ARCHITECTURE.md), [`TRAJECTORY_EVALUATION.md`](TRAJECTORY_EVALUATION.md), and [`PHASE13_IMPLEMENTATION_REPORT.md`](PHASE13_IMPLEMENTATION_REPORT.md).
 
 ## Phase 6 — Outcome loop and prospective evaluation
 

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/evidence-group-v1.schema.json",
+  "title": "MCP-RI Evidence Group",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "group_id", "learner_id", "session_id", "evidence_ids", "grouping_basis", "modalities_present", "modality_availability", "alignment_links", "uncertainty_flags"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "group_id": {"type": "string", "pattern": "^eg_[0-9a-f]{32}$"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": ["string", "null"]},
+    "evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+    "grouping_basis": {"enum": ["source_scoped_session", "explicit_evidence_relation", "singleton_no_shared_session"]},
+    "modalities_present": {"type": "array", "uniqueItems": true, "items": {"enum": ["text", "audio", "visual", "interaction", "temporal_history"]}},
+    "modality_availability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["text", "audio", "visual", "interaction", "temporal_history"],
+      "properties": {
+        "text": {"$ref": "#/$defs/availability"}, "audio": {"$ref": "#/$defs/availability"},
+        "visual": {"$ref": "#/$defs/availability"}, "interaction": {"$ref": "#/$defs/availability"},
+        "temporal_history": {"$ref": "#/$defs/availability"}
+      }
+    },
+    "alignment_links": {"type": "array", "items": {"$ref": "#/$defs/alignmentLink"}},
+    "uncertainty_flags": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "alignmentLink": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "left_evidence_id", "right_evidence_id", "alignment_type", "absolute_delta_ms", "alignment_uncertainty", "uncertainty_flags"],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "left_evidence_id": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"},
+        "right_evidence_id": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"},
+        "alignment_type": {"enum": ["explicit_related", "same_source_session", "approximate_timestamp_candidate", "uncertain_cross_source_candidate"]},
+        "absolute_delta_ms": {"type": ["integer", "null"], "minimum": 0},
+        "alignment_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "uncertainty_flags": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "availability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {"status": {"enum": ["available", "unavailable"]}, "reason": {"type": ["string", "null"]}}
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # MCP-RI Research Status and Dataset Inventory
 
-**Status date:** 5 November 2026. This file summarizes the research reference and verified local assets; it does not introduce new experimental findings.
+**Status date:** 11 November 2026. This file summarizes the research reference, verified local assets, and implementation status through Phase 13.
 
 ## Research problem and intended contribution
 
@@ -18,6 +18,26 @@ The central research contribution is the bridge across perception, state, repres
 | 4. Outcome and State Update | Record exposure and follow-up outcome; append evidence and create a new state version without overwriting history. | EdNet records later response outcomes but no MCP-RI representation intervention. A future learning-benefit claim requires a controlled, concept-aligned study. |
 
 The system must preserve observed, inferred and unknown information separately. An error, pause, retry or answer change is not a definitive confusion label. Model confidence/calibration is not the learner's subjective uncertainty.
+
+### Phase 9 learner-state module (6 November 2026)
+
+A transparent, replayable behavioral state module now exists at `src/mcp_ri/learner_state/`. It represents observed response history overall and per EdNet skill tag, recent change, Beta-smoothed response performance, Wilson intervals, evidence tiers, and non-diagnostic potential-issue flags. The full validation pass produced states for 117,785 learners (including one validation-assigned learner with no labeled responses) and 3,897,566 learner-skill entries; all states passed schema and numeric consistency checks. The module is a Layer 2 foundation only: its performance estimates are derived from correctness, not cognitive-state labels, and it is not a validated understanding estimator. Full results and limitations are in [`LEARNER_STATE_EVALUATION.md`](LEARNER_STATE_EVALUATION.md).
+
+### Phase 10 evidence modeling (6 November 2026)
+
+The evidence layer now defines versioned evidence, alignment, group and conflict schemas; adapters for interaction, text, audio, visual and Phase 9 temporal-history references; source-preserving normalization; duplicate-candidate retention; conservative grouping/alignment; and an interaction-only Phase 9 bridge. A bounded unseen-learner validation sample is used for real EdNet checks. Text/audio/visual adapters and conflict/alignment edge cases use generated fixtures because EdNet contains no learner-authored text, speech or visual artifacts. This is normalization and evidence organization, not learned multimodal fusion or cognitive inference. See [`MULTIMODAL_EVIDENCE_ARCHITECTURE.md`](MULTIMODAL_EVIDENCE_ARCHITECTURE.md), [`MODALITY_AVAILABILITY_REPORT.md`](MODALITY_AVAILABILITY_REPORT.md), and [`PHASE10_EVALUATION.md`](PHASE10_EVALUATION.md).
+
+### Phase 11 cognitive-state estimation (6 November 2026)
+
+A separate versioned cognitive-state schema and interpretable estimator now consume complete Phase 9 snapshots with matching Phase 10 evidence prefixes. Transparent rules classify concept-level observed performance into provisional statuses, produce evidence-linked hypotheses without misconception labels, retain contradictory evidence, describe separate uncertainty dimensions, and recommend diagnostic information. Append-only snapshots preserve temporal updates. The bounded validation-learner sample emitted 184 snapshots for 100 learners; all passed the Phase 11 validator. Estimate confidence remains low and overall uncertainty high because there are no cognitive-state labels. This validates wiring, traceability, and deterministic rule behavior only, not cognitive accuracy or educational benefit. See [`COGNITIVE_STATE_EVALUATION.md`](COGNITIVE_STATE_EVALUATION.md), [`COGNITIVE_STATE_METHODOLOGY.md`](COGNITIVE_STATE_METHODOLOGY.md), and [`COGNITIVE_STATE_ARCHITECTURE.md`](COGNITIVE_STATE_ARCHITECTURE.md).
+
+### Phase 12 representation intelligence (6 November 2026)
+
+The repository now includes a versioned eight-category representation taxonomy, plan schema, explicit capability registry, rule traces and alternatives, EdNet metadata-only concept grounding, and append-only plan history. The engine consumes Phase 11 states and their Phase 9 behavioral statistics; direct Phase 9 snapshots can be cross-checked. The bounded run uses only Phase 11's validation sample and never evaluates locked-test records. Because no delivery provider or curated instructional content exists locally, real-data plans select no representation for execution. Synthetic tests cover all requested response patterns, conflicts, explicit mismatch annotations, availability fallback, evidence traceability and context/version preservation. This is policy/software verification, not representation effectiveness. See [`REPRESENTATION_EVALUATION.md`](REPRESENTATION_EVALUATION.md), [`REPRESENTATION_AVAILABILITY.md`](REPRESENTATION_AVAILABILITY.md), and [`REPRESENTATION_DECISION_METHODOLOGY.md`](REPRESENTATION_DECISION_METHODOLOGY.md).
+
+### Phase 13 trajectory and resumption orchestration (11 November 2026)
+
+The trajectory layer adds explicit state transitions, evidence-linked diversion reviews, context snapshots, bounded resumption/replanning decisions, and append-only event reconstruction. The bounded validation sample created 100 trajectories and no diversions because the default dependency registry contains no verified prerequisite edges. All observed transitions and evidence references passed the recorded checks; synthetic cases exercise illegal transitions and lifecycle alternatives. This verifies software orchestration and traceability, not learner mastery, cognitive accuracy, representation effectiveness, or learning gain. History is in memory and exported as local JSONL; durable database storage and a validated curriculum graph remain unimplemented. See [`PHASE13_IMPLEMENTATION_REPORT.md`](PHASE13_IMPLEMENTATION_REPORT.md), [`TRAJECTORY_STATE_MACHINE.md`](TRAJECTORY_STATE_MACHINE.md), and [`TRAJECTORY_EVALUATION.md`](TRAJECTORY_EVALUATION.md).
 
 ## Dataset inventory in this workspace
 
@@ -65,7 +85,7 @@ The models predict a recorded answer outcome only. They do not validate multimod
 
 1. Acquire or receive approval for a dataset with synchronized language, visual artifact and interaction modalities plus a common, clearly defined target—or design a new study.
 2. Operationalize cognition/mismatch constructs independently; collect self-report or expert annotations with a documented procedure and inter-rater analysis. Do not derive these labels from correctness/retries alone.
-3. Build an inspectable, rule-based Representation Intelligence prototype with concept/goal, available representation options, uncertainty fallback and branch-return continuity.
+3. Add reviewed, concept-grounded representation assets and real delivery providers to the Phase 12 planner; verify actual concept alignment and availability before content can be selected.
 4. For intervention-benefit claims, collect exposure, action availability/assignment, pre/post concept-aligned outcomes and adequate action coverage, preferably under randomization/counterbalancing.
 5. Before scaling EdNet beyond 5%, predeclare the evaluation estimand and compute budget. Retrain all compared baselines on the same expanded learner set; freeze model, calibration, and analysis choices before a single locked-test evaluation. A separate time-forward known-learner study addresses a different deployment question.
 6. Treat public-paper numbers as comparable only when dataset, population, target, preprocessing, split, metric and evaluation protocol match. No outcome can be guaranteed to equal or exceed a paper's score in advance.
