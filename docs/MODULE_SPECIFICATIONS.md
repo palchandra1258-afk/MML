@@ -1,6 +1,6 @@
 # MCP-RI Module Specifications
 
-This document defines module responsibilities and contracts for the four research layers. The modules describe a planned system; none is implemented yet. Dataset-specific support and label availability must be verified before enabling a module.
+This document defines module responsibilities and contracts for the four research layers. Most modules remain specifications. Phases 9 and 11 implement a behavioral learner-state summary and a separate provisional, evidence-linked cognitive-state estimator; Phase 12 implements a rule-based representation recommendation layer. None provides validated cognitive labels or completes the full Layer 2/3 research contracts. Dataset-specific support and label availability must be verified before enabling a module.
 
 ## Shared conventions
 
@@ -23,6 +23,10 @@ This document defines module responsibilities and contracts for the four researc
 **Labels:** none. This is data engineering, not a predictor.
 
 **Validation:** schema pass rate, timestamp checks, duplicate/event reconciliation, modality availability summaries, and sample-level provenance audits. No cognitive model metrics apply.
+
+**Phase 10 implementation:** `src/mcp_ri/evidence/` now contains the normalized evidence record, registry, alignment/grouping logic and adapters. The interaction adapter reuses the processed EdNet fields and parser; text/audio/visual adapters preserve or inspect caller-provided data without semantic inference. Real-data checks use a bounded unseen-learner validation sample. Synthetic fixtures cover the absent text/audio/visual modalities. See `MULTIMODAL_EVIDENCE_ARCHITECTURE.md` for implemented contracts and boundaries.
+
+**Phase 11 integration:** `src/mcp_ri/cognitive_state/` consumes complete, cutoff-aligned Phase 9 snapshots and matching Phase 10 records. It emits rule-based provisional statuses, evidence-linked hypotheses, separate ordinal uncertainty dimensions, and diagnostic recommendations. It does not diagnose misconceptions, interpret unannotated modality content, or alter Phase 9 definitions. See `COGNITIVE_STATE_ARCHITECTURE.md` and `COGNITIVE_STATE_METHODOLOGY.md`.
 
 ## Module 2: Language and Voice Evidence Encoder
 
@@ -84,6 +88,8 @@ This document defines module responsibilities and contracts for the four researc
 
 **Purpose:** produce bounded, uncertainty-aware estimates for explicitly operationalized state variables.
 
+**Phase 11 implementation:** a distinct versioned schema and transparent estimator project Phase 9 observed behavior into provisional statuses while retaining evidence and contradiction references. Estimate confidence remains low without cognitive ground truth; the system makes no numerical probability-of-understanding claim. Temporal versions are append-only in `CognitiveStateHistory`. The current EdNet run is descriptive validation of traceability and rule coverage, not a cognitive-accuracy evaluation. See `COGNITIVE_STATE_SCHEMA.md` and `COGNITIVE_STATE_EVALUATION.md`.
+
 **Inputs:** evidence bundles, known concept/task metadata and valid prior state/history.
 
 **Outputs:** target-specific probabilities or scores, uncertainty, abstention status, evidence references and target definition.
@@ -109,6 +115,20 @@ This document defines module responsibilities and contracts for the four researc
 **Labels:** initially none. Future target could be a prespecified outcome-based preference/action value collected under a defensible assignment design.
 
 **Evaluation:** policy feasibility, rationale/provenance completeness, continuity errors, action coverage; later outcome comparison under randomized or valid causal design. Offline logged-policy metrics require known propensities and overlap.
+
+**Phase 12 implementation:** `src/mcp_ri/representation/` defines a versioned eight-category taxonomy, availability registry, EdNet metadata-only concept grounding, transparent rules, plan builder/validator and append-only plan history. The builder consumes Phase 11 estimates and their embedded Phase 9 observations; it can cross-check a direct Phase 9 snapshot. All default delivery capabilities are unavailable, so no content type is selected for delivery unless a caller registers a provider or concrete content IDs. Plans preserve rejected alternatives, rule conditions, evidence and teaching context. No content is generated or delivered. See the `REPRESENTATION_*` documents for the schema, methodology and bounded evaluation.
+
+## Module 10: Learning Trajectory and Diversion Orchestration
+
+**Purpose:** preserve a learner's primary learning step while managing bounded supporting-concept diversions, evidence review, resumption, and replanning.
+
+**Inputs:** versioned trajectory; optional Phase 9 behavioral state; Phase 10 provenance/evidence references; Phase 11 provisional cognitive state; Phase 12 plan and capability status; explicitly sourced concept dependency registry.
+
+**Outputs:** versioned trajectory/diversion/context records; transparent detector and resumption decisions; append-only history events with reconstructable trajectory versions.
+
+**Rules:** conflicting or insufficient evidence requests further information; repeated errors or a declining trend can motivate review only with a configured supporting relationship and traceable evidence. Unavailable representation delivery is not a knowledge-gap signal. Default limits are depth 1, one active diversion per learner, and three distinct progress evaluations per diversion.
+
+**Evaluation:** schema and transition validity, context/parent-link preservation, duplicate/depth enforcement, history reconstruction, evidence-reference validity, resumption traceability, and deterministic replay. The default dependency registry is empty because EdNet does not contain prerequisite links. The history API is in-memory; the bounded runner exports JSONL. No cognitive accuracy, mastery, or learning effect is claimed. See the `TRAJECTORY_*` documents.
 
 ## Module 8: Outcome Recorder and State Updater
 

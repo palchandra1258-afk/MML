@@ -1,0 +1,72 @@
+{
+  "id": "phase8-temporal-20261105T070210Z-seed2025",
+  "status": "failed",
+  "target": "next submitted-answer correctness; behavioral response outcome only",
+  "validation_protocol": "unseen learner; role groups are early-stop 10%, calibration 10%, report-only 80% by learner hash",
+  "test_partition_used": false,
+  "data": {
+    "processed_file": "data/processed/ednet/ednet_kt1_features.csv.gz",
+    "bytes": 5888235415,
+    "raw_snapshot": {
+      "kt1": {
+        "path": "data/raw/ednet/ednet-kt1.zip",
+        "size_bytes": 1201163816,
+        "sha256": "0d13933f90201c5101c7fe8659e44474fa049e3fb93181a8ba6fb3e63267b535"
+      },
+      "question_content": {
+        "path": "data/raw/ednet/ednet-content.zip",
+        "size_bytes": 173976,
+        "sha256": "aa910a0436d9dbac0ba232f55e27b37ad8d39da285fcf15f1c1eb5d064be98e7",
+        "member": "contents/questions.csv"
+      }
+    }
+  },
+  "training_sample": "same deterministic 5% unseen-learner training sample as Phase 6/7",
+  "started_at_utc": "2026-11-05T07:02:10.391253+00:00",
+  "configuration": {
+    "seed": 2025,
+    "max_epochs": 8,
+    "patience": 2,
+    "max_sequence_length": 200,
+    "batch_size_dkt": 32,
+    "batch_size_sakt": 96,
+    "optimizer": "AdamW(lr=1e-3, weight_decay=1e-5)",
+    "loss": "binary cross-entropy on each next response; padding masked",
+    "question_vocabulary": "train-only Phase 6 encoder vocabulary plus one unknown bucket",
+    "sequence_input": "question identity and recorded correctness of strictly prior submitted responses",
+    "current_target_answer_feature_used": false,
+    "current_elapsed_time_feature_used": false
+  },
+  "cohort": {
+    "processed_rows_scanned": 95293926,
+    "train_source_rows_seen": 66898246,
+    "validation_source_rows_seen": 14236525,
+    "validation_report_learners": 94266,
+    "validation_report_targets": 11476486,
+    "train_learners": 27310,
+    "train_target_interactions": 3255537,
+    "train_transitions": 3228227,
+    "validation_early_stop_learners": 11790,
+    "validation_early_stop_targets": 1423601,
+    "validation_calibration_learners": 11728,
+    "validation_calibration_targets": 1336438,
+    "unknown_question_validation": 741,
+    "validation_targets_scored_for_existing_models": 14236525,
+    "train_learners_including_short_sequences": 27310,
+    "train_interactions": 3255537,
+    "validation_targets": 14236525,
+    "validation_transitions_scored_by_sequence_models": 14118741,
+    "validation_cold_start_rows_excluded_from_sequence_comparison": 117784,
+    "validation_role_examples": {
+      "early_stop": 1423601,
+      "calibration": 1336438,
+      "report": 11476486
+    },
+    "train_prevalence": 0.6536086910260697,
+    "question_vocab_size_including_unknown": 12180,
+    "max_train_sequence_length": 19170,
+    "max_validation_sequence_length": 32489
+  },
+  "failure": "RuntimeError: The shape of the 2D attn_mask is torch.Size([199, 199]), but should be (199, 198).",
+  "elapsed_seconds": 1844.4455552799918
+}

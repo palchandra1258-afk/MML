@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/evidence-conflict-v1.schema.json",
+  "title": "MCP-RI Evidence Conflict",
+  "description": "A record that preserves potentially inconsistent evidence without resolving its interpretation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "conflict_id", "evidence_ids", "conflict_type", "source_modalities", "timestamp_relationship", "event_timestamps", "description", "resolution_status", "resolution", "cognitive_interpretation"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "conflict_id": {"type": "string", "pattern": "^ec_[0-9a-f]{32}$"},
+    "evidence_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+    "conflict_type": {"type": "string", "minLength": 1},
+    "source_modalities": {"type": "array", "uniqueItems": true, "items": {"enum": ["text", "audio", "visual", "interaction", "derived"]}},
+    "timestamp_relationship": {"enum": ["same_event_time", "different_or_missing_event_times"]},
+    "event_timestamps": {"type": "array", "items": {"type": ["string", "null"]}},
+    "description": {"type": "string", "minLength": 1},
+    "resolution_status": {"enum": ["unresolved", "investigating", "resolved"]},
+    "resolution": {"type": ["string", "null"]},
+    "cognitive_interpretation": {"const": null}
+  }
+}

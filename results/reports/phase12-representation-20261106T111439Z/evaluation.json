@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "input": "results/reports/phase12-representation-20261106T111439Z/representation_plans.jsonl",
+  "plans_validated": 1910,
+  "action_counts": {
+    "defer_until_capability_available": 17,
+    "request_additional_evidence": 14,
+    "request_diagnostic_evidence": 1879
+  },
+  "representation_counts": {
+    "none": 1910
+  },
+  "rule_activation_counts": {
+    "concept_estimate_present": 1910,
+    "declining_performance": 1,
+    "inconsistent_responses": 33,
+    "minimum_response_coverage": 57,
+    "repeated_incorrect_hypothesis": 60
+  },
+  "alternative_records": 15280,
+  "plans_with_cognitive_state_and_evidence_grounding": 1910,
+  "traceability_rate": 1.0,
+  "selected_capabilities_registered_available": 0,
+  "temporal_plan_links": 717,
+  "temporal_links_with_preserved_context": 717,
+  "locked_test_partition_evaluated": false,
+  "learning_effectiveness_evaluated": false,
+  "interpretation": "These are schema, traceability, rule-coverage and context-preservation checks. They do not measure representation effectiveness or learning gains."
+}

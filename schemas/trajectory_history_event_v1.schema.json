@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/trajectory-history-event-v1.schema.json",
+  "title": "MCP-RI Trajectory History Event v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "event_id", "learner_id", "trajectory_id", "trajectory_version", "previous_event_id", "event_type", "occurred_at", "previous_state", "new_state", "trigger", "supporting_evidence_ids", "cognitive_state_reference", "representation_plan_reference", "related_diversion_id", "decision_explanation", "trajectory_snapshot"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "learner_id": {"type": "string", "minLength": 1},
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "trajectory_version": {"type": "integer", "minimum": 1},
+    "previous_event_id": {"type": ["string", "null"]},
+    "event_type": {"enum": ["TRAJECTORY_CREATED", "STATE_TRANSITION", "PROGRESS_UPDATED", "DIVERSION_CREATED", "DIVERSION_PROGRESS", "DIVERSION_REVISED", "DIVERSION_CLOSED", "RESUMPTION_DECIDED", "REPLANNED", "COMPLETED", "EVALUATION_DECLINED"]},
+    "occurred_at": {"type": "string", "minLength": 1},
+    "previous_state": {"type": ["string", "null"]},
+    "new_state": {"type": "string"},
+    "trigger": {"type": "string", "minLength": 1},
+    "supporting_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "cognitive_state_reference": {"type": ["object", "null"]},
+    "representation_plan_reference": {"type": ["object", "null"]},
+    "related_diversion_id": {"type": ["string", "null"]},
+    "decision_explanation": {"type": "string", "minLength": 1},
+    "trajectory_snapshot": {"type": "object"}
+  }
+}

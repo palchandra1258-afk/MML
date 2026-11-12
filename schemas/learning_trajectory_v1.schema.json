@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/learning-trajectory-v1.schema.json",
+  "title": "MCP-RI Learning Trajectory v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "trajectory_id", "learner_id", "created_at", "updated_at", "trajectory_version", "primary_learning_goal", "target_concept_id", "target_skill_ids", "learning_objectives", "prerequisites", "expected_progression", "current_concept_id", "current_learning_step", "completed_steps", "pending_steps", "current_status", "context", "orchestration"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "learner_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "minLength": 1},
+    "updated_at": {"type": "string", "minLength": 1},
+    "trajectory_version": {"type": "integer", "minimum": 1},
+    "primary_learning_goal": {"type": "string", "minLength": 1},
+    "target_concept_id": {"type": "string", "minLength": 1},
+    "target_skill_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "learning_objectives": {"type": "array", "items": {"type": "string"}},
+    "prerequisites": {"type": "array", "items": {"type": "string"}},
+    "expected_progression": {"type": "array", "items": {"$ref": "#/$defs/step"}},
+    "current_concept_id": {"type": "string", "minLength": 1},
+    "current_learning_step": {"type": "string", "minLength": 1},
+    "completed_steps": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "pending_steps": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "current_status": {"enum": ["CREATED", "ACTIVE", "PAUSED", "DIVERTED", "RESUMING", "COMPLETED", "REPLANNED", "CANCELLED"]},
+    "context": {"$ref": "#/$defs/context"},
+    "orchestration": {"$ref": "#/$defs/orchestration"}
+  },
+  "$defs": {
+    "step": {
+      "type": "object", "additionalProperties": false,
+      "required": ["step_id", "concept_id", "objective", "status"],
+      "properties": {
+        "step_id": {"type": "string", "minLength": 1},
+        "concept_id": {"type": "string", "minLength": 1},
+        "objective": {"type": "string"},
+        "status": {"enum": ["pending", "current", "completed"]}
+      }
+    },
+    "context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["previous_representation_plan_id", "previous_cognitive_state_id", "supporting_evidence_ids", "previous_interventions", "learning_history_reference"],
+      "properties": {
+        "previous_representation_plan_id": {"type": ["string", "null"]},
+        "previous_cognitive_state_id": {"type": ["string", "null"]},
+        "supporting_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "previous_interventions": {"type": "array", "items": {"type": "object"}},
+        "learning_history_reference": {"type": ["string", "null"]}
+      }
+    },
+    "orchestration": {
+      "type": "object", "additionalProperties": false,
+      "required": ["active_diversion_id", "parent_trajectory_id", "current_depth", "transition_history_reference"],
+      "properties": {
+        "active_diversion_id": {"type": ["string", "null"]},
+        "parent_trajectory_id": {"type": ["string", "null"]},
+        "current_depth": {"type": "integer", "minimum": 0},
+        "transition_history_reference": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

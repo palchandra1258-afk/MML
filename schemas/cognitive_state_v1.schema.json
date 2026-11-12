@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/cognitive-state-v1.schema.json",
+  "title": "MCP-RI Provisional Cognitive-State Estimate",
+  "description": "Evidence-linked, provisional learning-context estimates. These are not validated psychological diagnoses.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "cognitive_state_id", "learner_id", "generated_at", "state_timestamp",
+    "state_version", "previous_state_id", "observation_window", "relevant_concept_ids",
+    "evidence_references", "observed_evidence_summary", "concept_estimates",
+    "possible_difficulty_hypotheses", "uncertainty", "diagnostic_recommendations",
+    "state_change_summary", "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "cognitive_state_id": {"type": "string", "pattern": "^cs_[0-9a-f]{32}$"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "state_timestamp": {"type": ["string", "null"]},
+    "state_version": {"type": "integer", "minimum": 1},
+    "previous_state_id": {"type": ["string", "null"], "pattern": "^cs_[0-9a-f]{32}$"},
+    "observation_window": {"$ref": "#/$defs/observationWindow"},
+    "relevant_concept_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "evidence_references": {"type": "array", "items": {"$ref": "#/$defs/evidenceReference"}},
+    "observed_evidence_summary": {"$ref": "#/$defs/observedSummary"},
+    "concept_estimates": {"type": "array", "items": {"$ref": "#/$defs/conceptEstimate"}},
+    "possible_difficulty_hypotheses": {"type": "array", "items": {"$ref": "#/$defs/hypothesis"}},
+    "uncertainty": {"$ref": "#/$defs/uncertainty"},
+    "diagnostic_recommendations": {"type": "array", "items": {"$ref": "#/$defs/recommendation"}},
+    "state_change_summary": {"$ref": "#/$defs/stateChange"},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "observationWindow": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "interaction_event_count", "labelled_event_count", "sequence_start", "sequence_end", "timestamp_start", "timestamp_end"],
+      "properties": {
+        "type": {"const": "chronological_prefix"},
+        "interaction_event_count": {"type": "integer", "minimum": 0},
+        "labelled_event_count": {"type": "integer", "minimum": 0},
+        "sequence_start": {"type": ["integer", "null"], "minimum": 0},
+        "sequence_end": {"type": ["integer", "null"], "minimum": 0},
+        "timestamp_start": {"type": ["string", "null"]},
+        "timestamp_end": {"type": ["string", "null"]}
+      }
+    },
+    "evidenceReference": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "evidence_type", "source_dataset", "source_file", "source_record_id", "event_timestamp", "sequence_number"],
+      "properties": {
+        "evidence_id": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"},
+        "evidence_type": {"enum": ["text", "audio", "visual", "interaction", "temporal_history"]},
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_file": {"type": ["string", "null"]},
+        "source_record_id": {"type": ["string", "null"]},
+        "event_timestamp": {"type": ["string", "null"]},
+        "sequence_number": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "sourceProvenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_dataset", "source_file", "source_modality", "processing_method"],
+      "properties": {
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_file": {"type": ["string", "null"]},
+        "source_modality": {"enum": ["text", "audio", "visual", "interaction", "derived"]},
+        "processing_method": {"type": "string", "minLength": 1}
+      }
+    },
+    "observedSummary": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "interaction_event_count", "labelled_response_count", "historical_correctness", "recent_correctness",
+        "performance_trend", "available_modalities", "missing_modalities", "contradictory_evidence_count",
+        "contradictory_evidence_ids", "contradictory_source_evidence_ids", "source_provenance", "phase9_state_reference"
+      ],
+      "properties": {
+        "interaction_event_count": {"type": "integer", "minimum": 0},
+        "labelled_response_count": {"type": "integer", "minimum": 0},
+        "historical_correctness": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "recent_correctness": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "performance_trend": {"enum": ["improving", "declining", "stable", "insufficient_evidence"]},
+        "available_modalities": {"type": "array", "uniqueItems": true, "items": {"enum": ["text", "audio", "visual", "interaction", "temporal_history"]}},
+        "missing_modalities": {"type": "array", "uniqueItems": true, "items": {"enum": ["text", "audio", "visual", "interaction", "temporal_history"]}},
+        "contradictory_evidence_count": {"type": "integer", "minimum": 0},
+        "contradictory_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ec_[0-9a-f]{32}$"}},
+        "contradictory_source_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "source_provenance": {"type": "array", "items": {"$ref": "#/$defs/sourceProvenance"}},
+        "phase9_state_reference": {"type": "object", "additionalProperties": false, "required": ["schema_version", "state_timestamp"], "properties": {"schema_version": {"type": "string"}, "state_timestamp": {"type": ["string", "null"]}}}
+      }
+    },
+    "observedPerformance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["attempts", "correct", "incorrect", "historical_accuracy", "recent_accuracy", "smoothed_performance", "performance_trend", "performance_change", "uncertainty_interval_95", "phase9_evidence_sufficiency", "phase9_behavioral_confidence", "phase9_uncertainty_level", "potential_issues"],
+      "properties": {
+        "attempts": {"type": "integer", "minimum": 0},
+        "correct": {"type": "integer", "minimum": 0},
+        "incorrect": {"type": "integer", "minimum": 0},
+        "historical_accuracy": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "recent_accuracy": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "smoothed_performance": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "performance_trend": {"enum": ["improving", "declining", "stable", "insufficient_evidence"]},
+        "performance_change": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+        "uncertainty_interval_95": {"type": "array", "prefixItems": [{"type": "number", "minimum": 0, "maximum": 1}, {"type": "number", "minimum": 0, "maximum": 1}], "minItems": 2, "maxItems": 2},
+        "phase9_evidence_sufficiency": {"enum": ["none", "low", "moderate", "high"]},
+        "phase9_behavioral_confidence": {"enum": ["low", "moderate", "high"]},
+        "phase9_uncertainty_level": {"enum": ["low", "medium", "high"]},
+        "potential_issues": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "conceptEstimate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["concept_id", "observed_performance", "estimated_learning_status", "estimate_confidence", "confidence_scope", "evidence_sufficiency", "uncertainty_level", "supporting_evidence_ids", "contradictory_evidence_ids", "estimation_method", "rationale"],
+      "properties": {
+        "concept_id": {"type": "string", "minLength": 1},
+        "observed_performance": {"$ref": "#/$defs/observedPerformance"},
+        "estimated_learning_status": {"enum": ["insufficient_evidence", "possible_difficulty", "developing_performance", "relatively_consistent_performance", "requires_diagnostic_investigation"]},
+        "estimate_confidence": {"enum": ["low", "moderate", "high"]},
+        "confidence_scope": {"const": "support_for_provisional_behavioral_category_not_cognitive_probability"},
+        "evidence_sufficiency": {"enum": ["none", "low", "moderate", "high"]},
+        "uncertainty_level": {"enum": ["low", "medium", "high"]},
+        "supporting_evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "contradictory_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "estimation_method": {"type": "string", "minLength": 1},
+        "rationale": {"type": "string", "minLength": 1}
+      }
+    },
+    "hypothesis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hypothesis_id", "concept_id", "hypothesis_type", "supporting_evidence_ids", "contradictory_evidence_ids", "confidence_or_support_level", "uncertainty_reason", "investigation_status", "statement"],
+      "properties": {
+        "hypothesis_id": {"type": "string", "pattern": "^hyp_[0-9a-f]{32}$"},
+        "concept_id": {"type": ["string", "null"]},
+        "hypothesis_type": {"enum": ["repeated_incorrect_responses", "declining_recent_performance", "inconsistent_responses", "insufficient_concept_evidence", "possible_representation_difficulty", "conflicting_evidence"]},
+        "supporting_evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "contradictory_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "confidence_or_support_level": {"enum": ["low", "moderate", "high"]},
+        "uncertainty_reason": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "investigation_status": {"enum": ["recommended", "pending", "resolved", "dismissed"]},
+        "statement": {"type": "string", "minLength": 1}
+      }
+    },
+    "uncertainty": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_uncertainty", "temporal_uncertainty", "modality_uncertainty", "inference_uncertainty", "overall_uncertainty", "uncertainty_reasons"],
+      "properties": {
+        "evidence_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "temporal_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "modality_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "inference_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "overall_uncertainty": {"enum": ["low", "medium", "high", "unknown"]},
+        "uncertainty_reasons": {"type": "object", "additionalProperties": false, "required": ["evidence", "temporal", "modality", "inference", "overall"], "properties": {
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "temporal": {"type": "array", "items": {"type": "string"}},
+          "modality": {"type": "array", "items": {"type": "string"}},
+          "inference": {"type": "array", "items": {"type": "string"}},
+          "overall": {"type": "array", "items": {"type": "string"}}
+        }}
+      }
+    },
+    "recommendation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recommendation_id", "concept_id", "action", "reason", "supporting_hypothesis_ids", "supporting_evidence_ids", "status"],
+      "properties": {
+        "recommendation_id": {"type": "string", "pattern": "^dr_[0-9a-f]{32}$"},
+        "concept_id": {"type": ["string", "null"]},
+        "action": {"enum": ["ask_for_explanation", "present_diagnostic_question", "request_intermediate_step", "request_diagram", "offer_example", "ask_for_clarification"]},
+        "reason": {"type": "string", "minLength": 1},
+        "supporting_hypothesis_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^hyp_[0-9a-f]{32}$"}},
+        "supporting_evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "status": {"const": "recommended"}
+      }
+    },
+    "stateChange": {
+      "type": "object", "additionalProperties": false,
+      "required": ["concept_status_changes", "hypothesis_ids_added", "hypothesis_ids_no_longer_emitted", "evidence_ids_added", "change_notes"],
+      "properties": {
+        "concept_status_changes": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["concept_id", "from_status", "to_status"], "properties": {
+          "concept_id": {"type": "string"},
+          "from_status": {"type": ["string", "null"]},
+          "to_status": {"type": ["string", "null"]}
+        }}},
+        "hypothesis_ids_added": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^hyp_[0-9a-f]{32}$"}},
+        "hypothesis_ids_no_longer_emitted": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^hyp_[0-9a-f]{32}$"}},
+        "evidence_ids_added": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "change_notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

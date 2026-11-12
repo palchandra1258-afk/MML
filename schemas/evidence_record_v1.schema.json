@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/evidence-record-v1.schema.json",
+  "title": "MCP-RI Normalized Evidence Record",
+  "description": "A provenance-preserving record of observed or derived evidence. It does not encode cognitive diagnosis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_id", "learner_id", "session_id", "evidence_type", "temporal", "provenance", "content", "processing", "uncertainty", "related_evidence_ids", "content_fingerprint"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "evidence_id": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": ["string", "null"]},
+    "evidence_type": {"enum": ["text", "audio", "visual", "interaction", "temporal_history"]},
+    "temporal": {"$ref": "#/$defs/temporal"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "content": {"type": "object"},
+    "processing": {"$ref": "#/$defs/processing"},
+    "uncertainty": {"$ref": "#/$defs/uncertainty"},
+    "related_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+    "content_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "duplicate_candidates": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}}
+  },
+  "$defs": {
+    "temporal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_timestamp", "ingestion_timestamp", "sequence_number", "temporal_precision", "timestamp_source"],
+      "properties": {
+        "event_timestamp": {"type": ["string", "null"]},
+        "ingestion_timestamp": {"type": "string", "format": "date-time"},
+        "sequence_number": {"type": ["integer", "null"], "minimum": 0},
+        "temporal_precision": {"enum": ["millisecond", "second", "minute", "unknown", "not_available"]},
+        "timestamp_source": {"type": ["string", "null"]}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_dataset", "source_file", "source_record_id", "source_modality", "processing_method", "processing_version"],
+      "properties": {
+        "source_dataset": {"type": "string", "minLength": 1},
+        "source_file": {"type": ["string", "null"]},
+        "source_record_id": {"type": ["string", "null"]},
+        "source_modality": {"enum": ["text", "audio", "visual", "interaction", "derived"]},
+        "processing_method": {"type": "string", "minLength": 1},
+        "processing_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "processing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "processing_timestamp", "extraction_method", "quality_flags", "missing_fields", "transformation_history"],
+      "properties": {
+        "status": {"enum": ["processed", "partial", "pending", "reference_only", "failed"]},
+        "processing_timestamp": {"type": "string", "format": "date-time"},
+        "extraction_method": {"type": "string"},
+        "quality_flags": {"type": "array", "items": {"type": "string"}},
+        "missing_fields": {"type": "array", "items": {"type": "string"}},
+        "transformation_history": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "uncertainty": {
+      "type": "object", "additionalProperties": false,
+      "required": ["flags", "processing_confidence", "notes"],
+      "properties": {
+        "flags": {"type": "array", "items": {"type": "string"}},
+        "processing_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

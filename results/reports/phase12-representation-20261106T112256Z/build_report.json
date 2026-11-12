@@ -1,0 +1,92 @@
+{
+  "created_at_utc": "2026-11-06T11:23:12.105147+00:00",
+  "status": "complete",
+  "input": "results/reports/phase11-cognitive-state-20261106T104113Z/cognitive_states.jsonl",
+  "content_metadata_source": "data/raw/ednet/ednet-content.zip#contents/questions.csv",
+  "sample_partition": "Phase 11 validation-learner snapshots only; inherited from Phase 11 input",
+  "locked_test_partition_evaluated": false,
+  "states_read": 184,
+  "plans_built": 1910,
+  "max_plans": 10000,
+  "availability_registry": {
+    "taxonomy_version": "1.0",
+    "capabilities": [
+      {
+        "representation_id": "textual",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "worked_example",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "visual",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "symbolic",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "interactive",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "simulation",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "diagnostic",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      },
+      {
+        "representation_id": "alternative_explanation",
+        "status": "unavailable",
+        "provider_id": null,
+        "content_ids": [],
+        "reason": "No representation delivery provider or concept-grounded content source is implemented in this repository."
+      }
+    ]
+  },
+  "taxonomy_version": "1.0",
+  "counts": {
+    "action:defer_until_capability_available": 17,
+    "action:request_additional_evidence": 14,
+    "action:request_diagnostic_evidence": 1879,
+    "delivery_status:not_selected": 1910,
+    "representation:none": 1910,
+    "rule:concept_estimate_present": 1910,
+    "rule:concept_evidence_coverage": 1910,
+    "rule:declining_performance": 1,
+    "rule:inconsistent_responses": 33,
+    "rule:minimum_response_coverage": 57,
+    "rule:repeated_incorrect_hypothesis": 60
+  },
+  "all_selected_capabilities_available": true,
+  "plans_are_recommendations_only": true,
+  "runtime_seconds": 15.72,
+  "peak_process_rss_kib": 349852,
+  "output": "results/reports/phase12-representation-20261106T112256Z/representation_plans.jsonl",
+  "claims_boundary": "Engineering coverage only; no representation efficacy or learning benefit is measured."
+}

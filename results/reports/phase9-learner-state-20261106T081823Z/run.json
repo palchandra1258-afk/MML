@@ -1,0 +1,15 @@
+{
+  "experiment_id": "phase9-learner-state-20261106T081823Z",
+  "status": "complete",
+  "target_partition": "split_unseen_learner=validation only",
+  "locked_test_partition_read_for_labels_or_state": false,
+  "input": "data/processed/ednet/ednet_kt1_features.csv.gz",
+  "rows_scanned": 95293926,
+  "validation_interaction_rows_seen": 14241124,
+  "runtime_seconds": 2246.3587316749995,
+  "peak_process_rss_kib": 349852,
+  "outputs": {
+    "states_jsonl": "results/reports/phase9-learner-state-20261106T081823Z/validation_learner_states.jsonl",
+    "evaluation_json": "results/reports/phase9-learner-state-20261106T081823Z/evaluation.json"
+  }
+}

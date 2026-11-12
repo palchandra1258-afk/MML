@@ -1,0 +1,162 @@
+{
+  "experiment_id": "phase9-learner-state-20261106T081823Z",
+  "status": "complete",
+  "target_partition": "split_unseen_learner=validation only",
+  "locked_test_partition_read_for_labels_or_state": false,
+  "input": "data/processed/ednet/ednet_kt1_features.csv.gz",
+  "input_bytes": 5888235415,
+  "rows_scanned": 95293926,
+  "validation_interaction_rows_seen": 14241124,
+  "validation_partition_seed": 2025,
+  "max_validation_learners": null,
+  "streaming": "one CSV pass; only one learner accumulator retained at a time",
+  "metrics": {
+    "concept_attempts_by_bucket": {
+      "1-4": 2798134,
+      "5-19": 815333,
+      "20+": 283249,
+      "0": 850
+    },
+    "concept_evidence_sufficiency": {
+      "low": 2798134,
+      "moderate": 815333,
+      "high": 283249,
+      "none": 850
+    },
+    "overall_evidence_sufficiency": {
+      "low": 14924,
+      "moderate": 54604,
+      "high": 48256,
+      "none": 1
+    },
+    "overall_uncertainty_levels": {
+      "high": 68791,
+      "low": 18717,
+      "medium": 30277
+    },
+    "concept_uncertainty_levels": {
+      "high": 3564525,
+      "medium": 254215,
+      "low": 78826
+    },
+    "overall_trends": {
+      "insufficient_evidence": 51699,
+      "declining": 26474,
+      "stable": 17729,
+      "improving": 21883
+    },
+    "concept_trends": {
+      "insufficient_evidence": 3335842,
+      "declining": 183203,
+      "stable": 171846,
+      "improving": 206675
+    },
+    "overall_issues": {
+      "insufficient_evidence": 14925,
+      "repeated_recent_incorrect_responses": 85107,
+      "inconsistent_recent_responses": 88318,
+      "recent_performance_decline": 26474
+    },
+    "concept_issues": {
+      "insufficient_evidence": 2798984,
+      "inconsistent_recent_responses": 520223,
+      "repeated_recent_incorrect_responses": 352405,
+      "recent_performance_decline": 183203
+    },
+    "learners": 117785,
+    "interactions": 14241124,
+    "labelled_responses": 14236525,
+    "unlabelled_interactions": 4599,
+    "concepts": 3897566,
+    "states_schema_validated": 117785,
+    "model_prediction_available": 0,
+    "descriptive_means": {
+      "learner_macro_historical_accuracy": 0.49181536054721464,
+      "learner_macro_recent_accuracy": 0.49670491801512023,
+      "learner_macro_smoothed_performance": 0.5009144424773052,
+      "learner_macro_absolute_beta_shrinkage": 0.0385629638378111,
+      "concept_macro_historical_accuracy": 0.5890101463796834,
+      "concept_macro_recent_accuracy": 0.5930011279605596,
+      "concept_macro_smoothed_performance": 0.5588361548714075,
+      "concept_macro_absolute_beta_shrinkage": 0.19133853646866655
+    },
+    "experiments": {
+      "A_historical_state": {
+        "learners_with_labelled_responses": 117784,
+        "mean_observed_historical_accuracy_across_learners": 0.49181536054721464
+      },
+      "B_recent_state": {
+        "learners_with_recent_and_historical_estimates": 117784,
+        "mean_absolute_recent_minus_historical_accuracy": 0.059886105124630086
+      },
+      "C_bayesian_smoothing": {
+        "prior": {
+          "distribution": "Beta",
+          "alpha": 1.0,
+          "beta": 1.0
+        },
+        "mean_absolute_shrinkage_over_learners": 0.0385629638378111,
+        "mean_absolute_shrinkage_over_concepts": 0.19133853646866655,
+        "concept_observation_buckets": {
+          "1-4": 2798134,
+          "5-19": 815333,
+          "20+": 283249,
+          "0": 850
+        }
+      },
+      "D_temporal_change": {
+        "trend_threshold_absolute_accuracy_change": 0.1,
+        "trend_requires_at_least_10_labeled_observations": true,
+        "learner_trend_counts": {
+          "insufficient_evidence": 51699,
+          "declining": 26474,
+          "stable": 17729,
+          "improving": 21883
+        },
+        "concept_trend_counts": {
+          "insufficient_evidence": 3335842,
+          "declining": 183203,
+          "stable": 171846,
+          "improving": 206675
+        }
+      },
+      "E_evidence_sufficiency": {
+        "learner_evidence_counts": {
+          "low": 14924,
+          "moderate": 54604,
+          "high": 48256,
+          "none": 1
+        },
+        "concept_evidence_counts": {
+          "low": 2798134,
+          "moderate": 815333,
+          "high": 283249,
+          "none": 850
+        },
+        "learner_uncertainty_counts": {
+          "high": 68791,
+          "low": 18717,
+          "medium": 30277
+        },
+        "concept_uncertainty_counts": {
+          "high": 3564525,
+          "medium": 254215,
+          "low": 78826
+        }
+      }
+    },
+    "direct_cognitive_state_accuracy": null,
+    "direct_cognitive_state_accuracy_reason": "No ground-truth cognitive-state, understanding, misconception, or representation-mismatch labels exist in this dataset.",
+    "prediction_calibration_evaluation": {
+      "performed": false,
+      "reason": "Existing prediction artifacts could not be loaded because this interpreter lacks joblib, scikit-learn, XGBoost, and PyTorch; no predictions were fabricated."
+    }
+  },
+  "runtime_seconds": 2246.3587316749995,
+  "peak_process_rss_kib": 349852,
+  "outputs": {
+    "states_jsonl": "results/reports/phase9-learner-state-20261106T081823Z/validation_learner_states.jsonl",
+    "evaluation_json": "results/reports/phase9-learner-state-20261106T081823Z/evaluation.json"
+  },
+  "claims_boundary": "These are behavioral response summaries. No cognitive-state ground truth or next-response model prediction was available in this environment."
+}

@@ -1,0 +1,39 @@
+{
+  "created_at_utc": "2026-11-06T10:41:21.766990+00:00",
+  "status": "complete",
+  "source": "data/processed/ednet/ednet_kt1_features.csv.gz",
+  "partition": "split_unseen_learner=validation only",
+  "locked_test_partition_evaluated": false,
+  "sampling_policy": "first validation learners in processed source order; chronological prefixes captured at labeled-event checkpoints",
+  "selected_learners": 100,
+  "state_snapshots": 184,
+  "checkpoint_labeled_responses": [
+    5,
+    10
+  ],
+  "max_interactions_per_learner": 100,
+  "processed_rows_scanned": 105805,
+  "normalized_interaction_records": 824,
+  "concept_status_counts": {
+    "insufficient_evidence": 1853,
+    "possible_difficulty": 40,
+    "developing_performance": 17
+  },
+  "hypothesis_counts": {
+    "insufficient_concept_evidence": 1853,
+    "repeated_incorrect_responses": 60,
+    "inconsistent_responses": 33,
+    "declining_recent_performance": 1
+  },
+  "overall_uncertainty_counts": {
+    "high": 184
+  },
+  "available_modality_state_counts": {
+    "interaction": 184,
+    "temporal_history": 184
+  },
+  "runtime_seconds": 7.976,
+  "peak_process_rss_kib": 27236,
+  "output": "results/reports/phase11-cognitive-state-20261106T104113Z/cognitive_states.jsonl",
+  "claims_boundary": "These are provisional behavioral rule categories. They are not validated cognitive estimates, and no cognitive ground truth is available."
+}

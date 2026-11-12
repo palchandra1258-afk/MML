@@ -6,8 +6,23 @@ __pycache__/
 # Local tools and environments
 .tools/
 .venv/
+.venv-api/
 venv/
 
 # Large downloaded and generated datasets (store separately)
 data/raw/ednet/ednet-kt1.zip
 data/processed/ednet/ednet_kt1_features.csv.gz
+
+# Learner-level derived state contains pseudonymous IDs and can be large
+results/reports/phase9-learner-state-*/validation_learner_states.jsonl
+
+# Local Phase 14 application database (artifact indexes contain offsets only)
+data/application/*.sqlite3
+data/application/*.sqlite3-*
+
+# Row-level learner evidence, state, plan, and trajectory exports stay local
+results/reports/**/*.jsonl
+
+# Phase 10 smoke trace contains a concrete pseudonymous learner record
+results/reports/phase10-*/experiment_report.json
+results/reports/phase10-*/phase9_integration_trace.json

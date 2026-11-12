@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/learner-state-v1.schema.json",
+  "title": "MCP-RI Behavioral Learner State",
+  "description": "Observed EdNet interaction outcomes and transparent derived summaries; not a direct cognitive-state label.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "learner_id", "state_timestamp", "observation_window", "observation_summary", "learning_performance", "concept_states", "model_predictions", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "state_timestamp": {"type": ["string", "null"]},
+    "observation_window": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "recent_overall_labeled_responses", "recent_concept_labeled_responses", "trend_comparison"],
+      "properties": {
+        "type": {"const": "all_rows_seen_through_state_timestamp"},
+        "recent_overall_labeled_responses": {"type": "integer", "minimum": 1},
+        "recent_concept_labeled_responses": {"type": "integer", "minimum": 1},
+        "trend_comparison": {"type": "string"}
+      }
+    },
+    "observation_summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["total_interactions", "labelled_responses", "unlabelled_interactions", "unique_concepts_observed", "interactions_without_skill_mapping", "preserved_duplicate_interactions"],
+      "properties": {
+        "total_interactions": {"type": "integer", "minimum": 0},
+        "labelled_responses": {"type": "integer", "minimum": 0},
+        "unlabelled_interactions": {"type": "integer", "minimum": 0},
+        "unique_concepts_observed": {"type": "integer", "minimum": 0},
+        "interactions_without_skill_mapping": {"type": "integer", "minimum": 0},
+        "preserved_duplicate_interactions": {"type": "integer", "minimum": 0}
+      }
+    },
+    "learning_performance": {"$ref": "#/$defs/performance"},
+    "concept_states": {"type": "array", "items": {"$ref": "#/$defs/concept"}},
+    "model_predictions": {
+      "type": "object", "required": ["next_response_correctness", "model_name", "availability", "reason"],
+      "properties": {
+        "next_response_correctness": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "model_name": {"type": ["string", "null"]},
+        "availability": {"type": "string"},
+        "reason": {"type": "string"},
+        "interpretation": {"type": "string"},
+        "calibration_status": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["estimated_performance", "recent_performance", "historical_performance", "performance_change", "performance_trend", "attempts", "correct", "incorrect", "evidence_type", "evidence_sufficiency", "estimate_confidence", "uncertainty_level", "uncertainty_interval_95", "uncertainty_reason", "potential_issues"],
+      "properties": {
+        "estimated_performance": {"type": "number", "minimum": 0, "maximum": 1},
+        "recent_performance": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "historical_performance": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "performance_change": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+        "performance_trend": {"enum": ["improving", "declining", "stable", "insufficient_evidence"]},
+        "attempts": {"type": "integer", "minimum": 0}, "correct": {"type": "integer", "minimum": 0}, "incorrect": {"type": "integer", "minimum": 0},
+        "evidence_type": {"type": "string"},
+        "evidence_sufficiency": {"enum": ["none", "low", "moderate", "high"]},
+        "estimate_confidence": {"enum": ["low", "moderate", "high"]},
+        "uncertainty_level": {"enum": ["low", "medium", "high"]},
+        "uncertainty_interval_95": {"$ref": "#/$defs/interval"},
+        "uncertainty_reason": {"type": "array", "items": {"type": "string"}},
+        "potential_issues": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "concept": {
+      "type": "object", "additionalProperties": false,
+      "required": ["concept_id", "attempts", "correct", "incorrect", "historical_accuracy", "recent_accuracy", "smoothed_performance", "performance_trend", "performance_change", "last_observed_interaction", "evidence_count", "evidence_sufficiency", "estimate_confidence", "uncertainty_level", "uncertainty_interval_95", "uncertainty_reason", "potential_issues", "evidence_type"],
+      "properties": {
+        "concept_id": {"type": "string", "minLength": 1},
+        "attempts": {"type": "integer", "minimum": 0}, "correct": {"type": "integer", "minimum": 0}, "incorrect": {"type": "integer", "minimum": 0},
+        "historical_accuracy": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "recent_accuracy": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "smoothed_performance": {"type": "number", "minimum": 0, "maximum": 1},
+        "performance_trend": {"enum": ["improving", "declining", "stable", "insufficient_evidence"]},
+        "performance_change": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+        "last_observed_interaction": {"type": ["object", "null"], "properties": {"question_id": {"type": ["string", "null"]}, "source_row_order": {"type": ["integer", "null"]}, "timestamp": {"type": ["string", "null"]}}, "required": ["question_id", "source_row_order", "timestamp"], "additionalProperties": false},
+        "evidence_count": {"type": "integer", "minimum": 0},
+        "evidence_sufficiency": {"enum": ["none", "low", "moderate", "high"]},
+        "estimate_confidence": {"enum": ["low", "moderate", "high"]},
+        "uncertainty_level": {"enum": ["low", "medium", "high"]},
+        "uncertainty_interval_95": {"$ref": "#/$defs/interval"},
+        "uncertainty_reason": {"type": "array", "items": {"type": "string"}},
+        "potential_issues": {"type": "array", "items": {"type": "string"}},
+        "evidence_type": {"type": "string"}
+      }
+    },
+    "interval": {
+      "type": "array", "prefixItems": [{"type": "number", "minimum": 0, "maximum": 1}, {"type": "number", "minimum": 0, "maximum": 1}], "minItems": 2, "maxItems": 2
+    }
+  }
+}

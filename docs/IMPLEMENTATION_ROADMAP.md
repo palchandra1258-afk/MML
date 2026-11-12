@@ -1,6 +1,6 @@
 # MCP-RI Implementation Roadmap
 
-This roadmap plans later implementation work. It does not authorize or perform code, data downloads or human-subject collection in this planning stage.
+This roadmap records both planned research work and implemented foundations. Phase 13 is now a bounded orchestration prototype; further data downloads and human-subject collection remain separately gated by terms, protocol, consent, and ethics review.
 
 ## Phase 0 — Research specification and decisions
 
@@ -90,6 +90,24 @@ This roadmap plans later implementation work. It does not authorize or perform c
 - Every plan is auditable and refers to available content/actions.
 - Interruption and return behavior preserves the original teaching context.
 
+## Phase 13 implementation checkpoint — Trajectory and diversion orchestration
+
+**Implemented foundation**
+
+- Added versioned primary trajectory, diversion, context snapshot, dependency registry, and event schemas.
+- Added explicit state transitions, conservative evidence-linked diversion rules, bounded diversion progress and revision, resumption/replanning, and reconstructable append-only history.
+- Integrated stable references to Phases 9–12 while leaving their schemas unchanged.
+- Added a bounded validation-snapshot runner, technical evaluator, history validator, synthetic tests, and Phase 13 documentation.
+
+**Research gates still open**
+
+- No dataset-sourced prerequisite graph or validated curriculum objective is available; the production default registry remains empty.
+- No representation delivery provider or post-intervention outcomes exist.
+- History is in-memory in the API and exported as JSONL by the runner; production durable/concurrent persistence remains future implementation work.
+- Technical validation does not establish cognitive accuracy, mastery, or learning improvement.
+
+See [`LEARNING_TRAJECTORY_ARCHITECTURE.md`](LEARNING_TRAJECTORY_ARCHITECTURE.md), [`TRAJECTORY_EVALUATION.md`](TRAJECTORY_EVALUATION.md), and [`PHASE13_IMPLEMENTATION_REPORT.md`](PHASE13_IMPLEMENTATION_REPORT.md).
+
 ## Phase 6 — Outcome loop and prospective evaluation
 
 **Tasks**
@@ -142,10 +160,21 @@ This roadmap plans later implementation work. It does not authorize or perform c
 - **Confounded representation choices:** use rule-based prototype first; design prospective randomized/counterbalanced outcome study before learning a policy.
 - **Overclaiming calibration:** calibrate on held-out data and re-evaluate under shift; uncertainty is distribution dependent.
 
-## Recommended first model to train
+## Completed first behavioral prediction model and next step
 
-Train a **simple interaction-history model to predict a recorded next-response outcome**—initially logistic regression, with a majority/persistence baseline and optionally gradient-boosted trees for comparison. Use the CMU DataShop equation-solving dataset if its current access, terms, transaction schema, learner IDs and subsequent correctness fields are verified. The research reference identifies this as a constrained interaction/handwriting setting, but it does not establish exact column availability. If those fields are absent, inspect the Math Data Corpus and use only a documented correctness/problem outcome if the data and access support it; otherwise choose another verified dataset or stop before training.
+The initial observable-outcome model was completed on EdNet KT1, selected after dataset access and label verification. SGD logistic regression predicts whether a learner's next submitted answer is correct; it is a behavioral response prediction, not a direct measure of understanding, confusion, uncertainty, or cognitive state. The Phase 6 run and the Phase 7 tree comparisons are documented in their experiment reports.
 
-The data required are learner/session identifiers for grouped splits; task/item or concept identifiers if available; ordered interaction/attempt history; timestamps or sequence order; and an explicitly recorded next response correctness/outcome. The target is **next observed response outcome**, not confusion, understanding, uncertainty or representation mismatch.
+Phase 8 added DKT and SAKT-style sequence models on the same 5% sampled training-learner protocol. SAKT improved several pooled response-prediction metrics on a matched unseen-learner validation cohort, while logistic retained higher F1. The validation test partition remains untouched. The comparison is not architecture-only because the sequence and tabular models consume different feature representations. See [`TEMPORAL_KNOWLEDGE_TRACING_EXPERIMENT.md`](TEMPORAL_KNOWLEDGE_TRACING_EXPERIMENT.md), [`PHASE8_SEQUENCE_MODEL_COMPARISON.md`](PHASE8_SEQUENCE_MODEL_COMPARISON.md), and [`PHASE8_CALIBRATION_ANALYSIS.md`](PHASE8_CALIBRATION_ANALYSIS.md).
 
-This should be first because it establishes the data pipeline, target/split discipline, and a transparent lower-complexity baseline before adding modalities or temporal deep learning. It tests one part of the research foundation without pretending that behavioral traces directly reveal cognition. Afterward, the project can test whether verified language/visual modalities add value and whether valid state labels and intervention data can support the broader MCP-RI question.
+Before a larger run, predeclare whether the primary estimand weights each response or each learner, select the primary metric, budget tuning, then retrain all relevant baselines on the same expanded learner set. Freeze the analysis before any single test evaluation. This line of work strengthens only the EdNet behavioral-prediction component. The multimodal cognitive-state and representation-selection hypotheses still require data with verified modality alignment and independently defined construct labels, followed by prospective intervention/outcome evaluation.
+
+## Phase 14 implementation checkpoint — Backend integration and persistence
+
+- Added a FastAPI `/api/v1` backend with generated OpenAPI and shared frontend contracts.
+- Connected read-only Phase 9–12 artifact lookup, including Phase 10 evidence group/alignment annotations.
+- Added a stream-built SQLite offset index for research JSONL outputs, avoiding payload copies and startup loading of the 2.6 GB Phase 9 file.
+- Added SQLAlchemy/Alembic persistence for API-authored trajectory snapshots, immutable versions, and append-only events; API creation/actions call the Phase 13 builder/manager.
+- Added 21 synthetic API tests covering endpoint validation, CORS, persistence/recovery, transition rules, OpenAPI schema, and transaction rollback.
+- The Phase 13 sample remains unimported because its generated objectives are placeholders. Diversion writes, authentication, learned-model inference, and PostgreSQL runtime validation remain incomplete.
+
+The backend is a local research prototype. Run `PYTHONPATH=src .venv-api/bin/python scripts/api/index_artifacts.py` once before connecting the frontend. See [`PHASE14_BACKEND_ARCHITECTURE.md`](PHASE14_BACKEND_ARCHITECTURE.md), [`API_DESIGN_SPECIFICATION.md`](API_DESIGN_SPECIFICATION.md), [`DATABASE_ARCHITECTURE.md`](DATABASE_ARCHITECTURE.md), [`PERSISTENCE_METHODOLOGY.md`](PERSISTENCE_METHODOLOGY.md), [`BACKEND_INTEGRATION_REPORT.md`](BACKEND_INTEGRATION_REPORT.md), and [`PHASE14_EVALUATION.md`](PHASE14_EVALUATION.md).

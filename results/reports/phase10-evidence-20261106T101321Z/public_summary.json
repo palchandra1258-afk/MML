@@ -1,0 +1,27 @@
+{
+  "run_id": "phase10-evidence-20261106T101321Z",
+  "created_at_utc": "2026-11-06T10:13:32.798584+00:00",
+  "source_dataset": "EdNet-KT1 processed interaction table",
+  "partition_filter": "split_unseen_learner == validation and correctness in {0,1}",
+  "locked_test_partition_evaluated": false,
+  "rows_scanned_until_bounded_sample_complete": 865006,
+  "interaction_evidence_records": 1000,
+  "evidence_schema_validated": 1000,
+  "sample_provenance_checks_passed": 1000,
+  "unique_learners": 1000,
+  "evidence_groups": 1000,
+  "alignment_candidates": 0,
+  "grouping_basis_counts": {
+    "singleton_no_shared_session": 1000
+  },
+  "possible_duplicate_records_retained": 0,
+  "phase9_integration_check": {
+    "passed": true,
+    "events_replayed": 2,
+    "chronological_order_preserved": true,
+    "learner_and_event_identifiers_included": false
+  },
+  "runtime_seconds": 11.472,
+  "max_rss_mib": 39.96,
+  "privacy_note": "Aggregate counters only. Learner-level JSONL and the concrete integration trace remain local and are excluded from Git."
+}

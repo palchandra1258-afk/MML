@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mcp-ri.local/schemas/representation-plan-v1.schema.json",
+  "title": "MCP-RI Representation Plan v1",
+  "description": "Versioned, auditable, recommendation-only plan grounded in a Phase 11 state and explicit capability availability.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "taxonomy_version", "plan_id", "learner_id", "concept_id", "created_at",
+    "plan_version", "previous_plan_id", "plan_kind", "input_references", "teaching_context",
+    "concept_grounding", "decision", "learning_objective", "representation_configuration",
+    "evaluation_strategy", "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "taxonomy_version": {"const": "1.0"},
+    "plan_id": {"type": "string", "pattern": "^rp_[0-9a-f]{32}$"},
+    "learner_id": {"type": "string", "minLength": 1},
+    "concept_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "plan_version": {"type": "integer", "minimum": 1},
+    "previous_plan_id": {"type": ["string", "null"], "pattern": "^rp_[0-9a-f]{32}$"},
+    "plan_kind": {"enum": ["initial", "alternative", "continued", "diagnostic", "revised"]},
+    "input_references": {"$ref": "#/$defs/inputReferences"},
+    "teaching_context": {"$ref": "#/$defs/teachingContext"},
+    "concept_grounding": {"$ref": "#/$defs/conceptGrounding"},
+    "decision": {"$ref": "#/$defs/decision"},
+    "learning_objective": {"$ref": "#/$defs/learningObjective"},
+    "representation_configuration": {"$ref": "#/$defs/configuration"},
+    "evaluation_strategy": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evaluation"}},
+    "limitations": {"$ref": "#/$defs/limitations"}
+  },
+  "$defs": {
+    "inputReferences": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cognitive_state_id", "cognitive_state_version", "behavioral_state_reference", "supporting_evidence_ids", "contradictory_evidence_ids", "diagnostic_recommendation_ids"],
+      "properties": {
+        "cognitive_state_id": {"type": "string", "pattern": "^cs_[0-9a-f]{32}$"},
+        "cognitive_state_version": {"type": "integer", "minimum": 1},
+        "behavioral_state_reference": {"type": ["object", "null"]},
+        "supporting_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "contradictory_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "diagnostic_recommendation_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^dr_[0-9a-f]{32}$"}}
+      }
+    },
+    "learningObjectiveContext": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objective_id", "description", "availability"],
+      "properties": {
+        "objective_id": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "availability": {"enum": ["available", "unavailable"]}
+      }
+    },
+    "teachingContext": {
+      "type": "object", "additionalProperties": false,
+      "required": ["current_concept_id", "current_learning_objective", "current_representation", "trajectory_id", "previous_plan_id", "branch_return_pointer", "prior_diagnostic_recommendation_ids", "evidence_history_ids"],
+      "properties": {
+        "current_concept_id": {"type": "string", "minLength": 1},
+        "current_learning_objective": {"$ref": "#/$defs/learningObjectiveContext"},
+        "current_representation": {"type": ["string", "null"], "enum": ["textual", "worked_example", "visual", "symbolic", "interactive", "simulation", "diagnostic", "alternative_explanation", null]},
+        "trajectory_id": {"type": ["string", "null"]},
+        "previous_plan_id": {"type": ["string", "null"], "pattern": "^rp_[0-9a-f]{32}$"},
+        "branch_return_pointer": {"type": ["string", "null"]},
+        "prior_diagnostic_recommendation_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^dr_[0-9a-f]{32}$"}},
+        "evidence_history_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}}
+      }
+    },
+    "conceptGrounding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["concept_name", "name_status", "source_dataset", "related_skill_ids", "related_question_ids", "related_question_id_count", "related_question_ids_truncated", "related_lecture_ids", "related_lecture_id_count", "related_lecture_ids_truncated", "lecture_parts", "lecture_part_count", "lecture_parts_truncated", "lecture_video_length_values", "lecture_video_length_count", "lecture_video_lengths_truncated", "parts", "part_count", "parts_truncated", "bundle_ids", "bundle_id_count", "bundle_ids_truncated", "explanation_reference_ids", "explanation_reference_id_count", "explanation_reference_ids_truncated", "learning_objective", "prerequisites", "example_ids", "representation_content_ids", "content_status", "limitations"],
+      "properties": {
+        "concept_name": {"type": ["string", "null"]},
+        "name_status": {"enum": ["available", "identifier_only", "unavailable"]},
+        "source_dataset": {"type": ["string", "null"]},
+        "related_skill_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "related_question_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "related_question_id_count": {"type": "integer", "minimum": 0},
+        "related_question_ids_truncated": {"type": "boolean"},
+        "related_lecture_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "related_lecture_id_count": {"type": "integer", "minimum": 0},
+        "related_lecture_ids_truncated": {"type": "boolean"},
+        "lecture_parts": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "lecture_part_count": {"type": "integer", "minimum": 0},
+        "lecture_parts_truncated": {"type": "boolean"},
+        "lecture_video_length_values": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "lecture_video_length_count": {"type": "integer", "minimum": 0},
+        "lecture_video_lengths_truncated": {"type": "boolean"},
+        "parts": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "part_count": {"type": "integer", "minimum": 0},
+        "parts_truncated": {"type": "boolean"},
+        "bundle_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "bundle_id_count": {"type": "integer", "minimum": 0},
+        "bundle_ids_truncated": {"type": "boolean"},
+        "explanation_reference_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "explanation_reference_id_count": {"type": "integer", "minimum": 0},
+        "explanation_reference_ids_truncated": {"type": "boolean"},
+        "learning_objective": {"type": ["string", "null"]},
+        "prerequisites": {"type": "array", "items": {"type": "string"}},
+        "example_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "representation_content_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "content_status": {"enum": ["available", "metadata_only", "unavailable"]},
+        "limitations": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "ruleTrace": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rule_id", "conditions_satisfied", "conditions_not_satisfied", "evidence_ids", "explanation"],
+      "properties": {
+        "rule_id": {"type": "string", "minLength": 1},
+        "conditions_satisfied": {"type": "array", "items": {"type": "string"}},
+        "conditions_not_satisfied": {"type": "array", "items": {"type": "string"}},
+        "evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ev_[0-9a-f]{32}$"}},
+        "explanation": {"type": "string", "minLength": 1}
+      }
+    },
+    "alternative": {
+      "type": "object", "additionalProperties": false,
+      "required": ["representation_id", "availability_status", "selection_status", "reason"],
+      "properties": {
+        "representation_id": {"enum": ["textual", "worked_example", "visual", "symbolic", "interactive", "simulation", "diagnostic", "alternative_explanation"]},
+        "availability_status": {"enum": ["available", "planned", "unavailable"]},
+        "selection_status": {"enum": ["selected", "rejected", "not_applicable"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["selected_representation", "selected_action", "delivery_status", "capability_reference", "decision_reason", "decision_method", "decision_confidence", "confidence_scope", "policy_trace", "alternative_representations"],
+      "properties": {
+        "selected_representation": {"type": ["string", "null"], "enum": ["textual", "worked_example", "visual", "symbolic", "interactive", "simulation", "diagnostic", "alternative_explanation", null]},
+        "selected_action": {"enum": ["recommend_representation", "continue_current_representation", "request_diagnostic_evidence", "request_additional_evidence", "defer_until_capability_available"]},
+        "delivery_status": {"enum": ["available", "planned", "unavailable", "not_selected"]},
+        "capability_reference": {"type": ["object", "null"]},
+        "decision_reason": {"type": "string", "minLength": 1},
+        "decision_method": {"const": "transparent_rules_v1"},
+        "decision_confidence": {"enum": ["low", "moderate", "high", "unknown"]},
+        "confidence_scope": {"const": "support_for_recommendation_not_learning_effect_or_modality_preference"},
+        "policy_trace": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/ruleTrace"}},
+        "alternative_representations": {"type": "array", "items": {"$ref": "#/$defs/alternative"}}
+      }
+    },
+    "learningObjective": {
+      "type": "object", "additionalProperties": false,
+      "required": ["target_concept", "objective_text", "objective_status", "intended_learning_outcome"],
+      "properties": {
+        "target_concept": {"type": "string", "minLength": 1},
+        "objective_text": {"type": ["string", "null"]},
+        "objective_status": {"enum": ["available", "unavailable"]},
+        "intended_learning_outcome": {"type": "string", "minLength": 1}
+      }
+    },
+    "configuration": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "explanation_complexity": {"enum": ["simplified", "standard", "advanced"]},
+        "visual_detail_level": {"enum": ["low", "moderate", "high"]},
+        "example_count": {"type": "integer", "minimum": 1},
+        "interaction_type": {"type": "string", "minLength": 1},
+        "difficulty_level": {"enum": ["introductory", "similar_to_observed_items", "advanced"]},
+        "required_content": {"type": "array", "items": {"type": "string"}},
+        "prerequisites": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evaluation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["method", "purpose", "success_measure", "status"],
+      "properties": {
+        "method": {"enum": ["follow_up_question", "learner_explanation", "related_practice_question", "intermediate_solution_step", "prerequisite_check"]},
+        "purpose": {"type": "string", "minLength": 1},
+        "success_measure": {"type": "string", "minLength": 1},
+        "status": {"enum": ["recommended_only", "requires_content_source"]}
+      }
+    },
+    "limitations": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence", "missing_modalities", "uncertainty", "unavailable_capabilities", "claims_boundary"],
+      "properties": {
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "missing_modalities": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "uncertainty": {"type": "array", "items": {"type": "string"}},
+        "unavailable_capabilities": {"type": "array", "items": {"type": "string"}},
+        "claims_boundary": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

@@ -6,6 +6,10 @@ MCP-RI studies whether multimodal evidence can support a temporally grounded, co
 
 The research reference proposes four layers. The architecture below preserves those layers and makes a distinction between (a) models that can be trained and evaluated with existing targets, (b) hypotheses that require new annotations or a purpose-built study, and (c) non-learning orchestration and safety rules. Dataset availability, rights, schemas, labels and licensing must be verified before a dataset is selected. The list in the research reference is a candidate inventory, not a claim that each dataset is currently accessible or suitable.
 
+**Implementation status:** Phase 9 adds a replayable EdNet behavioral-history state object with per-skill summaries, recent trends, evidence counts and uncertainty intervals. Phase 10 adds normalized evidence records and adapters; Phase 11 adds a separate, traceable rule-based cognitive-state estimate; Phase 12 adds a rule-based representation recommendation and plan history; Phase 13 adds rule-based trajectory/diversion orchestration with context preservation and resumption history. These are bounded foundations, not validated cognitive estimation, prerequisite mastery, or learning-effective representation selection. Learned multimodal encoders/fusion and the post-intervention outcome loop remain research architecture/specification.
+
+Phase 14 adds a local FastAPI integration layer and SQLite/Alembic persistence. Phase 9–12 snapshots remain read-only JSONL and are served through offset indexes; Phase 13 trajectory writes made through HTTP preserve immutable versions and append-only events. Model inference, authentication, and HTTP diversion mutations are not implemented. See [`PHASE14_BACKEND_ARCHITECTURE.md`](PHASE14_BACKEND_ARCHITECTURE.md) and [`BACKEND_INTEGRATION_REPORT.md`](BACKEND_INTEGRATION_REPORT.md).
+
 ## System context
 
 ```text
@@ -66,7 +70,17 @@ The implementation should define versioned schemas before model training. Minimu
 
 `EvidenceBundle` with modality-specific features, optional fused vector `Z_t`, modality mask, source event IDs, model versions, timestamp/window and quality indicators. The layer does not output “confused,” “understands,” or any other ungrounded cognitive conclusion.
 
+### Phase 10 implementation status
+
+The current implementation is an evidence-record foundation, not the feature-encoder/fusion design above. `src/mcp_ri/evidence/` provides versioned validation, normalization, provenance-preserving adapters, possible-duplicate links, explicit conflict records, conservative alignment/grouping, and an interaction-only bridge to Phase 9. EdNet KT1 is the only real learner modality in this workspace; text/audio/visual adapters are tested synthetically. There is no ASR, OCR, learned fusion, or cognitive interpretation. See [`MULTIMODAL_EVIDENCE_ARCHITECTURE.md`](MULTIMODAL_EVIDENCE_ARCHITECTURE.md) and [`PHASE10_EVALUATION.md`](PHASE10_EVALUATION.md).
+
+Phase 11 consumes the complete Phase 9 snapshot plus matching Phase 10 evidence prefix and emits a separate state record. The estimator checks evidence counts, learner identity, provenance references, timestamps, source sequence and requested cutoff before applying documented rules. It preserves contradictions and only recommends further diagnostic evidence. It does not interpret raw text/audio/visual content or claim a cognitive probability. See [`COGNITIVE_STATE_ARCHITECTURE.md`](COGNITIVE_STATE_ARCHITECTURE.md) and [`COGNITIVE_STATE_METHODOLOGY.md`](COGNITIVE_STATE_METHODOLOGY.md).
+
 ## Layer 2 — Cognitive State Estimation
+
+### Implemented component and boundary
+
+`src/mcp_ri/learner_state/` implements response-history summaries, not cognition inference. `src/mcp_ri/cognitive_state/` adds a distinct, provisional projection with explicit uncertainty dimensions, hypotheses, recommendations, and append-only state versions. Both use observed correctness and dataset skill tags; neither measures understanding. Phase 11 keeps estimate confidence low because EdNet has no corresponding ground-truth labels. See [`LEARNER_STATE_ARCHITECTURE.md`](LEARNER_STATE_ARCHITECTURE.md), [`COGNITIVE_STATE_ARCHITECTURE.md`](COGNITIVE_STATE_ARCHITECTURE.md), and [`COGNITIVE_STATE_METHODOLOGY.md`](COGNITIVE_STATE_METHODOLOGY.md).
 
 ### State representation
 
@@ -99,6 +113,14 @@ Use an inspectable, deterministic policy over explicit inputs: current concept a
 
 This layer is not initially trained as a representation selector. Existing datasets generally do not provide randomized representation assignments and outcomes for all options, so a model trained to imitate observed choices would reproduce historical selection bias and would not establish which representation improves learning.
 
+### Phase 12 implementation status
+
+`src/mcp_ri/representation/` implements a deterministic rule engine over Phase 11 states and their embedded Phase 9 observations. It records satisfied/unsatisfied conditions, evidence IDs, alternatives, registry availability, objective/content gaps and preserved context. The registry is unavailable for all actual delivery categories in this repository; plans request more evidence or defer unless a provider/content source is explicitly supplied. EdNet tags map to item identifiers only. The module does not generate content, run interventions or claim educational effectiveness. See [`REPRESENTATION_INTELLIGENCE_ARCHITECTURE.md`](REPRESENTATION_INTELLIGENCE_ARCHITECTURE.md) and [`REPRESENTATION_EVALUATION.md`](REPRESENTATION_EVALUATION.md).
+
+### Phase 13 implementation status
+
+`src/mcp_ri/trajectory/` adds versioned primary trajectories, an explicit finite-state machine, a conservative diversion detector, a sourced dependency registry, compact parent-context snapshots, bounded diversion progress/revisions, a resumption engine, and append-only reconstructable history. The default prerequisite registry is empty. Synthetic dependencies are opt-in for tests, and capability deferral cannot be interpreted as a knowledge gap. The API history store is in-memory; the bounded runner exports JSONL. No concept prerequisites, actual instructional exposure, or learning effects are inferred from EdNet. See [`LEARNING_TRAJECTORY_ARCHITECTURE.md`](LEARNING_TRAJECTORY_ARCHITECTURE.md) and [`TRAJECTORY_EVALUATION.md`](TRAJECTORY_EVALUATION.md).
+
 ### Later trainable decision model
 
 Only after a sufficiently designed study collects state/context, available actions, chosen action, exposure, pre/post outcomes and preferably randomized or otherwise defensibly identified action assignment, train a contextual supervised or causal decision model. Start with offline evaluation and conservative supervised/ranking methods. Consider contextual bandits only with adequate logged action coverage and propensity information or a prospective safe study. Reinforcement learning is out of scope until sequential decision data, meaningful reward definition, sample size and ethical deployment justification exist.
@@ -111,7 +133,7 @@ Initially update state through transparent event-sourced rules: preserve prior e
 
 ## Model-development and execution locations
 
-Training occurs in a reproducible research environment, separate from the inference/runtime path. Training scripts/notebooks (to be created in a later implementation phase) consume versioned, permission-checked dataset partitions and write model artifacts, metrics and metadata to a controlled experiment directory. GPU use is optional: classical baselines should run on CPU; pretrained encoders may run locally or on a managed GPU depending on size. Fine-tuning is a later, explicit experiment and must use the training split only. Runtime inference loads a frozen, versioned artifact; it never updates weights online in the initial prototype. Exact cloud/provider choice is intentionally undecided pending privacy, dataset terms and available compute.
+Training occurs in a reproducible research environment, separate from the inference/runtime path. Existing EdNet training scripts consume the processed unseen-learner partitions and save models/reports under experiment-specific paths. The Phase 9 state builder is descriptive and does not load or modify those artifacts. GPU use is optional: classical baselines run on CPU, while the saved temporal models used PyTorch/CUDA. Any future fine-tuning must be an explicit experiment confined to training data. Runtime inference should load a frozen, versioned artifact and should not update weights online in the initial prototype. Exact cloud/provider choice remains undecided pending privacy, dataset terms and compute.
 
 ## Cross-cutting evaluation and controls
 

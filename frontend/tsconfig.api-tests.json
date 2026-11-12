@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "rootDir": ".",
+    "outDir": ".api-test-dist",
+    "noEmitOnError": true
+  },
+  "include": ["lib/**/*.ts", "components/navigation/navigation-data.ts", "tests/api/types.typecheck.ts"],
+  "exclude": ["node_modules", ".api-test-dist"]
+}
