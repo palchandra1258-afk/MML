@@ -167,3 +167,14 @@ The initial observable-outcome model was completed on EdNet KT1, selected after 
 Phase 8 added DKT and SAKT-style sequence models on the same 5% sampled training-learner protocol. SAKT improved several pooled response-prediction metrics on a matched unseen-learner validation cohort, while logistic retained higher F1. The validation test partition remains untouched. The comparison is not architecture-only because the sequence and tabular models consume different feature representations. See [`TEMPORAL_KNOWLEDGE_TRACING_EXPERIMENT.md`](TEMPORAL_KNOWLEDGE_TRACING_EXPERIMENT.md), [`PHASE8_SEQUENCE_MODEL_COMPARISON.md`](PHASE8_SEQUENCE_MODEL_COMPARISON.md), and [`PHASE8_CALIBRATION_ANALYSIS.md`](PHASE8_CALIBRATION_ANALYSIS.md).
 
 Before a larger run, predeclare whether the primary estimand weights each response or each learner, select the primary metric, budget tuning, then retrain all relevant baselines on the same expanded learner set. Freeze the analysis before any single test evaluation. This line of work strengthens only the EdNet behavioral-prediction component. The multimodal cognitive-state and representation-selection hypotheses still require data with verified modality alignment and independently defined construct labels, followed by prospective intervention/outcome evaluation.
+
+## Phase 14 implementation checkpoint — Backend integration and persistence
+
+- Added a FastAPI `/api/v1` backend with generated OpenAPI and shared frontend contracts.
+- Connected read-only Phase 9–12 artifact lookup, including Phase 10 evidence group/alignment annotations.
+- Added a stream-built SQLite offset index for research JSONL outputs, avoiding payload copies and startup loading of the 2.6 GB Phase 9 file.
+- Added SQLAlchemy/Alembic persistence for API-authored trajectory snapshots, immutable versions, and append-only events; API creation/actions call the Phase 13 builder/manager.
+- Added 21 synthetic API tests covering endpoint validation, CORS, persistence/recovery, transition rules, OpenAPI schema, and transaction rollback.
+- The Phase 13 sample remains unimported because its generated objectives are placeholders. Diversion writes, authentication, learned-model inference, and PostgreSQL runtime validation remain incomplete.
+
+The backend is a local research prototype. Run `PYTHONPATH=src .venv-api/bin/python scripts/api/index_artifacts.py` once before connecting the frontend. See [`PHASE14_BACKEND_ARCHITECTURE.md`](PHASE14_BACKEND_ARCHITECTURE.md), [`API_DESIGN_SPECIFICATION.md`](API_DESIGN_SPECIFICATION.md), [`DATABASE_ARCHITECTURE.md`](DATABASE_ARCHITECTURE.md), [`PERSISTENCE_METHODOLOGY.md`](PERSISTENCE_METHODOLOGY.md), [`BACKEND_INTEGRATION_REPORT.md`](BACKEND_INTEGRATION_REPORT.md), and [`PHASE14_EVALUATION.md`](PHASE14_EVALUATION.md).

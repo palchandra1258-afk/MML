@@ -1,0 +1,3513 @@
+{
+  "snapshotDate": "2026-11-11",
+  "snapshotType": "Versioned frontend snapshot of allowlisted aggregate reports; not live API data.",
+  "cohorts": [
+    {
+      "id": "unseen-validation-full",
+      "label": "Unseen-learner validation · full cohort",
+      "dataset": "EdNet KT1",
+      "target": "Next submitted-answer correctness (behavioral outcome)",
+      "split": "Learner-disjoint validation; all scored labels in the existing validation split.",
+      "protocol": "Fixed 0.5 decision threshold. Locked test partition was not used.",
+      "examples": 14236525,
+      "learners": 117784,
+      "classification": "measured_experimental_result",
+      "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+      "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+      "source": "docs/MODEL_EVALUATION_REPORT.md; docs/BASELINE_EXPERIMENTS.md; docs/ADVANCED_MODEL_COMPARISON.md",
+      "models": [
+        {
+          "modelId": "majority",
+          "family": "baseline",
+          "label": "Majority / prevalence",
+          "variant": "Constant prevalence baseline",
+          "metrics": {
+            "accuracy": 0.652475446079714,
+            "precision": 0.652475446079714,
+            "recall": 1.0,
+            "f1": 0.789694573226644,
+            "rocAuc": 0.5,
+            "prAuc": 0.652475446079714,
+            "logLoss": 0.6459035930155614,
+            "brierScore": 0.22675252256139228,
+            "ece": 0.0011332336917093677
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              0,
+              4947542
+            ],
+            [
+              0,
+              9288983
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 14236525,
+              "meanProbability": 0.6536086797714233,
+              "observedPositiveRate": 0.652475446079714
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "last_response",
+          "family": "baseline",
+          "label": "Last-response persistence",
+          "variant": "Prior response persistence",
+          "metrics": {
+            "accuracy": 0.5974150995414963,
+            "precision": 0.690152966972163,
+            "recall": 0.695020972694212,
+            "f1": 0.692578415860639,
+            "rocAuc": 0.55561696604071,
+            "prAuc": 0.6794124433732769,
+            "logLoss": 13.797544211260202,
+            "brierScore": 0.4013110019970734,
+            "ece": 0.39971907784646765
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              2049077,
+              2898465
+            ],
+            [
+              2832945,
+              6456038
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 4882022,
+              "meanProbability": 1.0000000000000005e-15,
+              "observedPositiveRate": 0.5802810802573196
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 117784,
+              "meanProbability": 0.6536086797714233,
+              "observedPositiveRate": 0.604547306934728
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 9236719,
+              "meanProbability": 0.999999999999999,
+              "observedPositiveRate": 0.6912445858751359
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "historical_accuracy",
+          "family": "baseline",
+          "label": "Historical-accuracy persistence",
+          "variant": "Prior learner accuracy",
+          "metrics": {
+            "accuracy": 0.6642422922728686,
+            "precision": 0.6797959407625935,
+            "recall": 0.9176496501285447,
+            "f1": 0.7810150289395493,
+            "rocAuc": 0.6199547129653559,
+            "prAuc": 0.7272470326911884,
+            "logLoss": 0.8762031168525232,
+            "brierScore": 0.2202084670569259,
+            "ece": 0.02496234467948458
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              932470,
+              4015072
+            ],
+            [
+              764951,
+              8524032
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 96964,
+              "meanProbability": 0.0005619298194705833,
+              "observedPositiveRate": 0.4216616476217978
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 16004,
+              "meanProbability": 0.10724262548231149,
+              "observedPositiveRate": 0.291552111972007
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 45921,
+              "meanProbability": 0.1651919577495865,
+              "observedPositiveRate": 0.3115132510180527
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 138381,
+              "meanProbability": 0.23457337686286758,
+              "observedPositiveRate": 0.3529964373721826
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 179750,
+              "meanProbability": 0.29502619156154375,
+              "observedPositiveRate": 0.36050069541029206
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 346624,
+              "meanProbability": 0.3594997520830229,
+              "observedPositiveRate": 0.44169186207533234
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 554773,
+              "meanProbability": 0.43327919088486594,
+              "observedPositiveRate": 0.4857698554183423
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 999851,
+              "meanProbability": 0.502608459720679,
+              "observedPositiveRate": 0.5317562316785202
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 1762307,
+              "meanProbability": 0.5690071794612893,
+              "observedPositiveRate": 0.5965725608534722
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 3170553,
+              "meanProbability": 0.6354944374951298,
+              "observedPositiveRate": 0.6479424882662426
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 3687107,
+              "meanProbability": 0.6986674403305624,
+              "observedPositiveRate": 0.7018654462699346
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 2330694,
+              "meanProbability": 0.7620236603719294,
+              "observedPositiveRate": 0.7605661661290586
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 648674,
+              "meanProbability": 0.8224817012171258,
+              "observedPositiveRate": 0.8039832026564961
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 90761,
+              "meanProbability": 0.8877356061080531,
+              "observedPositiveRate": 0.8299820407443725
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 168161,
+              "meanProbability": 0.9970563277696558,
+              "observedPositiveRate": 0.5838155101361195
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "sgd_logistic",
+          "family": "logistic",
+          "label": "SGD logistic regression",
+          "variant": "Linear model",
+          "metrics": {
+            "accuracy": 0.7075148605435666,
+            "precision": 0.7179929784718678,
+            "recall": 0.908603342260396,
+            "f1": 0.8021299589136539,
+            "rocAuc": 0.7413214636189656,
+            "prAuc": 0.8350274780519413,
+            "logLoss": 0.5647798185503112,
+            "brierScore": 0.19164707370211587,
+            "ece": 0.03577951604339146
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              1632552,
+              3314990
+            ],
+            [
+              848982,
+              8440001
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 43736,
+              "meanProbability": 0.04534301852062915,
+              "observedPositiveRate": 0.18195536857508687
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 122138,
+              "meanProbability": 0.10175513587973187,
+              "observedPositiveRate": 0.20587368386579116
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 207966,
+              "meanProbability": 0.16841830513057227,
+              "observedPositiveRate": 0.2412461652385486
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 262836,
+              "meanProbability": 0.23495039602924409,
+              "observedPositiveRate": 0.27713479127668966
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 356702,
+              "meanProbability": 0.30133920329501623,
+              "observedPositiveRate": 0.3145875268431352
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 467744,
+              "meanProbability": 0.36818982266750305,
+              "observedPositiveRate": 0.35198099815283573
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 639207,
+              "meanProbability": 0.4347253938294984,
+              "observedPositiveRate": 0.39367685272533
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 820852,
+              "meanProbability": 0.5015768640124075,
+              "observedPositiveRate": 0.4467187751263322
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 1102561,
+              "meanProbability": 0.5682059101029339,
+              "observedPositiveRate": 0.5067447515375566
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 1433762,
+              "meanProbability": 0.634912111285858,
+              "observedPositiveRate": 0.5758759124596691
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 1885061,
+              "meanProbability": 0.7014756739280927,
+              "observedPositiveRate": 0.651309427121987
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 2343623,
+              "meanProbability": 0.7676240627234854,
+              "observedPositiveRate": 0.7317640251866447
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 2462679,
+              "meanProbability": 0.8329119910423525,
+              "observedPositiveRate": 0.8171824261302427
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 1759670,
+              "meanProbability": 0.8956107302400924,
+              "observedPositiveRate": 0.8998942983627612
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 327988,
+              "meanProbability": 0.948221020502201,
+              "observedPositiveRate": 0.9591448467626864
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "xgboost_300_round",
+          "family": "xgboost",
+          "label": "XGBoost · 300 rounds",
+          "variant": "Tree ensemble",
+          "metrics": {
+            "accuracy": 0.687650041003686,
+            "precision": 0.6955949060873167,
+            "recall": 0.92692343176858,
+            "f1": 0.7947684811047887,
+            "rocAuc": 0.6903995126372153,
+            "prAuc": 0.795157558797956,
+            "logLoss": 0.5925765630625807,
+            "brierScore": 0.20313706988270772,
+            "ece": 0.017782231218020476
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              1179571,
+              3767971
+            ],
+            [
+              678807,
+              8610176
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 887,
+              "meanProbability": 0.12702561972039125,
+              "observedPositiveRate": 0.10597519729425028
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 50079,
+              "meanProbability": 0.17976049612811462,
+              "observedPositiveRate": 0.139240000798738
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 103929,
+              "meanProbability": 0.23541943887643552,
+              "observedPositiveRate": 0.18313463999461171
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 148576,
+              "meanProbability": 0.3020767908217997,
+              "observedPositiveRate": 0.22816605642903295
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 309102,
+              "meanProbability": 0.37447884467892467,
+              "observedPositiveRate": 0.30022452135541017
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 795237,
+              "meanProbability": 0.4348929010898952,
+              "observedPositiveRate": 0.4037412746137315
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 1004986,
+              "meanProbability": 0.5023400561547271,
+              "observedPositiveRate": 0.47266529085977316
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 1874944,
+              "meanProbability": 0.5689787408070914,
+              "observedPositiveRate": 0.5517300783383398
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 2870949,
+              "meanProbability": 0.6344277689544244,
+              "observedPositiveRate": 0.6358479373893441
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 2851780,
+              "meanProbability": 0.6994904782964912,
+              "observedPositiveRate": 0.7093120787718548
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 2463309,
+              "meanProbability": 0.7652551151631201,
+              "observedPositiveRate": 0.7824016394207953
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 1442554,
+              "meanProbability": 0.8286178694963533,
+              "observedPositiveRate": 0.8551541224799903
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 316204,
+              "meanProbability": 0.8870415392604716,
+              "observedPositiveRate": 0.9251559120061732
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 3989,
+              "meanProbability": 0.9394408739966896,
+              "observedPositiveRate": 0.9771872649786914
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "xgboost_resumed",
+          "family": "xgboost",
+          "label": "XGBoost · resumed to 600 rounds",
+          "variant": "Tree ensemble",
+          "metrics": {
+            "accuracy": 0.6925173804703044,
+            "precision": 0.7003690315697455,
+            "recall": 0.9240856614766116,
+            "f1": 0.7968224445855849,
+            "rocAuc": 0.6999112716069451,
+            "prAuc": 0.8017808464667668,
+            "logLoss": 0.5872149288313581,
+            "brierScore": 0.20080707131697725,
+            "ece": 0.01976398473244618
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              1275225,
+              3672317
+            ],
+            [
+              705167,
+              8583816
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 2046,
+              "meanProbability": 0.11487915159320551,
+              "observedPositiveRate": 0.12267839687194526
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 70498,
+              "meanProbability": 0.17613270036376735,
+              "observedPositiveRate": 0.1445572924054583
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 123893,
+              "meanProbability": 0.23524470885068044,
+              "observedPositiveRate": 0.19340882858595723
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 172075,
+              "meanProbability": 0.3015859719982297,
+              "observedPositiveRate": 0.22798779601917768
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 359624,
+              "meanProbability": 0.37296216717466424,
+              "observedPositiveRate": 0.29844226191800327
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 782184,
+              "meanProbability": 0.43493356829081814,
+              "observedPositiveRate": 0.39901225287144715
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 1033456,
+              "meanProbability": 0.5020956634524731,
+              "observedPositiveRate": 0.46965327986871236
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 1816399,
+              "meanProbability": 0.5687607972513808,
+              "observedPositiveRate": 0.5507088475604754
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 2722910,
+              "meanProbability": 0.6346039737673751,
+              "observedPositiveRate": 0.6369417277838783
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 2770582,
+              "meanProbability": 0.6995684105317038,
+              "observedPositiveRate": 0.7112307089268608
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 2443721,
+              "meanProbability": 0.7654915941137377,
+              "observedPositiveRate": 0.784148026718271
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 1517934,
+              "meanProbability": 0.8292208308658979,
+              "observedPositiveRate": 0.8559739751530699
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 412124,
+              "meanProbability": 0.8883421675821818,
+              "observedPositiveRate": 0.9244620551096272
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 9079,
+              "meanProbability": 0.9407384273225692,
+              "observedPositiveRate": 0.9742262363696442
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-xgb-resume-20261105T040130Z-seed2025",
+          "evaluatedAt": "2026-11-05T06:05:33.145591Z"
+        },
+        {
+          "modelId": "random_forest",
+          "family": "random_forest",
+          "label": "Random Forest",
+          "variant": "Tree ensemble",
+          "metrics": {
+            "accuracy": 0.6529789397342399,
+            "precision": 0.6528414440073772,
+            "recall": 0.9998130042869063,
+            "f1": 0.7899042248422764,
+            "rocAuc": 0.6380821595903776,
+            "prAuc": 0.7543141443434113,
+            "logLoss": 0.6289977888461062,
+            "brierScore": 0.21898052798608383,
+            "ece": 0.055175354959260736
+          },
+          "examples": 14236525,
+          "learners": 117784,
+          "confusionMatrix": [
+            [
+              8905,
+              4938637
+            ],
+            [
+              1737,
+              9287246
+            ]
+          ],
+          "calibrationBins": [
+            {
+              "lower": 0.0,
+              "upper": 0.06666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.06666666666666667,
+              "upper": 0.13333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.13333333333333333,
+              "upper": 0.2,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.26666666666666666,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.26666666666666666,
+              "upper": 0.3333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.3333333333333333,
+              "upper": 0.4,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.4666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.4666666666666667,
+              "upper": 0.5333333333333333,
+              "count": 138411,
+              "meanProbability": 0.518249015189722,
+              "observedPositiveRate": 0.1956202902948465
+            },
+            {
+              "lower": 0.5333333333333333,
+              "upper": 0.6,
+              "count": 1611477,
+              "meanProbability": 0.566085766062208,
+              "observedPositiveRate": 0.4614685782049635
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.6666666666666666,
+              "count": 5257329,
+              "meanProbability": 0.6432578520690229,
+              "observedPositiveRate": 0.6047413049478166
+            },
+            {
+              "lower": 0.6666666666666666,
+              "upper": 0.7333333333333333,
+              "count": 7222670,
+              "meanProbability": 0.6873181432138111,
+              "observedPositiveRate": 0.7383187934655744
+            },
+            {
+              "lower": 0.7333333333333333,
+              "upper": 0.8,
+              "count": 6638,
+              "meanProbability": 0.7377618154189284,
+              "observedPositiveRate": 0.9496836396504972
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.8666666666666667,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.8666666666666667,
+              "upper": 0.9333333333333333,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            },
+            {
+              "lower": 0.9333333333333333,
+              "upper": 1.0,
+              "count": 0,
+              "meanProbability": null,
+              "observedPositiveRate": null
+            }
+          ],
+          "calibrationMethod": "15 equal-width bins; raw probabilities; no post-hoc calibration",
+          "temperature": null,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase7-20261104T121919Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase7-20261104T121919Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase7-20261104T121919Z-seed2025/calibration_bins.csv",
+          "runId": "phase7-20261104T121919Z-seed2025",
+          "evaluatedAt": "2026-11-04T13:05:03.151279Z"
+        }
+      ],
+      "modelMetricsSources": "Phase 7 XGBoost continuation report plus the Phase 7 Random Forest report; all use the same full unseen-learner validation cohort."
+    },
+    {
+      "id": "phase8-matched-report-only",
+      "label": "Phase 8 matched report-only cohort",
+      "dataset": "EdNet KT1",
+      "target": "Next submitted-answer correctness (behavioral outcome)",
+      "split": "Learner-disjoint validation report-only cohort; 11,382,220 matched next-response transitions across 90,982 learners. Separate early-stop and calibration learner cohorts; no locked-test data.",
+      "protocol": "Same report rows and target for all eight variants. Sequence models omit the first response per learner. Inputs differ across tabular and sequence models, so this is not an architecture-only ablation. Raw and temperature-scaled results are separate.",
+      "examples": 11382220,
+      "learners": 90982,
+      "classification": "measured_experimental_result",
+      "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+      "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+      "source": "docs/PHASE8_SEQUENCE_MODEL_COMPARISON.md; docs/PHASE8_CALIBRATION_ANALYSIS.md",
+      "models": [
+        {
+          "modelId": "majority",
+          "family": "baseline",
+          "label": "Majority / prevalence",
+          "variant": "Constant prevalence baseline",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 1.014183851827302,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.6536158148410416,
+              "precision": 0.6536158148410416,
+              "recall": 1.0,
+              "f1": 0.7905292256821724,
+              "rocAuc": 0.5,
+              "prAuc": 0.6536158148410416,
+              "logLoss": 0.6451795276116746,
+              "brierScore": 0.22640218148163208,
+              "ece": 7.1350696182470585e-06
+            },
+            "temperature_scaled": {
+              "accuracy": 0.6536158148410416,
+              "precision": 0.6536158148410416,
+              "recall": 1.0,
+              "f1": 0.7905292256821724,
+              "rocAuc": 0.5,
+              "prAuc": 0.6536158148410416,
+              "logLoss": 0.6451885255826374,
+              "brierScore": 0.22640626321070778,
+              "ece": 0.002020341551551841
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 11382220,
+                "meanProbability": 0.6536086797714233,
+                "observedPositiveRate": 0.6536158148410416
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 11382220,
+                "meanProbability": 0.6515954732894897,
+                "observedPositiveRate": 0.6536158148410416
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              0,
+              3942621
+            ],
+            [
+              0,
+              7439599
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "last_response",
+          "family": "baseline",
+          "label": "Last-response persistence",
+          "variant": "Prior response persistence",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 19.999886887879573,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.5982125631028042,
+              "precision": 0.6922549525152,
+              "recall": 0.6936504239005356,
+              "f1": 0.6929519856561567,
+              "rocAuc": 0.5558874068708548,
+              "prAuc": 0.6804178690678727,
+              "logLoss": 13.87740760214485,
+              "brierScore": 0.401787436897195,
+              "ece": 0.40178743689719465
+            },
+            "temperature_scaled": {
+              "accuracy": 0.5982125631028042,
+              "precision": 0.6922549525152,
+              "recall": 0.6936504239005356,
+              "f1": 0.6929519856561567,
+              "rocAuc": 0.5558874068708548,
+              "prAuc": 0.6804178690678727,
+              "logLoss": 0.6838014789981672,
+              "brierScore": 0.2449684692934894,
+              "ece": 0.10213447621925516
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 3927624,
+                "meanProbability": 1.0000000000000003e-15,
+                "observedPositiveRate": 0.5802790694832296
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 7454596,
+                "meanProbability": 0.9999999999999988,
+                "observedPositiveRate": 0.6922549525152
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 3927624,
+                "meanProbability": 0.33385971188545227,
+                "observedPositiveRate": 0.5802790694832296
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 7454596,
+                "meanProbability": 0.6661402583122253,
+                "observedPositiveRate": 0.6922549525152
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              1648506,
+              2294115
+            ],
+            [
+              2279118,
+              5160481
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "historical_accuracy",
+          "family": "baseline",
+          "label": "Historical-accuracy persistence",
+          "variant": "Prior learner accuracy",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 4.2364842365791695,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.6658845111059178,
+              "precision": 0.681646905543707,
+              "recall": 0.9171708045016942,
+              "f1": 0.782061190360293,
+              "rocAuc": 0.622112809585142,
+              "prAuc": 0.7293985693711096,
+              "logLoss": 0.8749324454116467,
+              "brierScore": 0.21951273755728132,
+              "ece": 0.02509826340076772
+            },
+            "temperature_scaled": {
+              "accuracy": 0.6658845111059178,
+              "precision": 0.681646905543707,
+              "recall": 0.9171708045016942,
+              "f1": 0.782061190360293,
+              "rocAuc": 0.6221128096007226,
+              "prAuc": 0.7293985699811341,
+              "logLoss": 0.6752919867166794,
+              "brierScore": 0.23718917796392833,
+              "ece": 0.13048509036546763
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 78151,
+                "meanProbability": 0.0005835951777192037,
+                "observedPositiveRate": 0.4209926936315594
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 12894,
+                "meanProbability": 0.10720986833849933,
+                "observedPositiveRate": 0.2911431673646657
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 36533,
+                "meanProbability": 0.16518286344470415,
+                "observedPositiveRate": 0.31081487969780747
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 112419,
+                "meanProbability": 0.23494291475060447,
+                "observedPositiveRate": 0.3526628061092876
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 148552,
+                "meanProbability": 0.2948662969707316,
+                "observedPositiveRate": 0.3571543971134687
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 279514,
+                "meanProbability": 0.35945834466722637,
+                "observedPositiveRate": 0.44057542734889843
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 451261,
+                "meanProbability": 0.4332380561474061,
+                "observedPositiveRate": 0.4844114603300529
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 799418,
+                "meanProbability": 0.5027547287126977,
+                "observedPositiveRate": 0.5316530275775627
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1408325,
+                "meanProbability": 0.5685084800626851,
+                "observedPositiveRate": 0.5959675501038467
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 2413464,
+                "meanProbability": 0.6349737402566552,
+                "observedPositiveRate": 0.6496343015682023
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 2964925,
+                "meanProbability": 0.6988645431571957,
+                "observedPositiveRate": 0.7020710473283472
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1927157,
+                "meanProbability": 0.7620573792605361,
+                "observedPositiveRate": 0.761498414503852
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 537456,
+                "meanProbability": 0.8223557917189983,
+                "observedPositiveRate": 0.8045384180286386
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 77923,
+                "meanProbability": 0.8876552192490138,
+                "observedPositiveRate": 0.8346829562516843
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 134228,
+                "meanProbability": 0.9969286315999456,
+                "observedPositiveRate": 0.5839765175671245
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 77298,
+                "meanProbability": 0.036930814385414124,
+                "observedPositiveRate": 0.42297342751429534
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 296,
+                "meanProbability": 0.32586004363523946,
+                "observedPositiveRate": 0.24324324324324326
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 22439,
+                "meanProbability": 0.38334441552363413,
+                "observedPositiveRate": 0.2890503141851241
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 433935,
+                "meanProbability": 0.4456006543833184,
+                "observedPositiveRate": 0.37798287761992005
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 4055246,
+                "meanProbability": 0.5119957296427605,
+                "observedPositiveRate": 0.578338774022587
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 6521450,
+                "meanProbability": 0.5557579008615787,
+                "observedPositiveRate": 0.7205403706230976
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 141908,
+                "meanProbability": 0.6145387564965312,
+                "observedPositiveRate": 0.8272965583335682
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 3419,
+                "meanProbability": 0.6796301705302394,
+                "observedPositiveRate": 0.7964317051769523
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 126229,
+                "meanProbability": 0.9630692005157471,
+                "observedPositiveRate": 0.5698294369756554
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              755861,
+              3186760
+            ],
+            [
+              616216,
+              6823383
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "sgd_logistic",
+          "family": "logistic",
+          "label": "SGD logistic regression",
+          "variant": "Linear model",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 1.1173467142511087,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.7084932464844292,
+              "precision": 0.719093086700817,
+              "recall": 0.9091662064044044,
+              "f1": 0.8030356546476249,
+              "rocAuc": 0.7424335321552438,
+              "prAuc": 0.8365916739995135,
+              "logLoss": 0.5634140654893904,
+              "brierScore": 0.19109282773023403,
+              "ece": 0.036097738618397386
+            },
+            "temperature_scaled": {
+              "accuracy": 0.7084932464844292,
+              "precision": 0.719093086700817,
+              "recall": 0.9091662064044044,
+              "f1": 0.8030356546476249,
+              "rocAuc": 0.7424335321628805,
+              "prAuc": 0.8365916728816454,
+              "logLoss": 0.5620906531024318,
+              "brierScore": 0.19050809510622868,
+              "ece": 0.029195980517150368
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 35015,
+                "meanProbability": 0.04529193190232187,
+                "observedPositiveRate": 0.18175067828073682
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 97882,
+                "meanProbability": 0.10177318552238236,
+                "observedPositiveRate": 0.20613595962485443
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 166280,
+                "meanProbability": 0.16838522124565047,
+                "observedPositiveRate": 0.24140606206398846
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 210366,
+                "meanProbability": 0.23491117016927293,
+                "observedPositiveRate": 0.27727389407033454
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 286052,
+                "meanProbability": 0.3013115936994091,
+                "observedPositiveRate": 0.3152328947184428
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 372714,
+                "meanProbability": 0.3681534853110438,
+                "observedPositiveRate": 0.3517978932908343
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 507058,
+                "meanProbability": 0.434691929189577,
+                "observedPositiveRate": 0.39393126624567604
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 646963,
+                "meanProbability": 0.501551569187422,
+                "observedPositiveRate": 0.4463377349245629
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 869912,
+                "meanProbability": 0.5682345783458936,
+                "observedPositiveRate": 0.5053327233099439
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1137396,
+                "meanProbability": 0.634925430497573,
+                "observedPositiveRate": 0.5749677333136393
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1504907,
+                "meanProbability": 0.7015332597134808,
+                "observedPositiveRate": 0.6513126724774355
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1885315,
+                "meanProbability": 0.7676409879878355,
+                "observedPositiveRate": 0.7316756085853027
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1989272,
+                "meanProbability": 0.8329453392040139,
+                "observedPositiveRate": 0.8177815803972509
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 1405990,
+                "meanProbability": 0.8959143158735773,
+                "observedPositiveRate": 0.9022133870084424
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 267098,
+                "meanProbability": 0.9482976279947549,
+                "observedPositiveRate": 0.9596739773416498
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 20130,
+                "meanProbability": 0.04786761386719728,
+                "observedPositiveRate": 0.1877297565822156
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 73635,
+                "meanProbability": 0.10361445348297756,
+                "observedPositiveRate": 0.19547769403137094
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 133392,
+                "meanProbability": 0.16945294652842866,
+                "observedPositiveRate": 0.22379153172604055
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 204491,
+                "meanProbability": 0.23383907577392568,
+                "observedPositiveRate": 0.26615352264891856
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 280688,
+                "meanProbability": 0.3019900951454453,
+                "observedPositiveRate": 0.3042987231374337
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 384839,
+                "meanProbability": 0.36841898719384936,
+                "observedPositiveRate": 0.3443050210607553
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 545712,
+                "meanProbability": 0.4351316877858494,
+                "observedPositiveRate": 0.38892309496584276
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 723034,
+                "meanProbability": 0.501728417542946,
+                "observedPositiveRate": 0.4465419330211304
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 998113,
+                "meanProbability": 0.5682615969202661,
+                "observedPositiveRate": 0.5133887645987979
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1327804,
+                "meanProbability": 0.6349641603349274,
+                "observedPositiveRate": 0.5913176944790044
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1742274,
+                "meanProbability": 0.7013044754141019,
+                "observedPositiveRate": 0.6757105943152455
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 2037839,
+                "meanProbability": 0.7669815715885848,
+                "observedPositiveRate": 0.7615994197775192
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1843553,
+                "meanProbability": 0.8317003012984849,
+                "observedPositiveRate": 0.8491852417587127
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 966874,
+                "meanProbability": 0.8936045473483127,
+                "observedPositiveRate": 0.9259210610689708
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 99842,
+                "meanProbability": 0.9457692901619791,
+                "observedPositiveRate": 0.966497065363274
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              1300394,
+              2642227
+            ],
+            [
+              675767,
+              6763832
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "random_forest",
+          "family": "random_forest",
+          "label": "Random Forest",
+          "variant": "Tree ensemble",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 0.9018989500861588,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.6541165958837556,
+              "precision": 0.6539813306300231,
+              "recall": 0.9998111457351397,
+              "f1": 0.790737450812082,
+              "rocAuc": 0.6388961686223537,
+              "prAuc": 0.7558520439468168,
+              "logLoss": 0.6282784156692354,
+              "brierScore": 0.21863789248356122,
+              "ece": 0.05631959336124824
+            },
+            "temperature_scaled": {
+              "accuracy": 0.6541165958837556,
+              "precision": 0.6539813306300231,
+              "recall": 0.9998111457351397,
+              "f1": 0.790737450812082,
+              "rocAuc": 0.6388961686223537,
+              "prAuc": 0.7558520439468168,
+              "logLoss": 0.6276596661952887,
+              "brierScore": 0.21845484843859217,
+              "ece": 0.04285530902762249
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 110192,
+                "meanProbability": 0.5182389318664452,
+                "observedPositiveRate": 0.195567736314796
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1222653,
+                "meanProbability": 0.565947151232842,
+                "observedPositiveRate": 0.45809808670162344
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 4193725,
+                "meanProbability": 0.6431318007767141,
+                "observedPositiveRate": 0.6028411495746622
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 5850228,
+                "meanProbability": 0.6873488668017459,
+                "observedPositiveRate": 0.7392281121351167
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 5422,
+                "meanProbability": 0.7377516799573747,
+                "observedPositiveRate": 0.950018443378827
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 93313,
+                "meanProbability": 0.5175698890376799,
+                "observedPositiveRate": 0.18462593636470803
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1063175,
+                "meanProbability": 0.5669137195005607,
+                "observedPositiveRate": 0.4425151080490042
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 2731492,
+                "meanProbability": 0.6438470741201505,
+                "observedPositiveRate": 0.576390119392625
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 7350411,
+                "meanProbability": 0.6980328790620873,
+                "observedPositiveRate": 0.7143657681182726
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 143829,
+                "meanProbability": 0.7401950707323153,
+                "observedPositiveRate": 0.8803023034297673
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              7105,
+              3935516
+            ],
+            [
+              1405,
+              7438194
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "xgboost_600",
+          "family": "xgboost",
+          "label": "XGBoost · 600 rounds",
+          "variant": "Tree ensemble",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 0.8895485433982575,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.6939976559932948,
+              "precision": 0.7020701009244041,
+              "recall": 0.9238946884099533,
+              "f1": 0.79785102529931,
+              "rocAuc": 0.701016234519364,
+              "prAuc": 0.8033604314113107,
+              "logLoss": 0.5858840662602897,
+              "brierScore": 0.20022323311039233,
+              "ece": 0.019733337716392782
+            },
+            "temperature_scaled": {
+              "accuracy": 0.6939976559932948,
+              "precision": 0.7020701009244041,
+              "recall": 0.9238946884099533,
+              "f1": 0.79785102529931,
+              "rocAuc": 0.7010162345181536,
+              "prAuc": 0.8033604311533014,
+              "logLoss": 0.5851009300862694,
+              "brierScore": 0.20000491487936603,
+              "ece": 0.01591097653856082
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 1631,
+                "meanProbability": 0.11488285096125833,
+                "observedPositiveRate": 0.12446351931330472
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 56427,
+                "meanProbability": 0.17609780024582833,
+                "observedPositiveRate": 0.1448774522834813
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 101195,
+                "meanProbability": 0.2354404941904338,
+                "observedPositiveRate": 0.19497998912989772
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 140463,
+                "meanProbability": 0.30153451784767854,
+                "observedPositiveRate": 0.2284872172743
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 290348,
+                "meanProbability": 0.3729006733664197,
+                "observedPositiveRate": 0.2981938914681692
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 628131,
+                "meanProbability": 0.43493457241280364,
+                "observedPositiveRate": 0.39941986623809367
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 820564,
+                "meanProbability": 0.5020306066210529,
+                "observedPositiveRate": 0.46935887998986064
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1392017,
+                "meanProbability": 0.5698445250533429,
+                "observedPositiveRate": 0.5509120937459816
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 2176161,
+                "meanProbability": 0.6346286188996926,
+                "observedPositiveRate": 0.6367442482426622
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 2222101,
+                "meanProbability": 0.6996075456837234,
+                "observedPositiveRate": 0.7108551771499135
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1954674,
+                "meanProbability": 0.7652521158551238,
+                "observedPositiveRate": 0.7835296320511758
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1244640,
+                "meanProbability": 0.8293455622404017,
+                "observedPositiveRate": 0.8562700861293225
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 345682,
+                "meanProbability": 0.8886361310713917,
+                "observedPositiveRate": 0.92394165736139
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 8186,
+                "meanProbability": 0.9408800378787672,
+                "observedPositiveRate": 0.9744686049352553
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 4,
+                "meanProbability": 0.06555599346756935,
+                "observedPositiveRate": 0.5
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 7327,
+                "meanProbability": 0.11946596688144412,
+                "observedPositiveRate": 0.12597243073563533
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 86221,
+                "meanProbability": 0.16721391388235982,
+                "observedPositiveRate": 0.15900998596629592
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 108419,
+                "meanProbability": 0.23509159911755187,
+                "observedPositiveRate": 0.21100545107407373
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 144361,
+                "meanProbability": 0.3018860849354736,
+                "observedPositiveRate": 0.23960765026565348
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 332749,
+                "meanProbability": 0.3723818630592615,
+                "observedPositiveRate": 0.32126016907639093
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 578256,
+                "meanProbability": 0.4345934578408232,
+                "observedPositiveRate": 0.40776057663041976
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 725476,
+                "meanProbability": 0.5017612972748728,
+                "observedPositiveRate": 0.4685682227944136
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1166713,
+                "meanProbability": 0.569603183175432,
+                "observedPositiveRate": 0.5409230890544633
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1855835,
+                "meanProbability": 0.6352700181764547,
+                "observedPositiveRate": 0.6191541812715031
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 2095410,
+                "meanProbability": 0.6997742107973131,
+                "observedPositiveRate": 0.6893347841233936
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1994301,
+                "meanProbability": 0.7662296280713025,
+                "observedPositiveRate": 0.7574744233693911
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1559655,
+                "meanProbability": 0.8309504708749221,
+                "observedPositiveRate": 0.8287563595795224
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 683565,
+                "meanProbability": 0.8918115665923563,
+                "observedPositiveRate": 0.8995443008345951
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 43928,
+                "meanProbability": 0.9437783154114698,
+                "observedPositiveRate": 0.9602303769805136
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              1025828,
+              2916793
+            ],
+            [
+              566193,
+              6873406
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "dkt",
+          "family": "dkt",
+          "label": "Deep Knowledge Tracing (DKT)",
+          "variant": "Sequence model",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 1.0374832051915606,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.7110040044912153,
+              "precision": 0.7321009669626951,
+              "recall": 0.8797955373670006,
+              "f1": 0.7991817860585194,
+              "rocAuc": 0.7409937110231872,
+              "prAuc": 0.8376458080925597,
+              "logLoss": 0.5584896065996171,
+              "brierScore": 0.1894469723062883,
+              "ece": 0.006241334739196951
+            },
+            "temperature_scaled": {
+              "accuracy": 0.7110040044912153,
+              "precision": 0.7321009669626951,
+              "recall": 0.8797955373670006,
+              "f1": 0.7991817860585194,
+              "rocAuc": 0.7409937110149879,
+              "prAuc": 0.8376458077424194,
+              "logLoss": 0.5583721598109588,
+              "brierScore": 0.18942719276344414,
+              "ece": 0.003650009981189256
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 865,
+                "meanProbability": 0.05736842569329835,
+                "observedPositiveRate": 0.10404624277456648
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 16684,
+                "meanProbability": 0.11395302676807645,
+                "observedPositiveRate": 0.14774634380244545
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 138379,
+                "meanProbability": 0.17204978461937648,
+                "observedPositiveRate": 0.17233106179405835
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 235133,
+                "meanProbability": 0.2354358988973222,
+                "observedPositiveRate": 0.23537742469155754
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 376788,
+                "meanProbability": 0.3030897813938539,
+                "observedPositiveRate": 0.29560920199157087
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 513660,
+                "meanProbability": 0.36834967257226175,
+                "observedPositiveRate": 0.3602928006852782
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 728873,
+                "meanProbability": 0.4345947375040824,
+                "observedPositiveRate": 0.4264611256007562
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 916969,
+                "meanProbability": 0.5012708724469855,
+                "observedPositiveRate": 0.49555873753638346
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1131039,
+                "meanProbability": 0.5679009102049996,
+                "observedPositiveRate": 0.5661891411348327
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1307494,
+                "meanProbability": 0.6338857427731598,
+                "observedPositiveRate": 0.630516851320159
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1436155,
+                "meanProbability": 0.7004011970508445,
+                "observedPositiveRate": 0.6966302383795621
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1467931,
+                "meanProbability": 0.7664994028846955,
+                "observedPositiveRate": 0.7580220051214941
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1361195,
+                "meanProbability": 0.8326233205836134,
+                "observedPositiveRate": 0.822480981784388
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 1105928,
+                "meanProbability": 0.8981763839313905,
+                "observedPositiveRate": 0.8892703684145803
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 645127,
+                "meanProbability": 0.9603693087499041,
+                "observedPositiveRate": 0.9535424807828536
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 520,
+                "meanProbability": 0.05843705619470431,
+                "observedPositiveRate": 0.10576923076923077
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 11523,
+                "meanProbability": 0.11234992921577397,
+                "observedPositiveRate": 0.14605571465764125
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 118964,
+                "meanProbability": 0.17321804785953618,
+                "observedPositiveRate": 0.1676221377895834
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 228945,
+                "meanProbability": 0.23523250640554208,
+                "observedPositiveRate": 0.22724235078293914
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 360107,
+                "meanProbability": 0.3024761038965648,
+                "observedPositiveRate": 0.28865864867942026
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 529168,
+                "meanProbability": 0.3678404240646891,
+                "observedPositiveRate": 0.3551235146494119
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 745843,
+                "meanProbability": 0.4347811913196381,
+                "observedPositiveRate": 0.4241254526756972
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 951446,
+                "meanProbability": 0.501312935722791,
+                "observedPositiveRate": 0.4957843114585589
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1183815,
+                "meanProbability": 0.5680084651508891,
+                "observedPositiveRate": 0.5687299113459451
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1354735,
+                "meanProbability": 0.6339744321669397,
+                "observedPositiveRate": 0.6354585952234201
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1478296,
+                "meanProbability": 0.70027499794781,
+                "observedPositiveRate": 0.7027273293034683
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1480005,
+                "meanProbability": 0.7662795045285684,
+                "observedPositiveRate": 0.7653095766568356
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1334647,
+                "meanProbability": 0.8323501767172329,
+                "observedPositiveRate": 0.8303663815226049
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 1040514,
+                "meanProbability": 0.8979081481361039,
+                "observedPositiveRate": 0.896272419208199
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 563692,
+                "meanProbability": 0.9596591992551623,
+                "observedPositiveRate": 0.9570882680612817
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              1547478,
+              2395143
+            ],
+            [
+              894273,
+              6545326
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        },
+        {
+          "modelId": "sakt",
+          "family": "sakt",
+          "label": "SAKT-style",
+          "variant": "Sequence model",
+          "examples": 11382220,
+          "learners": 90982,
+          "resultClassification": "measured_experimental_result",
+          "source": "results/reports/phase8-temporal-20261105T073420Z-seed2025/run.json",
+          "metricsSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_metrics.csv",
+          "calibrationSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/validation_calibration_bins.csv",
+          "calibrationMethod": "Temperature fitted on separate learner-disjoint calibration cohort; 15 equal-width ECE bins",
+          "temperature": 1.0645245353849744,
+          "metricVariants": {
+            "raw": {
+              "accuracy": 0.7133213028741318,
+              "precision": 0.7448602929511366,
+              "recall": 0.8538774737724439,
+              "f1": 0.7956519680672383,
+              "rocAuc": 0.7464303071496409,
+              "prAuc": 0.8411017293079444,
+              "logLoss": 0.5551020329973302,
+              "brierScore": 0.18799637266971142,
+              "ece": 0.013176643737730271
+            },
+            "temperature_scaled": {
+              "accuracy": 0.7133213028741318,
+              "precision": 0.7448602929511366,
+              "recall": 0.8538774737724439,
+              "f1": 0.7956519680672383,
+              "rocAuc": 0.7464303071651703,
+              "prAuc": 0.8411017288214566,
+              "logLoss": 0.5547741694658722,
+              "brierScore": 0.18790772461366811,
+              "ece": 0.009034257484007213
+            }
+          },
+          "calibrationBins": {
+            "raw": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 26873,
+                "meanProbability": 0.12228663685602564,
+                "observedPositiveRate": 0.14021508577382502
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 192292,
+                "meanProbability": 0.1698229936713339,
+                "observedPositiveRate": 0.18194724689534666
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 315743,
+                "meanProbability": 0.23586230624024232,
+                "observedPositiveRate": 0.24980759668464542
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 497097,
+                "meanProbability": 0.3028477565077197,
+                "observedPositiveRate": 0.3214603990770413
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 627205,
+                "meanProbability": 0.3680502344632833,
+                "observedPositiveRate": 0.38840889342400015
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 762289,
+                "meanProbability": 0.4343933210521908,
+                "observedPositiveRate": 0.456396458560992
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 896752,
+                "meanProbability": 0.5008322526248568,
+                "observedPositiveRate": 0.52043151283744
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1027046,
+                "meanProbability": 0.5673677811790611,
+                "observedPositiveRate": 0.5818541720624003
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1126751,
+                "meanProbability": 0.633931500839784,
+                "observedPositiveRate": 0.6403224847370892
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1223177,
+                "meanProbability": 0.7003826326956483,
+                "observedPositiveRate": 0.6981761429457879
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1308973,
+                "meanProbability": 0.766862663938354,
+                "observedPositiveRate": 0.7553906765074604
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1346015,
+                "meanProbability": 0.8333576765698905,
+                "observedPositiveRate": 0.8153178084939618
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 1318330,
+                "meanProbability": 0.8995795250142872,
+                "observedPositiveRate": 0.8841253707341864
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 713677,
+                "meanProbability": 0.9542777476515689,
+                "observedPositiveRate": 0.9515551152692324
+              }
+            ],
+            "temperature_scaled": [
+              {
+                "lower": 0.0,
+                "upper": 0.06666666666666667,
+                "count": 0,
+                "meanProbability": null,
+                "observedPositiveRate": null
+              },
+              {
+                "lower": 0.06666666666666667,
+                "upper": 0.13333333333333333,
+                "count": 9332,
+                "meanProbability": 0.1277301001062707,
+                "observedPositiveRate": 0.1334119159879983
+              },
+              {
+                "lower": 0.13333333333333333,
+                "upper": 0.2,
+                "count": 160030,
+                "meanProbability": 0.17168635302488933,
+                "observedPositiveRate": 0.17022433293757422
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.26666666666666666,
+                "count": 296953,
+                "meanProbability": 0.23633708798756442,
+                "observedPositiveRate": 0.23735069186032806
+              },
+              {
+                "lower": 0.26666666666666666,
+                "upper": 0.3333333333333333,
+                "count": 487066,
+                "meanProbability": 0.30389756267138657,
+                "observedPositiveRate": 0.3105123330308418
+              },
+              {
+                "lower": 0.3333333333333333,
+                "upper": 0.4,
+                "count": 641700,
+                "meanProbability": 0.3683440774270488,
+                "observedPositiveRate": 0.38014336917562724
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.4666666666666667,
+                "count": 798802,
+                "meanProbability": 0.4344648708162868,
+                "observedPositiveRate": 0.452448792066119
+              },
+              {
+                "lower": 0.4666666666666667,
+                "upper": 0.5333333333333333,
+                "count": 954868,
+                "meanProbability": 0.5008308355422962,
+                "observedPositiveRate": 0.5205661934424444
+              },
+              {
+                "lower": 0.5333333333333333,
+                "upper": 0.6,
+                "count": 1096852,
+                "meanProbability": 0.5672856521565233,
+                "observedPositiveRate": 0.5854262926994709
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.6666666666666666,
+                "count": 1199915,
+                "meanProbability": 0.6338056921955942,
+                "observedPositiveRate": 0.6472341790876853
+              },
+              {
+                "lower": 0.6666666666666666,
+                "upper": 0.7333333333333333,
+                "count": 1292744,
+                "meanProbability": 0.7002919531165073,
+                "observedPositiveRate": 0.707792107331382
+              },
+              {
+                "lower": 0.7333333333333333,
+                "upper": 0.8,
+                "count": 1345415,
+                "meanProbability": 0.7667420196598238,
+                "observedPositiveRate": 0.7670651806319984
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.8666666666666667,
+                "count": 1336681,
+                "meanProbability": 0.8331174632441184,
+                "observedPositiveRate": 0.8286943556465604
+              },
+              {
+                "lower": 0.8666666666666667,
+                "upper": 0.9333333333333333,
+                "count": 1227005,
+                "meanProbability": 0.8990349685735644,
+                "observedPositiveRate": 0.8970819189815853
+              },
+              {
+                "lower": 0.9333333333333333,
+                "upper": 1.0,
+                "count": 534857,
+                "meanProbability": 0.9516275503677589,
+                "observedPositiveRate": 0.9587104590572807
+              }
+            ]
+          },
+          "runId": "phase8-temporal-20261105T073420Z-seed2025",
+          "evaluatedAt": "2026-11-05T08:12:01.053641Z",
+          "confusionMatrix": [
+            [
+              1766674,
+              2175947
+            ],
+            [
+              1087093,
+              6352506
+            ]
+          ],
+          "confusionMatrixSource": "results/reports/phase8-temporal-20261105T073420Z-seed2025/experiment.json"
+        }
+      ]
+    }
+  ],
+  "phase9": {
+    "id": "phase9-learner-state-20261106T081823Z",
+    "status": "complete",
+    "classification": "engineering_validation",
+    "source": "results/reports/phase9-learner-state-20261106T081823Z/evaluation.json",
+    "report": "docs/LEARNER_STATE_EVALUATION.md",
+    "partition": "split_unseen_learner=validation only",
+    "lockedTestUsed": false,
+    "learners": 117785,
+    "interactions": 14241124,
+    "labelledResponses": 14236525,
+    "unlabelledInteractions": 4599,
+    "concepts": 3897566,
+    "schemaValidated": 117785,
+    "modelPredictionAvailable": 0,
+    "recentHistoricalMeanAbsoluteDifference": 0.059886105124630086,
+    "learnerEvidenceSufficiency": {
+      "low": 14924,
+      "moderate": 54604,
+      "high": 48256,
+      "none": 1
+    },
+    "learnerTrendCounts": {
+      "insufficient_evidence": 51699,
+      "declining": 26474,
+      "stable": 17729,
+      "improving": 21883
+    },
+    "confidenceIntervals": "Not reported",
+    "directCognitiveAccuracy": null,
+    "calibrationPerformed": false,
+    "notes": [
+      "Descriptive behavioral-state construction, not predictive model evaluation.",
+      "Correctness fields describe behavior, not ground-truth knowledge.",
+      "No cognitive labels or prediction artifacts were available for accuracy/calibration."
+    ],
+    "historicalAccuracyMacroMean": 0.49181536054721464,
+    "recentAccuracyMacroMean": 0.49670491801512023,
+    "smoothedPerformanceMacroMean": 0.5009144424773052
+  },
+  "phase10": {
+    "id": "phase10-evidence-20261106T101321Z",
+    "status": "complete",
+    "classification": "engineering_validation",
+    "source": "results/reports/phase10-evidence-20261106T101321Z/public_summary.json",
+    "report": "docs/PHASE10_EVALUATION.md",
+    "dataset": "EdNet-KT1 processed interaction table",
+    "partition": "split_unseen_learner == validation and correctness in {0,1}",
+    "testUsed": false,
+    "records": 1000,
+    "schemaValidated": 1000,
+    "provenanceChecksPassed": 1000,
+    "learners": 1000,
+    "groups": 1000,
+    "alignmentCandidates": 0,
+    "duplicateRecords": 0,
+    "notes": [
+      "Bounded actual EdNet interaction sample; one record per learner and singleton groups.",
+      "No real learner text/audio/visual sample or alignment candidates in this run."
+    ]
+  },
+  "phase11": {
+    "id": "phase11-cognitive-state-20261106T104113Z",
+    "status": "complete",
+    "classification": "engineering_validation",
+    "source": "results/reports/phase11-cognitive-state-20261106T104113Z/evaluation.json",
+    "report": "docs/COGNITIVE_STATE_EVALUATION.md",
+    "partition": "split_unseen_learner=validation only",
+    "testUsed": false,
+    "learners": 100,
+    "snapshots": 184,
+    "processedRows": 105805,
+    "normalizedInteractions": 824,
+    "checkpointResponses": [
+      5,
+      10
+    ],
+    "conceptStatusCounts": {
+      "insufficient_evidence": 1853,
+      "possible_difficulty": 40,
+      "developing_performance": 17
+    },
+    "hypothesisCounts": {
+      "insufficient_concept_evidence": 1853,
+      "repeated_incorrect_responses": 60,
+      "inconsistent_responses": 33,
+      "declining_recent_performance": 1
+    },
+    "uncertainty": {
+      "high": 184
+    },
+    "availableModalityStates": {
+      "interaction": 184,
+      "temporal_history": 184
+    },
+    "groundTruth": "No validated cognitive-state labels. Cognitive accuracy, misconception accuracy, diagnosis effectiveness and calibration are not established.",
+    "samplingLimit": "First 100 validation learners in processed source order; coverage smoke sample, not random or population estimate.",
+    "notes": [
+      "Rule-generated hypotheses are provisional behavioral categories.",
+      "Text/audio/visual adapter cases are synthetic fixtures, not real learner media."
+    ],
+    "evidenceReferenceValidation": "The separate validator checked all 184 snapshots and their version links; no aggregate evidence-reference count was published.",
+    "diagnosticRecommendations": "Not separately reported in this aggregate evaluation JSON.",
+    "realLearnerModalityCoverage": "Only interaction and temporal-history state is present in the bounded real EdNet sample; text/audio/visual media are absent. Those adapter paths use synthetic fixtures."
+  },
+  "phase12": {
+    "id": "phase12-representation-20261106T112420Z",
+    "status": "complete",
+    "classification": "engineering_validation",
+    "source": "results/reports/phase12-representation-20261106T112420Z/build_report.json; results/reports/phase12-representation-20261106T112420Z/evaluation.json",
+    "report": "docs/REPRESENTATION_EVALUATION.md",
+    "partition": "Phase 11 validation-learner snapshots only; inherited from Phase 11 input",
+    "testUsed": false,
+    "sourceSnapshots": 184,
+    "learners": 100,
+    "plansBuilt": 1910,
+    "selectedRepresentations": 0,
+    "plansWithoutSelection": 1910,
+    "allSelectedCapabilitiesAvailable": true,
+    "capabilityStatuses": {
+      "textual": "unavailable",
+      "worked_example": "unavailable",
+      "visual": "unavailable",
+      "symbolic": "unavailable",
+      "interactive": "unavailable",
+      "simulation": "unavailable",
+      "diagnostic": "unavailable",
+      "alternative_explanation": "unavailable"
+    },
+    "actions": {
+      "defer_until_capability_available": 17,
+      "request_additional_evidence": 14,
+      "request_diagnostic_evidence": 1879
+    },
+    "traceabilityRate": 1.0,
+    "cognitiveStateReferenceMatches": 1910,
+    "evidenceReferenceMatches": 1910,
+    "temporalLinks": 717,
+    "temporalLinksWithContext": 717,
+    "alternatives": 15280,
+    "learningEffectivenessEvaluated": false,
+    "notes": [
+      "All eight capabilities unavailable; all 1,910 plans selected none.",
+      "Schema and traceability validation is not delivery, efficacy or learning gain.",
+      "Confidence intervals not reported."
+    ],
+    "alternativeRecords": 15280
+  },
+  "phase13": {
+    "id": "phase13-trajectory-20261111T040954Z",
+    "status": "complete",
+    "classification": "engineering_validation",
+    "source": "results/reports/phase13-trajectory-20261111T040954Z/evaluation.json; results/reports/phase13-trajectory-20261111T040954Z/history_validation.json",
+    "report": "docs/TRAJECTORY_EVALUATION.md; docs/PHASE13_IMPLEMENTATION_REPORT.md",
+    "partition": "Bounded Phase 11 validation snapshots",
+    "testUsed": false,
+    "learners": 55,
+    "snapshotsRead": 100,
+    "trajectories": 100,
+    "transitions": 100,
+    "validTransitions": 100,
+    "invalidEdgesTested": 44,
+    "invalidEdgesRejected": 44,
+    "historyEvents": 300,
+    "historyEventsReconstructed": 300,
+    "trajectoryVersionsReconstructed": 200,
+    "decisionReplayChecks": 100,
+    "decisionReplayMatches": 100,
+    "evidenceReferenceChecks": 100,
+    "evidenceReferenceMatches": 100,
+    "diversions": 0,
+    "registrySource": null,
+    "resumptions": 0,
+    "learningEffectivenessEvaluated": false,
+    "diversionLimit": "Zero diversions because the real dependency registry was empty and all 100 decisions requested additional evidence. Diversion-only rates have zero denominator and remain unavailable.",
+    "notes": [
+      "Synthetic tests cover diversion/resumption branches; the real-data sample does not demonstrate them under real dependency edges.",
+      "Orchestration validation is not learner benefit or learning effectiveness."
+    ]
+  },
+  "artifactInventory": [
+    {
+      "path": "results/reports/ednet_logistic_experiment.json",
+      "type": "Phase 6 logistic experiment/config/metrics",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/tables/ednet_validation_metrics.csv; results/tables/ednet_validation_calibration.csv",
+      "type": "Phase 6 baseline metrics and calibration bins",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase7-20261104T100155Z-seed2025/run.json",
+      "type": "interrupted before training; no metrics",
+      "classification": "not_evaluated",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase7-20261104T100506Z-seed2025/",
+      "type": "XGBoost 300-round run, metrics, bins, grouped importance",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase7-20261104T121919Z-seed2025/",
+      "type": "Random Forest run, metrics, bins, grouped importance",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase7-xgb-resume-20261105T040130Z-seed2025/",
+      "type": "XGBoost continuation to 600 rounds, metrics and bins",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase8-temporal-20261105T070210Z-seed2025/run.json",
+      "type": "failed sequence-model attempt; no prediction results",
+      "classification": "not_evaluated",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase8-temporal-20261105T073420Z-seed2025/",
+      "type": "matched DKT/SAKT comparator metrics, calibration, learner bootstrap",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/figures/phase7_reliability_20261104.svg; results/figures/phase7_reliability_20261105.svg; results/figures/phase8-temporal-20261105T073420Z-seed2025_reliability.svg",
+      "type": "saved reliability diagrams checked against calibration bins",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase9-learner-state-20261106T081823Z/evaluation.json",
+      "type": "aggregate behavioral-state construction",
+      "classification": "engineering_validation",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase10-evidence-20261106T101321Z/public_summary.json",
+      "type": "aggregate evidence and provenance validation",
+      "classification": "engineering_validation",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase11-cognitive-state-20261106T104113Z/evaluation.json",
+      "type": "bounded cognitive rule/schema coverage; no ground truth",
+      "classification": "engineering_validation",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase12-representation-20261106T112420Z/{build_report,evaluation}.json",
+      "type": "representation plan build and traceability",
+      "classification": "engineering_validation",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase13-trajectory-20261111T040954Z/{build_report,evaluation,history_validation}.json",
+      "type": "trajectory orchestration and history validation",
+      "classification": "engineering_validation",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase13-trajectory-20261111T040242Z/; results/reports/phase13-trajectory-20261111T040626Z/",
+      "type": "earlier trajectory reports; final run shown in overview",
+      "classification": "engineering_validation",
+      "included": false
+    },
+    {
+      "path": "results/reports/phase12-representation-20261106T110830Z/; results/reports/phase12-representation-20261106T111439Z/; results/reports/phase12-representation-20261106T112256Z/",
+      "type": "earlier/larger Phase 12 runs; final bounded report shown",
+      "classification": "engineering_validation",
+      "included": false
+    },
+    {
+      "path": "models/baselines/; models/trained/",
+      "type": "saved checkpoints/configurations; not independent evaluation reports",
+      "classification": "not_evaluated",
+      "included": false
+    },
+    {
+      "path": "data/processed/ednet/ednet_preprocessing_summary.json; data/processed/ednet/ednet_quality_summary.json",
+      "type": "dataset processing and quality aggregates",
+      "classification": "engineering_validation",
+      "included": false
+    },
+    {
+      "path": "results/reports/phase9-learner-state-20261106T081823Z/validation_learner_states.jsonl; Phase 11 cognitive_states.jsonl; Phase 12 representation_plans.jsonl; Phase 13 learner-level JSONL",
+      "type": "learner-level derived records; not loaded into browser",
+      "classification": "not_evaluated",
+      "included": false
+    },
+    {
+      "path": "results/tables/phase7_advanced_comparison_20261104.csv; results/tables/phase7_advanced_comparison_20261105.csv; results/tables/phase7_calibration_bins_20261104.csv; results/tables/phase7_calibration_bins_20261105.csv",
+      "type": "comparison summaries and calibration-bin exports, cross-checked against run-level reports",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "results/reports/phase8-temporal-20261105T073420Z-seed2025/paired_learner_bootstrap_vs_logistic.csv",
+      "type": "paired learner bootstrap intervals for DKT/SAKT and logistic on selected metrics",
+      "classification": "measured_experimental_result",
+      "included": true
+    },
+    {
+      "path": "tests/test_cognitive_state/; tests/test_representation/; tests/trajectory/; tests/api/",
+      "type": "synthetic fixture and software integration tests; not real learner outcomes",
+      "classification": "synthetic_evaluation",
+      "included": false
+    },
+    {
+      "path": "docs/COGNITIVE_STATE_METHODOLOGY.md; docs/REPRESENTATION_DECISION_METHODOLOGY.md; docs/DIVERSION_DETECTION_METHODOLOGY.md",
+      "type": "method definitions and research hypotheses without validating labels/outcomes",
+      "classification": "unvalidated_hypothesis",
+      "included": false
+    }
+  ],
+  "missingArtifacts": [
+    "No model-evaluation or research-artifact endpoint in shared/api-contracts/openapi.json.",
+    "No independent locked-test evaluation is published; the test partition was not used.",
+    "No cognitive ground truth, cognitive accuracy/calibration, misconception accuracy or diagnosis-effectiveness outcomes.",
+    "No representation exposure/delivery or controlled learning-effectiveness evaluation.",
+    "No real dependency registry or real-data diversion/resumption outcomes.",
+    "No full-cohort learner-bootstrap confidence intervals; Phase 8 paired intervals cover selected metrics only.",
+    "No real learner text/audio/visual evaluation; multimodal adapters and conflict cases are synthetic tests.",
+    "No live/global research artifact retrieval; the page uses a committed frontend snapshot of aggregate reports."
+  ]
+}

@@ -26,7 +26,7 @@ Research console
     └── System status and limitations
 ```
 
-Role-aware navigation is a presentation plan only; authentication, authorization, and user/learner identity resolution are out of scope. Do not show research-only metrics or raw learner identifiers in the learner experience. In this initial stage, the active persona may be a clearly labeled demonstration scenario.
+Role-aware navigation is a presentation plan only; authentication, authorization, and user/learner identity resolution are out of scope. The F3 prototype permits explicit selection of a pseudonymous research record and labels its ID/source; this is not a signed-in learner identity. Do not present research-only metrics as validated learner ability. Synthetic scenarios must remain visibly labeled.
 
 ## Route proposal
 
@@ -37,13 +37,13 @@ Role-aware navigation is a presentation plan only; authentication, authorization
 | `/learning` | Learner | Workspace shell with actual content if a provider exists; otherwise explain availability and offer only supported evidence-request actions. |
 | `/learning-path` | Learner | Primary goal and objective steps with active diversion state. |
 | `/learning-path/diversions/[id]` | Learner | Reason, preserved context, bounded supporting work, and resumption status. |
-| `/research` | Researcher | System/data health and evaluation scope. |
+| `/research` | Researcher | Research overview with verified artifact coverage and evaluation scope. |
 | `/research/learners/[id]` | Researcher | Learner record with tabs for observed state, provisional estimates, and trajectory. |
-| `/research/representations/[planId]` | Researcher | Plan, rule trace, alternatives, capability, evidence, and limitations. |
-| `/research/evidence` | Researcher | Filterable evidence records, provenance, temporal alignment, gaps, and conflicts. |
-| `/research/evaluation` | Researcher | Dataset/model reports and metrics with split, date, denominator, and interpretation. |
+| `/representations` | Researcher | Learner-scoped saved plans, taxonomy/default registry snapshots, rule trace, alternatives, capability, evidence, and limitations. |
+| `/evidence` | Researcher | Learner-scoped evidence records, provenance, embedded group/alignment annotations, missingness, and explicit relationship limits. |
+| `/evaluation` | Researcher | Versioned dataset/model reports and metrics with split, denominator, method, source and interpretation. The F6 dashboard is also available from `/research`. |
 
-Routes are proposed. Backend resource identifiers and URL shapes must be reconciled with Phase 14 OpenAPI before implementation.
+The backend resource/endpoint mapping is documented in [`F2_API_INTEGRATION.md`](F2_API_INTEGRATION.md), [`F4_REPRESENTATION_INTELLIGENCE.md`](F4_REPRESENTATION_INTELLIGENCE.md), and [`F5_EVIDENCE_EXPLORER.md`](F5_EVIDENCE_EXPLORER.md). Other frontend page paths remain product proposals and are not required to mirror API endpoint paths.
 
 ## Screen-to-journey map
 

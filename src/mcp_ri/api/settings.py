@@ -22,6 +22,7 @@ class APISettings:
     cors_origins: tuple[str, ...]
     phase9_states_path: Path
     phase10_evidence_path: Path
+    phase10_groups_path: Path
     phase11_states_path: Path
     phase12_plans_path: Path
     environment: str = "development"
@@ -29,7 +30,7 @@ class APISettings:
     @classmethod
     def from_environment(cls) -> "APISettings":
         default_db = REPOSITORY_ROOT / "data/application/mcp_ri.sqlite3"
-        origins_raw = os.getenv("MCP_RI_CORS_ORIGINS", "http://localhost:3000")
+        origins_raw = os.getenv("MCP_RI_CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
         origins = tuple(origin.strip() for origin in origins_raw.split(",") if origin.strip())
         return cls(
             database_url=os.getenv("MCP_RI_DATABASE_URL", f"sqlite:///{default_db}"),
@@ -41,6 +42,10 @@ class APISettings:
             phase10_evidence_path=_artifact_path(
                 "MCP_RI_PHASE10_EVIDENCE_PATH",
                 "results/reports/phase10-evidence-20261106T101321Z/interaction_evidence.jsonl",
+            ),
+            phase10_groups_path=_artifact_path(
+                "MCP_RI_PHASE10_GROUPS_PATH",
+                "results/reports/phase10-evidence-20261106T101321Z/evidence_groups.jsonl",
             ),
             phase11_states_path=_artifact_path(
                 "MCP_RI_PHASE11_STATES_PATH",
@@ -57,6 +62,7 @@ class APISettings:
         return {
             "phase9_states": self.phase9_states_path,
             "phase10_evidence": self.phase10_evidence_path,
+            "phase10_groups": self.phase10_groups_path,
             "phase11_states": self.phase11_states_path,
             "phase12_plans": self.phase12_plans_path,
         }

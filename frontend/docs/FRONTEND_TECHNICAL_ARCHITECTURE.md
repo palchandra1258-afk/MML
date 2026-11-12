@@ -25,6 +25,10 @@ frontend/
 
 Start with shell and the small set of components demanded by reviewed screens; avoid empty folders and generic abstractions. Prefer server components for read-only composition and client components only where browser interaction/state is required. Keep raw API response handling at the server/API boundary. Do not duplicate Python JSON schemas as presumed HTTP response types.
 
+## F2 implementation status
+
+The typed client follows the current Phase 14 OpenAPI 3.1 contract. `lib/api/` owns configuration, GET/POST requests, errors, endpoint paths, and transport types; `lib/services/` mirrors actual backend resources. The shell performs one health check with explicit retry. F3 uses the learner index and read services for behavior, evidence, cognitive estimates, representation plans, and trajectory records. The complete endpoint/type mapping is in [`F2_API_INTEGRATION.md`](F2_API_INTEGRATION.md), with learner screens documented in [`F3_LEARNER_EXPERIENCE.md`](F3_LEARNER_EXPERIENCE.md).
+
 ## Data boundaries
 
 Separate three layers: (1) transport types generated/derived only from Phase 14 OpenAPI; (2) frontend view models with learner-friendly labels and formatted timestamps; (3) display components. Mappers must preserve unknown/missing states and provenance. They must not relabel observed correctness as mastery or turn ordinal support tiers into probabilities. Keep source records/version IDs available in researcher views.
@@ -41,6 +45,6 @@ Centralize base URL lookup in `lib/api/config.ts` using `NEXT_PUBLIC_API_BASE_UR
 
 Authentication and authorization are not implemented. A role toggle, if used for design demos, is not access control and must be labeled accordingly. Learner data is sensitive; researcher routes need backend-enforced authorization before any real deployment. Avoid logging identifiers or evidence payloads in browser telemetry.
 
-## Testing and quality (later milestone)
+## Testing and quality
 
-No tests are added as part of planning. During implementation, define accessibility, route, API contract, journey, and responsive checks under F9, using tools compatible with the project. No package or test runner is selected here; decide against the actual delivery requirements and existing environment. Keep lint/build behavior aligned with installed Next 16 docs.
+F2 adds isolated API client/configuration tests using TypeScript plus Node’s built-in test runner, without new dependencies. Run `npm run test:api`. F9 remains responsible for accessibility, route, journey, responsive, and live-backend checks. Keep lint/build behavior aligned with installed Next 16 docs.

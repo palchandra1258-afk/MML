@@ -1,0 +1,1191 @@
+{
+  "curriculum_version": "1.0.0",
+  "subjects": [
+    {
+      "subject_id": "mathematics",
+      "title": "Mathematics",
+      "description": "Build mathematical reasoning through worked examples and practice.",
+      "courses": [
+        {
+          "course_id": "probability-foundations",
+          "title": "Probability Foundations",
+          "description": "A curated introduction to probability, conditional reasoning, random variables and expected value.",
+          "units": [
+            {
+              "unit_id": "probability-basics",
+              "title": "Probability basics",
+              "description": "Describe uncertainty and reason about related events.",
+              "topics": [
+                {
+                  "topic_id": "introduction-to-probability",
+                  "title": "Introduction to Probability",
+                  "description": "Use outcomes, events and sample spaces to quantify uncertainty.",
+                  "objectives": [
+                    "Identify outcomes, events and sample spaces.",
+                    "Calculate probabilities for equally likely outcomes."
+                  ],
+                  "minutes": 12
+                },
+                {
+                  "topic_id": "conditional-probability",
+                  "title": "Conditional Probability",
+                  "description": "Update an event probability when another event is known to have occurred.",
+                  "objectives": [
+                    "Interpret conditional probability as a restricted sample space.",
+                    "Calculate conditional probability from counts or a two-way table."
+                  ],
+                  "minutes": 14
+                },
+                {
+                  "topic_id": "bayes-theorem",
+                  "title": "Bayes’ Theorem",
+                  "description": "Reverse conditional probabilities using prior rates and test accuracy.",
+                  "objectives": [
+                    "Identify priors, likelihoods and evidence.",
+                    "Apply Bayes’ theorem to a diagnostic example."
+                  ],
+                  "minutes": 15
+                }
+              ]
+            },
+            {
+              "unit_id": "random-quantities",
+              "title": "Random quantities",
+              "description": "Summarize uncertain numerical outcomes.",
+              "topics": [
+                {
+                  "topic_id": "random-variables",
+                  "title": "Random Variables",
+                  "description": "Represent outcomes with numerical values and probability distributions.",
+                  "objectives": [
+                    "Distinguish an outcome from a random variable.",
+                    "Read a discrete probability distribution."
+                  ],
+                  "minutes": 13
+                },
+                {
+                  "topic_id": "expected-value",
+                  "title": "Expected Value",
+                  "description": "Compute and interpret the long-run average of a random quantity.",
+                  "objectives": [
+                    "Calculate an expectation from a discrete distribution.",
+                    "Use expected value to compare simple choices."
+                  ],
+                  "minutes": 13
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject_id": "statistics",
+      "title": "Statistics",
+      "description": "Learn to summarize and interpret data. The first descriptive statistics lesson is available.",
+      "courses": [
+        {
+          "course_id": "statistics-foundations",
+          "title": "Statistics Foundations",
+          "description": "A starter lesson on describing the center and spread of a dataset.",
+          "units": [
+            {
+              "unit_id": "describing-data",
+              "title": "Describing data",
+              "description": "Summarize a small dataset with clear measures.",
+              "topics": [
+                {
+                  "topic_id": "descriptive-statistics",
+                  "title": "Descriptive Statistics",
+                  "description": "Compare mean and median and measure spread with variance.",
+                  "objectives": [
+                    "Calculate mean and median for a small dataset.",
+                    "Explain how an outlier affects the mean and median."
+                  ],
+                  "minutes": 14
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject_id": "computer-science",
+      "title": "Computer Science",
+      "description": "Explore foundational ideas in computation. One algorithm lesson is available.",
+      "courses": [
+        {
+          "course_id": "algorithms-foundations",
+          "title": "Algorithms Foundations",
+          "description": "A beginner lesson on algorithms, trace tables and input size.",
+          "units": [
+            {
+              "unit_id": "algorithmic-thinking",
+              "title": "Algorithmic thinking",
+              "description": "Describe procedures and reason about their cost.",
+              "topics": [
+                {
+                  "topic_id": "introduction-to-algorithms",
+                  "title": "Introduction to Algorithms",
+                  "description": "Describe an algorithm and trace a simple search procedure.",
+                  "objectives": [
+                    "Describe an algorithm as a finite, precise procedure.",
+                    "Trace a linear search and count its comparisons."
+                  ],
+                  "minutes": 15
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject_id": "artificial-intelligence",
+      "title": "Artificial Intelligence and Machine Learning",
+      "description": "This subject is listed for exploration; curated lessons are not available yet.",
+      "courses": []
+    },
+    {
+      "subject_id": "finance",
+      "title": "Finance",
+      "description": "This subject is listed for exploration; curated lessons are not available yet.",
+      "courses": []
+    }
+  ],
+  "lessons": [
+    {
+      "lesson_id": "introduction-to-probability",
+      "topic_id": "introduction-to-probability",
+      "course_id": "probability-foundations",
+      "title": "Introduction to Probability",
+      "introduction": "Probability gives a consistent way to describe how likely an event is. Begin with a finite set of possible outcomes and count the outcomes that make the event happen.",
+      "learning_objectives": [
+        {
+          "objective_id": "introduction-to-probability-objective-1",
+          "text": "Identify outcomes, events and sample spaces."
+        },
+        {
+          "objective_id": "introduction-to-probability-objective-2",
+          "text": "Calculate probabilities for equally likely outcomes."
+        }
+      ],
+      "estimated_minutes": 12,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "outcomes-and-events",
+          "title": "Outcomes and events",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Outcome",
+              "definition": "One possible result of a random process."
+            },
+            {
+              "type": "definition",
+              "term": "Event",
+              "definition": "A set of outcomes we are interested in."
+            },
+            {
+              "type": "paragraph",
+              "text": "A sample space is the set of all possible outcomes. When outcomes are equally likely, the probability of an event is the number of outcomes in that event divided by the number of outcomes in the sample space."
+            }
+          ]
+        },
+        {
+          "section_id": "calculating-probability",
+          "title": "Calculating probability",
+          "required": true,
+          "blocks": [
+            {
+              "type": "formula",
+              "label": "Equally likely outcomes",
+              "expression": "P(A) = outcomes in A / outcomes in sample space",
+              "explanation": "This counting rule applies when every outcome is equally likely."
+            },
+            {
+              "type": "worked_example",
+              "prompt": "A fair six-sided die is rolled. What is the probability of rolling an even number?",
+              "steps": [
+                "The sample space is {1, 2, 3, 4, 5, 6}, so there are 6 equally likely outcomes.",
+                "The even outcomes are {2, 4, 6}, so 3 outcomes satisfy the event.",
+                "Divide 3 by 6 and simplify."
+              ],
+              "result": "P(even) = 3/6 = 1/2."
+            }
+          ]
+        },
+        {
+          "section_id": "probability-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "A probability is between 0 and 1. Zero means impossible and one means certain."
+            },
+            {
+              "type": "misconception",
+              "claim": "If an event did not happen on the last trial, it is now more likely.",
+              "correction": "For independent trials such as fair die rolls, earlier outcomes do not change the next roll’s probabilities."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "conditional-probability",
+      "topic_id": "conditional-probability",
+      "course_id": "probability-foundations",
+      "title": "Conditional Probability",
+      "introduction": "Conditional probability answers a focused question: how likely is A among cases where B is already known to be true? Restricting the sample space is the central idea.",
+      "learning_objectives": [
+        {
+          "objective_id": "conditional-probability-objective-1",
+          "text": "Interpret conditional probability as a restricted sample space."
+        },
+        {
+          "objective_id": "conditional-probability-objective-2",
+          "text": "Calculate conditional probability from counts or a two-way table."
+        }
+      ],
+      "estimated_minutes": 14,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "conditioning",
+          "title": "Conditioning restricts the sample space",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Conditional probability",
+              "definition": "The probability of A given B, written P(A | B), is the fraction of B outcomes that also belong to A, provided P(B) is greater than zero."
+            },
+            {
+              "type": "formula",
+              "label": "Conditional probability",
+              "expression": "P(A | B) = P(A ∩ B) / P(B)",
+              "explanation": "The denominator is the probability of the known condition B."
+            },
+            {
+              "type": "paragraph",
+              "text": "A conditional probability is not automatically the same as P(B | A). The condition after the vertical bar determines the restricted group."
+            }
+          ]
+        },
+        {
+          "section_id": "table-example",
+          "title": "A table example",
+          "required": true,
+          "blocks": [
+            {
+              "type": "worked_example",
+              "prompt": "In a class of 30 students, 12 study French. Of those 12, 8 also study music. What fraction of French students study music?",
+              "steps": [
+                "The condition is studying French, so the relevant group has 12 students.",
+                "Within that group, 8 study music.",
+                "Divide the overlap by the condition group."
+              ],
+              "result": "P(music | French) = 8/12 = 2/3."
+            }
+          ]
+        },
+        {
+          "section_id": "conditional-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "Read P(A | B) as ‘A among the cases where B holds.’ Use the B group as the denominator."
+            },
+            {
+              "type": "misconception",
+              "claim": "P(A | B) always equals P(B | A).",
+              "correction": "These probabilities use different condition groups and can have very different values."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "bayes-theorem",
+      "topic_id": "bayes-theorem",
+      "course_id": "probability-foundations",
+      "title": "Bayes’ Theorem",
+      "introduction": "A test result is evidence about a condition, but it does not tell the whole story. Bayes’ theorem combines the base rate with how often the test gives each result.",
+      "learning_objectives": [
+        {
+          "objective_id": "bayes-theorem-objective-1",
+          "text": "Identify priors, likelihoods and evidence."
+        },
+        {
+          "objective_id": "bayes-theorem-objective-2",
+          "text": "Apply Bayes’ theorem to a diagnostic example."
+        }
+      ],
+      "estimated_minutes": 15,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "parts-of-bayes",
+          "title": "The parts of Bayes’ theorem",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Prior",
+              "definition": "The probability of a condition before considering new evidence."
+            },
+            {
+              "type": "definition",
+              "term": "Likelihood",
+              "definition": "The probability of observing the evidence when the condition is present."
+            },
+            {
+              "type": "formula",
+              "label": "Bayes’ theorem",
+              "expression": "P(A | B) = P(B | A) P(A) / P(B)",
+              "explanation": "The posterior combines the likelihood and prior, scaled by the overall probability of the evidence."
+            }
+          ]
+        },
+        {
+          "section_id": "diagnostic-example",
+          "title": "A diagnostic test example",
+          "required": true,
+          "blocks": [
+            {
+              "type": "worked_example",
+              "prompt": "A condition affects 1 in 100 people. A test is positive for 90% of people with the condition and for 5% of people without it. Among positive tests, what fraction are true positives?",
+              "steps": [
+                "Imagine 1,000 people: about 10 have the condition and 990 do not.",
+                "About 9 of the 10 affected people test positive. About 49.5 of the 990 unaffected people also test positive.",
+                "Among about 58.5 positive results, 9 are true positives: 9/58.5 ≈ 0.154."
+              ],
+              "result": "The probability is about 15.4%, despite 90% sensitivity, because the condition is uncommon."
+            }
+          ]
+        },
+        {
+          "section_id": "bayes-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "A positive result can be less conclusive when the condition is rare. Account for the base rate."
+            },
+            {
+              "type": "misconception",
+              "claim": "A 90% sensitive test means 90% of positive results are true positives.",
+              "correction": "Sensitivity is P(positive | condition). The question often asks for P(condition | positive), which also depends on prevalence and false positives."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "random-variables",
+      "topic_id": "random-variables",
+      "course_id": "probability-foundations",
+      "title": "Random Variables",
+      "introduction": "A random variable assigns a number to each outcome of a random process. Its distribution describes which values can occur and the probability of each value.",
+      "learning_objectives": [
+        {
+          "objective_id": "random-variables-objective-1",
+          "text": "Distinguish an outcome from a random variable."
+        },
+        {
+          "objective_id": "random-variables-objective-2",
+          "text": "Read a discrete probability distribution."
+        }
+      ],
+      "estimated_minutes": 13,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "mapping-outcomes",
+          "title": "From outcomes to numbers",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Random variable",
+              "definition": "A rule that maps each outcome in a sample space to a numerical value."
+            },
+            {
+              "type": "paragraph",
+              "text": "If two coins are tossed, X could count the number of heads. Outcomes HH, HT, TH and TT map to 2, 1, 1 and 0."
+            },
+            {
+              "type": "paragraph",
+              "text": "Different outcomes can map to the same value. Here, HT and TH both give X = 1."
+            }
+          ]
+        },
+        {
+          "section_id": "discrete-distribution",
+          "title": "A discrete distribution",
+          "required": true,
+          "blocks": [
+            {
+              "type": "formula",
+              "label": "Probability distribution",
+              "expression": "Σx P(X = x) = 1",
+              "explanation": "The probabilities across all possible values must add to one."
+            },
+            {
+              "type": "worked_example",
+              "prompt": "For two fair coin tosses, list the distribution of X, the number of heads.",
+              "steps": [
+                "There are four equally likely outcomes: HH, HT, TH, TT.",
+                "X = 0 for TT; X = 1 for HT and TH; X = 2 for HH.",
+                "Count the outcomes for each value and divide by four."
+              ],
+              "result": "P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4."
+            }
+          ]
+        },
+        {
+          "section_id": "random-variable-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "A random variable is a numerical summary of an outcome. A distribution pairs possible values with probabilities."
+            },
+            {
+              "type": "misconception",
+              "claim": "A random variable is itself random every time you describe it.",
+              "correction": "The variable is a defined mapping; the value it takes depends on the observed outcome."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "expected-value",
+      "topic_id": "expected-value",
+      "course_id": "probability-foundations",
+      "title": "Expected Value",
+      "introduction": "Expected value is a probability-weighted average. It describes the long-run average outcome across repeated trials, and can compare choices with uncertain payoffs.",
+      "learning_objectives": [
+        {
+          "objective_id": "expected-value-objective-1",
+          "text": "Calculate an expectation from a discrete distribution."
+        },
+        {
+          "objective_id": "expected-value-objective-2",
+          "text": "Use expected value to compare simple choices."
+        }
+      ],
+      "estimated_minutes": 13,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "weighted-average",
+          "title": "A probability-weighted average",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Expected value",
+              "definition": "For a discrete random variable, the expected value is the sum of each value multiplied by its probability."
+            },
+            {
+              "type": "formula",
+              "label": "Expected value",
+              "expression": "E[X] = Σx x · P(X = x)",
+              "explanation": "Multiply each possible value by its probability, then add the products."
+            },
+            {
+              "type": "paragraph",
+              "text": "Expected value need not be an outcome that can occur. It is an average over the distribution, not a promise about one trial."
+            }
+          ]
+        },
+        {
+          "section_id": "coin-game",
+          "title": "A fair coin game",
+          "required": true,
+          "blocks": [
+            {
+              "type": "worked_example",
+              "prompt": "A game pays $4 on heads and $0 on tails for a fair coin. What is the expected payout?",
+              "steps": [
+                "Heads and tails each have probability 1/2.",
+                "Multiply each payout by its probability: 4 × 1/2 and 0 × 1/2.",
+                "Add the weighted payouts."
+              ],
+              "result": "E[X] = 2 dollars per play in the long run."
+            }
+          ]
+        },
+        {
+          "section_id": "expectation-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "Expected value helps compare repeated uncertain outcomes, but does not predict one trial."
+            },
+            {
+              "type": "misconception",
+              "claim": "If a game’s expected payout is $2, a player will receive exactly $2 each time.",
+              "correction": "A single outcome can differ from expectation; the average becomes informative over many comparable plays."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "descriptive-statistics",
+      "topic_id": "descriptive-statistics",
+      "course_id": "statistics-foundations",
+      "title": "Descriptive Statistics",
+      "introduction": "Descriptive statistics summarize the center and spread of observed data. Mean and median describe center in different ways, while variance summarizes squared distances from the mean.",
+      "learning_objectives": [
+        {
+          "objective_id": "descriptive-statistics-objective-1",
+          "text": "Calculate mean and median for a small dataset."
+        },
+        {
+          "objective_id": "descriptive-statistics-objective-2",
+          "text": "Explain how an outlier affects the mean and median."
+        }
+      ],
+      "estimated_minutes": 14,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "center",
+          "title": "Two measures of center",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Mean",
+              "definition": "Add all data values and divide by the number of values."
+            },
+            {
+              "type": "definition",
+              "term": "Median",
+              "definition": "The middle value after sorting; with an even count, average the two middle values."
+            },
+            {
+              "type": "paragraph",
+              "text": "The mean uses every value and can move substantially when an extreme value is added. The median depends on order and is often less affected by an outlier."
+            }
+          ]
+        },
+        {
+          "section_id": "spread",
+          "title": "Variance measures spread around the mean",
+          "required": true,
+          "blocks": [
+            {
+              "type": "formula",
+              "label": "Population variance",
+              "expression": "σ² = Σ(x − μ)² / N",
+              "explanation": "Subtract the mean, square each difference, add them, then divide by the number of values."
+            },
+            {
+              "type": "worked_example",
+              "prompt": "For the population {2, 4, 6}, calculate the mean and population variance.",
+              "steps": [
+                "The mean is (2 + 4 + 6)/3 = 4.",
+                "Squared distances from 4 are 4, 0 and 4.",
+                "Their average is 8/3."
+              ],
+              "result": "Mean = 4; population variance = 8/3."
+            }
+          ]
+        },
+        {
+          "section_id": "statistics-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "Identify whether a variance is population or sample variance; their denominators differ."
+            },
+            {
+              "type": "misconception",
+              "claim": "The mean and median must be equal.",
+              "correction": "They are equal for some datasets, but skew or extreme values can pull them apart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lesson_id": "introduction-to-algorithms",
+      "topic_id": "introduction-to-algorithms",
+      "course_id": "algorithms-foundations",
+      "title": "Introduction to Algorithms",
+      "introduction": "An algorithm is a precise procedure for solving a class of problems. Tracing steps helps check correctness; counting steps as input grows helps compare efficiency.",
+      "learning_objectives": [
+        {
+          "objective_id": "introduction-to-algorithms-objective-1",
+          "text": "Describe an algorithm as a finite, precise procedure."
+        },
+        {
+          "objective_id": "introduction-to-algorithms-objective-2",
+          "text": "Trace a linear search and count its comparisons."
+        }
+      ],
+      "estimated_minutes": 15,
+      "content_version": "1.0.0",
+      "content_source": "curated_static",
+      "sections": [
+        {
+          "section_id": "algorithm-properties",
+          "title": "Describe a procedure",
+          "required": true,
+          "blocks": [
+            {
+              "type": "definition",
+              "term": "Algorithm",
+              "definition": "A finite, unambiguous sequence of steps that transforms input into output to solve a problem."
+            },
+            {
+              "type": "paragraph",
+              "text": "A useful algorithm states what input it accepts, what result it returns and how it handles relevant cases. A procedure that never stops is not finite."
+            },
+            {
+              "type": "key_point",
+              "text": "A trace table records the algorithm’s changing values as each step runs."
+            }
+          ]
+        },
+        {
+          "section_id": "linear-search",
+          "title": "Trace a linear search",
+          "required": true,
+          "blocks": [
+            {
+              "type": "worked_example",
+              "prompt": "Search for 7 in [4, 7, 2] using linear search.",
+              "steps": [
+                "Compare target 7 with the first value 4; they differ.",
+                "Compare 7 with the second value 7; they match.",
+                "Return the second position and stop."
+              ],
+              "result": "The search finds 7 after 2 comparisons."
+            },
+            {
+              "type": "paragraph",
+              "text": "For a list of n items, linear search may inspect all n items when the target is last or absent. Its worst-case comparison count grows in proportion to n."
+            }
+          ]
+        },
+        {
+          "section_id": "algorithm-checkpoint",
+          "title": "Takeaways",
+          "required": true,
+          "blocks": [
+            {
+              "type": "key_point",
+              "text": "Correctness and efficiency are separate questions: does the procedure return the right result, and how does its work grow?"
+            },
+            {
+              "type": "misconception",
+              "claim": "A faster algorithm is always the one with fewer lines of code.",
+              "correction": "Source-code length does not directly measure the number of operations as input size grows."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "introduction-to-probability-q1",
+      "lesson_id": "introduction-to-probability",
+      "topic_id": "introduction-to-probability",
+      "objective_id": "introduction-to-probability-objective-1",
+      "question_type": "single_choice",
+      "prompt": "A fair six-sided die is rolled. What is P(even)?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "1/2"
+        },
+        {
+          "option_id": "b",
+          "text": "1/3"
+        },
+        {
+          "option_id": "c",
+          "text": "2/3"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "1/2",
+      "explanation": "There are three even outcomes among six equally likely outcomes, so 3/6 = 1/2.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "introduction-to-probability-q2",
+      "lesson_id": "introduction-to-probability",
+      "topic_id": "introduction-to-probability",
+      "objective_id": "introduction-to-probability-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about probability are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "For equally likely outcomes, count favorable outcomes and divide by all outcomes."
+        },
+        {
+          "option_id": "b",
+          "text": "Every probability lies between 0 and 1."
+        },
+        {
+          "option_id": "c",
+          "text": "An independent die roll is affected by the result of the previous roll."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "b"
+        ]
+      },
+      "expected_answer": "a: For equally likely outcomes, count favorable outcomes and divide by all outcomes.; b: Every probability lies between 0 and 1.",
+      "explanation": "The counting rule applies to equally likely outcomes, and probabilities lie in [0, 1]. Independent rolls do not affect one another.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "conditional-probability-q1",
+      "lesson_id": "conditional-probability",
+      "topic_id": "conditional-probability",
+      "objective_id": "conditional-probability-objective-1",
+      "question_type": "single_choice",
+      "prompt": "Of 12 students who study French, 8 also study music. What is P(music | French)?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "2/3"
+        },
+        {
+          "option_id": "b",
+          "text": "4/5"
+        },
+        {
+          "option_id": "c",
+          "text": "8/30"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "2/3",
+      "explanation": "Restrict attention to the 12 students who study French, then count the 8 who also study music: 8/12 = 2/3.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "conditional-probability-q2",
+      "lesson_id": "conditional-probability",
+      "topic_id": "conditional-probability",
+      "objective_id": "conditional-probability-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about P(A | B) are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "The denominator is the probability or count for B."
+        },
+        {
+          "option_id": "b",
+          "text": "It always equals P(B | A)."
+        },
+        {
+          "option_id": "c",
+          "text": "It can be calculated as P(A ∩ B) / P(B), when P(B) > 0."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: The denominator is the probability or count for B.; c: It can be calculated as P(A ∩ B) / P(B), when P(B) > 0.",
+      "explanation": "The condition B defines the restricted group, so P(B) is the denominator. Reversing the condition generally changes the probability.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "bayes-theorem-q1",
+      "lesson_id": "bayes-theorem",
+      "topic_id": "bayes-theorem",
+      "objective_id": "bayes-theorem-objective-1",
+      "question_type": "single_choice",
+      "prompt": "A condition affects 1% of people. A test has 90% sensitivity and 5% false-positive rate. About what fraction of positive results are true positives?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "15.4%"
+        },
+        {
+          "option_id": "b",
+          "text": "90%"
+        },
+        {
+          "option_id": "c",
+          "text": "95%"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "About 15.4%",
+      "explanation": "In 1,000 people, about 9 true positives and 49.5 false positives are expected. The fraction is 9/(9+49.5) ≈ 15.4%.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "bayes-theorem-q2",
+      "lesson_id": "bayes-theorem",
+      "topic_id": "bayes-theorem",
+      "objective_id": "bayes-theorem-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about diagnostic test probabilities are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "Sensitivity is P(positive | condition)."
+        },
+        {
+          "option_id": "b",
+          "text": "A rare condition makes every positive result almost certainly false."
+        },
+        {
+          "option_id": "c",
+          "text": "P(condition | positive) also depends on prevalence and false positives."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: Sensitivity is P(positive | condition).; c: P(condition | positive) also depends on prevalence and false positives.",
+      "explanation": "Sensitivity and the probability of having a condition after a positive result reverse the condition; prevalence and false positives matter.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "random-variables-q1",
+      "lesson_id": "random-variables",
+      "topic_id": "random-variables",
+      "objective_id": "random-variables-objective-1",
+      "question_type": "single_choice",
+      "prompt": "Two fair coins are tossed. Let X count heads. What is P(X = 1)?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "1/2"
+        },
+        {
+          "option_id": "b",
+          "text": "1/4"
+        },
+        {
+          "option_id": "c",
+          "text": "3/4"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "1/2",
+      "explanation": "The outcomes HT and TH give one head. Two of four equally likely outcomes satisfy X = 1.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "random-variables-q2",
+      "lesson_id": "random-variables",
+      "topic_id": "random-variables",
+      "objective_id": "random-variables-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about the two-coin random variable X = number of heads are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "HT and TH both map to X = 1."
+        },
+        {
+          "option_id": "b",
+          "text": "X can take only the value 1."
+        },
+        {
+          "option_id": "c",
+          "text": "The probabilities of X = 0, 1, 2 add to 1."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: HT and TH both map to X = 1.; c: The probabilities of X = 0, 1, 2 add to 1.",
+      "explanation": "Two outcomes map to one head, and a probability distribution over all possible values sums to one.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "expected-value-q1",
+      "lesson_id": "expected-value",
+      "topic_id": "expected-value",
+      "objective_id": "expected-value-objective-1",
+      "question_type": "single_choice",
+      "prompt": "A fair coin game pays $4 for heads and $0 for tails. What is the expected payout?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "$2"
+        },
+        {
+          "option_id": "b",
+          "text": "$4"
+        },
+        {
+          "option_id": "c",
+          "text": "$1"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "$2",
+      "explanation": "Each payout has probability 1/2, so E[X] = 4(1/2) + 0(1/2) = $2.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "expected-value-q2",
+      "lesson_id": "expected-value",
+      "topic_id": "expected-value",
+      "objective_id": "expected-value-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about expected value are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "It is a probability-weighted average of possible values."
+        },
+        {
+          "option_id": "b",
+          "text": "It guarantees the result of one trial."
+        },
+        {
+          "option_id": "c",
+          "text": "It can be useful when comparing repeated uncertain payoffs."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: It is a probability-weighted average of possible values.; c: It can be useful when comparing repeated uncertain payoffs.",
+      "explanation": "Expected value summarizes the distribution and can compare repeated choices; it does not guarantee an individual outcome.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "descriptive-statistics-q1",
+      "lesson_id": "descriptive-statistics",
+      "topic_id": "descriptive-statistics",
+      "objective_id": "descriptive-statistics-objective-1",
+      "question_type": "single_choice",
+      "prompt": "For the population {2, 4, 6}, what are the mean and median?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "Both are 4."
+        },
+        {
+          "option_id": "b",
+          "text": "Mean is 6 and median is 4."
+        },
+        {
+          "option_id": "c",
+          "text": "Mean is 4 and median is 6."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "Mean = 4; median = 4.",
+      "explanation": "The values are already sorted. Their mean is 12/3 = 4 and the middle value is 4.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "descriptive-statistics-q2",
+      "lesson_id": "descriptive-statistics",
+      "topic_id": "descriptive-statistics",
+      "objective_id": "descriptive-statistics-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about mean and median are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "An extreme high value can pull the mean upward."
+        },
+        {
+          "option_id": "b",
+          "text": "The mean and median are always equal."
+        },
+        {
+          "option_id": "c",
+          "text": "The median is the middle value after sorting."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: An extreme high value can pull the mean upward.; c: The median is the middle value after sorting.",
+      "explanation": "The mean uses every value and can be pulled by an outlier; the median is determined by sorted position.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "introduction-to-algorithms-q1",
+      "lesson_id": "introduction-to-algorithms",
+      "topic_id": "introduction-to-algorithms",
+      "objective_id": "introduction-to-algorithms-objective-1",
+      "question_type": "single_choice",
+      "prompt": "Linear search checks [4, 7, 2] from left to right for 7. How many comparisons are made?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "2"
+        },
+        {
+          "option_id": "b",
+          "text": "1"
+        },
+        {
+          "option_id": "c",
+          "text": "3"
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a"
+        ]
+      },
+      "expected_answer": "2 comparisons",
+      "explanation": "The first comparison checks 4; the second checks 7 and succeeds.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "introduction-to-algorithms-q2",
+      "lesson_id": "introduction-to-algorithms",
+      "topic_id": "introduction-to-algorithms",
+      "objective_id": "introduction-to-algorithms-objective-2",
+      "question_type": "multiple_choice",
+      "prompt": "Which statements about algorithms are correct?",
+      "options": [
+        {
+          "option_id": "a",
+          "text": "An algorithm should have a finite, precise procedure."
+        },
+        {
+          "option_id": "b",
+          "text": "Fewer lines of code always means fewer operations."
+        },
+        {
+          "option_id": "c",
+          "text": "Linear search can inspect n items in its worst case."
+        }
+      ],
+      "grading": {
+        "kind": "choice",
+        "correct_option_ids": [
+          "a",
+          "c"
+        ]
+      },
+      "expected_answer": "a: An algorithm should have a finite, precise procedure.; c: Linear search can inspect n items in its worst case.",
+      "explanation": "An algorithm is a finite procedure. Linear search may check every item; code length alone does not measure work.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    },
+    {
+      "question_id": "expected-value-q3",
+      "lesson_id": "expected-value",
+      "topic_id": "expected-value",
+      "objective_id": "expected-value-objective-1",
+      "question_type": "numeric",
+      "prompt": "A fair coin pays $4 for heads and $0 for tails. Enter its expected payout in dollars.",
+      "options": [],
+      "grading": {
+        "kind": "numeric",
+        "expected_value": "2",
+        "absolute_tolerance": "0.001",
+        "relative_tolerance": "0"
+      },
+      "expected_answer": "2 dollars",
+      "explanation": "The expected payout is 4 × 1/2 + 0 × 1/2 = 2 dollars.",
+      "difficulty": "introductory",
+      "content_version": "1.0.0"
+    }
+  ]
+}

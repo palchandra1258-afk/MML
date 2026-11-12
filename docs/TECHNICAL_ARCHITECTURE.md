@@ -8,6 +8,8 @@ The research reference proposes four layers. The architecture below preserves th
 
 **Implementation status:** Phase 9 adds a replayable EdNet behavioral-history state object with per-skill summaries, recent trends, evidence counts and uncertainty intervals. Phase 10 adds normalized evidence records and adapters; Phase 11 adds a separate, traceable rule-based cognitive-state estimate; Phase 12 adds a rule-based representation recommendation and plan history; Phase 13 adds rule-based trajectory/diversion orchestration with context preservation and resumption history. These are bounded foundations, not validated cognitive estimation, prerequisite mastery, or learning-effective representation selection. Learned multimodal encoders/fusion and the post-intervention outcome loop remain research architecture/specification.
 
+Phase 14 adds a local FastAPI integration layer and SQLite/Alembic persistence. Phase 9–12 snapshots remain read-only JSONL and are served through offset indexes; Phase 13 trajectory writes made through HTTP preserve immutable versions and append-only events. Model inference, authentication, and HTTP diversion mutations are not implemented. See [`PHASE14_BACKEND_ARCHITECTURE.md`](PHASE14_BACKEND_ARCHITECTURE.md) and [`BACKEND_INTEGRATION_REPORT.md`](BACKEND_INTEGRATION_REPORT.md).
+
 ## System context
 
 ```text

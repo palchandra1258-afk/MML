@@ -1,35 +1,25 @@
 # API integration strategy
 
-## Authority and current state
+## Current contract
 
-Phase 14 is a separate backend workstream covering FastAPI, persistence, endpoints, and OpenAPI. No frontend API contract is available here. Python JSON Schemas define artifact shapes, not HTTP routes, pagination, authorization, write semantics, status codes, or response envelopes. Do not invent endpoints or represent the schemas as live transport contracts.
+F2 now follows the checked-in Phase 14 OpenAPI 3.1 contract in `shared/api-contracts/openapi.json` (API version 1.0.0). The live base path is `/api/v1`. Exact routes, response envelopes, CORS, and limitations are documented in [`F2_API_INTEGRATION.md`](F2_API_INTEGRATION.md) and the backend [`API_DESIGN_SPECIFICATION.md`](../../docs/API_DESIGN_SPECIFICATION.md).
 
-## Integration sequence
+Successful responses use `{ success: true, data, request_id }`; failures use a safe error envelope. Lists use `items`, `limit`, `offset`, `total`, and `has_more`. API types are manually derived from OpenAPI and must be reviewed if the JSON contract changes. Artifact JSON remains open-ended where the backend schema preserves the Phase 9–13 payload.
 
-1. Obtain the Phase 14 OpenAPI document and agree on base path, versioning, auth, error envelope, pagination, identifiers, and timestamps.
-2. Identify read/write operations needed by reviewed journeys and document missing backend capabilities.
-3. Generate or derive transport types from the exact OpenAPI version; pin/document generation method. Keep frontend view types separate.
-4. Centralize `NEXT_PUBLIC_API_BASE_URL` parsing in a configuration module. Fail clearly in API-enabled environments when missing; allow local fixture mode explicitly.
-5. Add a single typed request layer for headers, JSON parsing, abort/timeouts where supported, and error normalization. Components use feature queries/actions, never direct fetch URLs.
-6. Map responses to display models without altering scientific meaning; preserve provenance, nulls, unknown fields/enums, versions and references.
-7. Implement loading, empty, pagination, retry and stale-data states, then connect each journey end-to-end.
+## Implemented client
 
-## Candidate resource needs (not endpoint names/contracts)
+`lib/api/` centralizes public config, request timeout and cancellation, GET/POST serialization, envelope and error parsing, request IDs, and safe normalized errors. Only current contract methods are implemented. URLs use `NEXT_PUBLIC_API_BASE_URL`; components do not assemble service URLs. Health is queried once when the shell mounts and can be explicitly retried. API failures never trigger mock fallback.
 
-The journeys need learner/session context; current objective/content; interaction submission and feedback; behavioral state; evidence records/groups/alignments/conflicts; cognitive estimate versions; representation plans and capability registry; trajectory/diversion/context/history; model/evaluation artifacts; and service/artifact health. These are requirements to discuss with Phase 14, not claims that all are implemented or API resources already exist.
+Services mirror actual endpoints under `lib/services/`. No frontend method is added for content delivery, interaction submission, model evaluation, standalone group/conflict resources, diversion writes, or resumption writes because the backend does not expose those operations.
 
-## Reliability and caching
+## Configuration and data modes
 
-Lists need server pagination/filter/sort semantics defined by OpenAPI. Detail references should resolve without fetching giant learner-state exports. Set practical request timeouts, cancellation for route changes, and safe retry only for transient/idempotent reads. Do not retry writes blindly without idempotency semantics. Cache policy depends on update cadence and privacy; use server fetch/revalidation as the initial default, and add a client cache library only if interaction requirements justify it. After successful writes, refetch or invalidate only according to backend version/consistency guarantees.
+Copy `.env.example` to `.env.local`. Configure `NEXT_PUBLIC_API_BASE_URL`, `NEXT_PUBLIC_USE_MOCK_DATA`, and optionally `NEXT_PUBLIC_API_TIMEOUT_MS`. Only `NEXT_PUBLIC_USE_MOCK_DATA=true` selects synthetic walkthrough data. Real API mode is selected otherwise and requires a valid URL. No secret belongs in a `NEXT_PUBLIC_*` variable.
 
-## Error model and UI
+## Backend security and CORS
 
-Normalize network offline, timeout, server unavailable, validation, unauthorized/forbidden (once auth exists), not found, rate limit and unknown failures. Show actionable plain-language messages; keep request ID for researcher support where available. Never show stack traces or evidence payloads in generic error UI. Distinguish empty result from failed request and from a record with missing modalities.
+The backend defaults to allowing `http://localhost:3000` and `http://127.0.0.1:3000` with GET/POST/OPTIONS. If the frontend origin changes, configure backend `MCP_RI_CORS_ORIGINS`. The backend has no authentication; do not expose it beyond loopback until access control is implemented. See the F2 integration guide.
 
-## Environment and security
+## Follow-on integration
 
-Use `NEXT_PUBLIC_API_BASE_URL` for a browser-consumable public service origin; never put secrets in `NEXT_PUBLIC_*`. Validate HTTPS/deployment origin and CORS with backend owner. Real learner endpoints require backend-enforced access control and privacy review before release. Authentication UI and authorization design are deliberately unimplemented in this plan.
-
-## Mock/API separation
-
-Feature code consumes a repository interface or service function with one explicit mode. Mock fixture selection must be opt-in and watermarked; a backend failure must not silently fall back to synthetic data. Do not combine synthetic and actual records in a chart or table without visible per-record source labels and a clear methodological reason.
+F3 connects learner overview, progress, cognitive estimates, representation-plan context, and read-only trajectory/history views to these services. Researcher evidence/representation/evaluation surfaces and any API mutations remain future work. Continue to preserve nulls, provenance, versions, timestamps, uncertainty, and source references. Keep missing/error/empty states distinct. Add additional caching only after API freshness and mutation consistency are agreed. Use `npm run test:api` for API transport and learner projection checks.

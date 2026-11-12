@@ -9,13 +9,18 @@ from typing import Any, Callable
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
-from .persistence import ArtifactFile, ArtifactRecord, utc_now
+from .persistence import ArtifactFile, ArtifactRecord, ArtifactRecordLink, utc_now
 
 
-ARTIFACT_KEYS = ("phase9_states", "phase10_evidence", "phase11_states", "phase12_plans")
+ARTIFACT_KEYS = (
+    "phase9_states", "phase10_evidence", "phase10_groups", "phase11_states", "phase12_plans",
+)
 
 
-def record_identity(artifact_name: str, record: dict[str, Any]) -> tuple[str, str, str | None]:
+def record_identity(
+    artifact_name: str,
+    record: dict[str, Any],
+) -> tuple[str, str, str | None, str | None, list[str]]:
     learner_id = str(record.get("learner_id", ""))
     if artifact_name == "phase9_states":
         record_id = learner_id
@@ -23,6 +28,9 @@ def record_identity(artifact_name: str, record: dict[str, Any]) -> tuple[str, st
     elif artifact_name == "phase10_evidence":
         record_id = str(record.get("evidence_id", ""))
         record_time = (record.get("temporal") or {}).get("event_timestamp")
+    elif artifact_name == "phase10_groups":
+        record_id = str(record.get("group_id", ""))
+        record_time = None
     elif artifact_name == "phase11_states":
         record_id = str(record.get("cognitive_state_id", ""))
         record_time = record.get("generated_at")
@@ -33,7 +41,11 @@ def record_identity(artifact_name: str, record: dict[str, Any]) -> tuple[str, st
         raise ValueError(f"unsupported research artifact: {artifact_name}")
     if not learner_id or not record_id:
         raise ValueError(f"{artifact_name} record is missing its learner or stable record ID")
-    return record_id, learner_id, str(record_time) if record_time is not None else None
+    record_type = str(record.get("evidence_type")) if artifact_name == "phase10_evidence" else None
+    if artifact_name == "phase10_groups":
+        record_type = str(record.get("grouping_basis", "")) or None
+    linked_ids = list(map(str, record.get("evidence_ids", []))) if artifact_name == "phase10_groups" else []
+    return record_id, learner_id, str(record_time) if record_time is not None else None, record_type, linked_ids
 
 
 def index_artifact(
@@ -52,6 +64,7 @@ def index_artifact(
         raise FileNotFoundError(path)
     stat = path.stat()
     session.execute(delete(ArtifactRecord).where(ArtifactRecord.artifact_name == artifact_name))
+    session.execute(delete(ArtifactRecordLink).where(ArtifactRecordLink.artifact_name == artifact_name))
     session.merge(ArtifactFile(
         artifact_name=artifact_name,
         source_size=stat.st_size,
@@ -62,6 +75,7 @@ def index_artifact(
     session.flush()
 
     batch: list[dict[str, Any]] = []
+    link_batch: list[dict[str, Any]] = []
     record_count = 0
     with path.open("rb") as stream:
         while True:
@@ -76,24 +90,38 @@ def index_artifact(
                 document = json.loads(raw_line)
                 if not isinstance(document, dict):
                     raise ValueError("JSONL record must be an object")
-                record_id, learner_id, record_time = record_identity(artifact_name, document)
+                record_id, learner_id, record_time, record_type, linked_ids = record_identity(artifact_name, document)
             except (UnicodeDecodeError, json.JSONDecodeError, ValueError, TypeError) as exc:
                 raise ValueError(f"invalid {artifact_name} JSONL record at line {record_count}") from exc
             batch.append({
                 "artifact_name": artifact_name,
                 "record_id": record_id,
                 "learner_id": learner_id,
+                "record_type": record_type,
                 "line_offset": line_offset,
                 "byte_length": len(raw_line),
                 "record_time": record_time,
             })
+            link_batch.extend({
+                "artifact_name": artifact_name,
+                "record_id": record_id,
+                "linked_record_id": linked_id,
+            } for linked_id in linked_ids)
             if len(batch) >= chunk_size:
                 session.execute(ArtifactRecord.__table__.insert(), batch)
                 batch.clear()
+            if len(link_batch) >= chunk_size:
+                if batch:
+                    session.execute(ArtifactRecord.__table__.insert(), batch)
+                    batch.clear()
+                session.execute(ArtifactRecordLink.__table__.insert(), link_batch)
+                link_batch.clear()
             if on_progress and record_count % 10000 == 0:
                 on_progress(record_count)
     if batch:
         session.execute(ArtifactRecord.__table__.insert(), batch)
+    if link_batch:
+        session.execute(ArtifactRecordLink.__table__.insert(), link_batch)
     session.query(ArtifactFile).filter_by(artifact_name=artifact_name).update({"record_count": record_count})
     return record_count
 

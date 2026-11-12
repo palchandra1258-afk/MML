@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:api": "tsc -p tsconfig.api-tests.json && node --test tests/api/*.test.cjs tests/learner/*.test.cjs tests/representation/*.test.cjs tests/evidence/*.test.cjs tests/research/*.test.cjs tests/studio/*.test.cjs"
   },
   "dependencies": {
     "next": "16.4.6",

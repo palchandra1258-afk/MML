@@ -77,7 +77,7 @@ The builder reads the bounded Phase 11 validation output and the small EdNet que
 
 ## Phase 13 learning trajectories and diversions
 
-Phase 13 adds versioned primary trajectories, explicit transition rules, conservative prerequisite-review diversions, compact context snapshots, progress/revision records, resumption and replanning decisions, and append-only history reconstruction. The default dependency registry is empty because EdNet skills do not encode prerequisites. Manually configured links are labeled, and synthetic links are excluded unless a test explicitly enables them. The in-memory API exports JSONL through a bounded runner; no durable database is implemented. Recommendations do not prove a prerequisite gap or mastery.
+Phase 13 adds versioned primary trajectories, explicit transition rules, conservative prerequisite-review diversions, compact context snapshots, progress/revision records, resumption and replanning decisions, and append-only history reconstruction. The default dependency registry is empty because EdNet skills do not encode prerequisites. Manually configured links are labeled, and synthetic links are excluded unless a test explicitly enables them. The Phase 13 core history object remains in-memory; Phase 14 wraps the supported trajectory operations with durable SQLite records. Recommendations do not prove a prerequisite gap or mastery.
 
 ```bash
 python3 -m unittest discover -s tests/trajectory -v
@@ -88,6 +88,35 @@ python3 scripts/trajectory/validate_trajectory_history.py results/reports/<run>
 ```
 
 See [`docs/LEARNING_TRAJECTORY_ARCHITECTURE.md`](docs/LEARNING_TRAJECTORY_ARCHITECTURE.md), [`docs/TRAJECTORY_STATE_MACHINE.md`](docs/TRAJECTORY_STATE_MACHINE.md), [`docs/DIVERSION_DETECTION_METHODOLOGY.md`](docs/DIVERSION_DETECTION_METHODOLOGY.md), and [`docs/TRAJECTORY_EVALUATION.md`](docs/TRAJECTORY_EVALUATION.md). The sample uses validation snapshots and does not read locked-test or raw/processed interaction tables.
+
+## Phase 14 backend API and persistence
+
+Phase 14 adds a FastAPI service under `/api/v1`, generated OpenAPI contracts, read-only access to Phase 9–12 result snapshots, Phase 10 grouping/alignment annotations, and SQLite persistence for caller-authored Phase 13 trajectories and append-only event/version history. A byte-offset index avoids copying the 2.6 GB Phase 9 state file into SQLite or loading it at server startup. The API uses Phase 13 validation for trajectory creation and actions; it does not seed placeholder objectives from Phase 13 sample reports. Authentication and model inference remain unavailable, and diversion mutations are not exposed.
+
+```bash
+python3 -m venv .venv-api
+.venv-api/bin/python -m pip install -r requirements-api.txt
+PYTHONPATH=src .venv-api/bin/python scripts/api/index_artifacts.py
+PYTHONPATH=src .venv-api/bin/uvicorn mcp_ri.api.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+The artifact index is a one-time sequential read of configured JSONL outputs; it stores IDs, timestamps, links, and byte offsets only. Health remains degraded until indexing finishes. Local API and frontend integration details are in [`docs/PHASE14_BACKEND_ARCHITECTURE.md`](docs/PHASE14_BACKEND_ARCHITECTURE.md) and [`shared/api-contracts/README.md`](shared/api-contracts/README.md).
+
+## F9 Student Learning Studio
+
+F9 adds a separate student experience at `/studio` with curated subject and topic discovery, seven complete lessons, backend-evaluated practice, saved section progress, history, and a local demo profile. Student attempts become normalized Phase 10 evidence and feed an aggregate Phase 9 response summary with no EdNet skill mapping. The research workspace remains available through the visible workspace switch. Authentication, cognitive inference, representation delivery, validated prerequisites, and adaptive trajectories are not claimed. See [`docs/F9_ARCHITECTURE_AUDIT.md`](docs/F9_ARCHITECTURE_AUDIT.md) and [`docs/F9_STUDENT_LEARNING_ENGINE.md`](docs/F9_STUDENT_LEARNING_ENGINE.md).
+
+## Frontend
+
+The Next.js 16 App Router application is in [`frontend/`](frontend/), with its route inventory, environment setup, and implementation notes in [`frontend/README.md`](frontend/README.md). After starting the backend above, start the frontend with:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The interface reads the backend API when configured. Synthetic walkthrough data requires the explicit `NEXT_PUBLIC_USE_MOCK_DATA=true` setting; it is not presented as learner data by default.
 
 ## Tests
 
